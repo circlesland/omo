@@ -127,6 +127,10 @@
         });
     }
 </script>
+
+<style>
+    h1{color:blue;}
+</style>
 <h1>HUB: {addrGatewayUrl}</h1>
 {#if loginProcess == LoginState.None}
     <p>Email oder Nutzername</p>
