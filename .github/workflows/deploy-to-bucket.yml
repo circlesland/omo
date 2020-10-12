@@ -1,0 +1,40 @@
+name: "Textile Bucket - Deploy"
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+        - 
+defaults:
+  run:
+    working-directory: app
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [14.x]
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+    - run: npm install
+    - run: npm run build --if-present
+      env:
+        Environment: production
+    - name: push action
+      id: bucket
+      uses: textileio/github-action-buckets@master
+      with:
+        key: ${{ secrets.TEXTILE_ACCOUNT_KEY }}
+        secret: ${{ secrets.TEXTILE_ACCOUNT_SECRET }}
+        bucket: 'omo-marketplace-dev'
+        thread: 'bafk3hjqnsapk7bbedswqq5pfhi3jue3kq7h6wnhgd5o7eedlrkroeva'
+        path: 'app/public/'
