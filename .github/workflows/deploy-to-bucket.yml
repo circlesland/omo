@@ -1,0 +1,23 @@
+name: "Textile Bucket - Deploy"
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  bucket_push:
+    runs-on: ubuntu-latest
+    name: push textile bucket
+    steps:
+    - name: push action
+      id: bucket
+      uses: textileio/github-action-buckets@master
+      with:
+        key: ${{ secrets.TEXTILE_ACCOUNT_KEY }}
+        secret: ${{ secrets.TEXTILE_ACCOUNT_SECRET }}
+        bucket: 'omo-marketplace-dev'
+        thread: 'bafk3hjqnsapk7bbedswqq5pfhi3jue3kq7h6wnhgd5o7eedlrkroeva'
+        path: 'public'
