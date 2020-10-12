@@ -128,10 +128,7 @@
     }
 </script>
 
-<style>
-    h1{color:blue;}
-</style>
-<h1>HUB: {addrGatewayUrl}</h1>
+<h3>HUB: {addrGatewayUrl}</h3>
 {#if loginProcess == LoginState.None}
     <p>Email oder Nutzername</p>
     <input bind:value={login} />
