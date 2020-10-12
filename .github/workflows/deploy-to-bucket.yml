@@ -33,6 +33,7 @@ jobs:
   bucket_push:
     runs-on: ubuntu-latest
     name: push textile bucket
+    needs: [build]
     steps:
     - name: push action
       id: bucket
