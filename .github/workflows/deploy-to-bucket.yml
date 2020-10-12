@@ -29,12 +29,6 @@ jobs:
     - run: npm run build --if-present
       env:
         Environment: production
-        
-  bucket_push:
-    runs-on: ubuntu-latest
-    name: push textile bucket
-    needs: [build]
-    steps:
     - name: push action
       id: bucket
       uses: textileio/github-action-buckets@master
@@ -43,4 +37,4 @@ jobs:
         secret: ${{ secrets.TEXTILE_ACCOUNT_SECRET }}
         bucket: 'omo-marketplace-dev'
         thread: 'bafk3hjqnsapk7bbedswqq5pfhi3jue3kq7h6wnhgd5o7eedlrkroeva'
-   #     path: 'app/public/*'
+        path: 'app/public/'
