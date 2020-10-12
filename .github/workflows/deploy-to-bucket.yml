@@ -43,4 +43,4 @@ jobs:
         secret: ${{ secrets.TEXTILE_ACCOUNT_SECRET }}
         bucket: 'omo-marketplace-dev'
         thread: 'bafk3hjqnsapk7bbedswqq5pfhi3jue3kq7h6wnhgd5o7eedlrkroeva'
-        path: 'app/public/*'
+   #     path: 'app/public/*'
