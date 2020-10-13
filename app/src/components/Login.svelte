@@ -199,10 +199,14 @@
               <span
                 class="hover:text-green-500 text-blue-700">{addrGatewayUrl}</span></a>
           </div>
-          <div>
+          <div class="flex">
             <img
               class="pt-2"
               src="https://github.com/omoearth/omo-marketplace/workflows/dev.omo.earth/badge.svg"
+              alt="deployBadge" />
+            <img
+              class="pt-2"
+              src="https://github.com/omoearth/textile/workflows/hub.dev.omo.earth/badge.svg"
               alt="deployBadge" />
           </div>
         </div>
