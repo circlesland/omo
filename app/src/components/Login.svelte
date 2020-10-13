@@ -138,7 +138,7 @@
         <div class="px-8">
           {#if loginProcess == LoginState.None}
             <h1 class="text-3xl pt-12 text-center mb-4 font-title text-primary">
-              Omo Sapien Login
+              Deployment Test Text
             </h1>
             <p class="text-sm mb-8">
               Willkommen in der Omo Welt. Omo's entwickeln und kontrollieren
