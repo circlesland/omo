@@ -178,9 +178,9 @@
           {/if}
           {#if loginProcess == LoginState.LoggedIn}
             <h1 class="text-3xl pt-12 text-center mb-4 font-title text-primary">
-              Herzlich willkommen
+              Herzlich willkommen,<br />{user.name}
             </h1>
-            <p class="my-8">{user.name}({user.email})</p>
+            <p class="my-8">{user.email}</p>
           {/if}
 
           {#if loginProcess == LoginState.Error}
