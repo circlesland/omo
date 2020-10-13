@@ -131,86 +131,116 @@
   }
 </script>
 
-<body class="flex h-screen bg-gray-200 font-sans text-gray-600">
-  <div class="container mx-auto mt-24 flex">
-    <div class="max-w-md w-full mx-auto">
-      <div class="bg-white rounded-lg overflow-hidden shadow-2xl">
-        <div class="px-8">
-          {#if loginProcess == LoginState.None}
-            <h1 class="text-3xl pt-12 text-center mb-4 font-title text-primary">
-              Omo Sapiens Login
-            </h1>
-            <p class="text-sm mb-8">
-              Willkommen in der Omo Welt. Omo's entwickeln und kontrollieren
-              100% ihre eigenen Daten und Apps. Um dich als Omo Sapien
-              einzuloggen oder einen neuen OmoPod zu installieren, melde dich
-              bei unserem Daten Hosting Partner
-              <a href="https://textile.io">Textile</a>
-              an.
-            </p>
-            <form method="POST" class="" action="#" onsubmit="return false;">
-              <div
-                class="mb-5 w-full px-2 pt-1 rounded bg-gray-200 border border-transparent focus:outline-none">
-                <label
-                  for="email"
-                  class="block mb-1 text-xs font-medium text-gray-600">Email</label>
+<style>
+  .grid {
+    @apply h-full w-full;
+    grid-template-areas:
+      "header"
+      "main"
+      "footer";
+    grid-template-rows: 40px 1fr auto;
+    grid-template-columns: 1fr;
+  }
+  header {
+    grid-area: header;
+  }
+  main {
+    grid-area: main;
+    @apply overflow-hidden h-full bg-gray-100 p-8;
+  }
+  footer {
+    grid-area: footer;
+  }
+</style>
 
-                <input
-                  type="text"
-                  name="email"
-                  class="block mb-1 text-xl w-full rounded bg-gray-200 border border-transparent focus:outline-none"
-                  bind:value={login} />
-              </div>
-              <button
-                class="w-full p-3 bg-primary text-white rounded shadow"
-                on:click={() => signInOrSignUpAsync()}>Send Magic Login</button>
-              <button />
-            </form>
-          {/if}
-          {#if loginProcess == LoginState.LoggingIn}
-            <h1 class="text-3xl pt-12 text-center mb-4 font-title text-primary">
-              Logging in ...
-            </h1>
-            <p class="my-8">
-              Magic Login Link wurde an deine Email geschickt. Bitte öffne den
-              Link in deiner Email, um dich anzumelden.
-            </p>
-          {/if}
-          {#if loginProcess == LoginState.LoggedIn}
-            <h1 class="text-3xl pt-12 text-center mb-4 font-title text-primary">
-              Herzlich willkommen,<br />{user.name}
-            </h1>
-            <p class="my-8">{user.email}</p>
-          {/if}
-
-          {#if loginProcess == LoginState.Error}
-            <div class="m-8">
-              <p>Fehler!</p>
-              <p>{error.message} Code: {error.code}</p>
-              <p>{JSON.stringify(error.metadata)}</p>
-            </div>
-          {/if}
-        </div>
-
-        <div class="p-8 text-sm border-t border-gray-300 bg-gray-100">
-          <div>
-            <a href="https://textile.io/">Dein privater Omo DatenPod wird bei
-              Textile gehosted:
-              <span
-                class="hover:text-green-500 text-blue-700">{addrGatewayUrl}</span></a>
-          </div>
-          <div class="flex">
+<div
+  class="bg-white h-screen flex flex-col items-center justify-center bg-grey-lighter bg-cover bg-center"
+  style="background-image: url(https://source.unsplash.com/7awMZWDS4rg)">
+  <div
+    class="shadow-2xl border border-gray-300 bg-white rounded-lg md:m-12 w-full h-full max-w-md justify-center">
+    <div class="grid">
+      <header
+        class="text-2xl text-center font-title text-primary border-b border-gray-300">
+        Login
+      </header>
+      {#if loginProcess != LoginState.LoggedIn}
+        <main>
+          <h1 class="text-center text-3xl">Willkommen, <br />zu Omo Earth</h1>
+          <p class="text-sm py-8 text-center">
+            Die Bürger auf Omo Earth heißen Omo Sapiens. Jeder Omo entwickelt
+            und kontrolliert 100% seiner eigenen Daten und Apps. Um dich als Omo
+            Sapien einzuloggen oder einen neuen OmoPod zu installieren, melde
+            dich hier über unseren Daten Hosting Partner Textile an.
+          </p>
+          <div class="flex p-2">
             <img
-              class="pt-2"
               src="https://github.com/omoearth/omo-marketplace/workflows/dev.omo.earth/badge.svg"
               alt="deployBadge" />
             <img
-              class="pt-2"
               src="https://github.com/omoearth/textile/workflows/hub.dev.omo.earth/badge.svg"
               alt="deployBadge" />
           </div>
-        </div>
-      </div>
+        </main>
+      {/if}
+      {#if loginProcess == LoginState.LoggedIn}
+        <main>
+          <p class="text-2xl text-center font-title text-primary">
+            Herzlich Willkommen,<br />{user.name}
+          </p>{user.email}
+        </main>
+      {/if}
+
+      <footer class="text-sm border-t border-gray-300 p-6">
+        {#if loginProcess == LoginState.None}
+          <form method="POST" onsubmit="return false;">
+            <div
+              class="w-full mb-2 px-2 pt-1 rounded-lg bg-gray-200 border border-transparent focus:outline-none">
+              <label
+                for="gateway"
+                class="block text-xs font-medium text-gray-600">Gateway</label>
+              <input
+                type="text"
+                name="gateway"
+                disabled
+                class="text-xl w-full rounded-lg text-gray-500  bg-gray-200 border border-transparent focus:outline-none"
+                bind:value={addrGatewayUrl} />
+            </div>
+            <div
+              class="w-full mb-2 px-2 pt-1 rounded-lg bg-gray-200 border border-transparent focus:outline-none">
+              <label
+                for="email"
+                class="block text-xs font-medium text-gray-600">Email</label>
+
+              <input
+                type="text"
+                name="email"
+                class=" text-xl w-full rounded-lg bg-gray-200 border border-transparent focus:outline-none"
+                bind:value={login} />
+            </div>
+            <div
+              class="w-full p-3 bg-primary text-bold text-white text-center rounded-lg"
+              on:click={() => signInOrSignUpAsync()}>
+              Send Magic Login
+            </div>
+          </form>
+        {/if}
+        {#if loginProcess == LoginState.LoggingIn}
+          <div class="bg-gray-200 p-12 rounded-lg text-lg">
+            Magic Login Link wurde an deine Email geschickt. Bitte öffne den
+            Link in deiner Email, um dich anzumelden.
+          </div>
+        {/if}
+        {#if loginProcess == LoginState.Error}
+          <div class="bg-red-400 p-12 rounded-lg text-white text-lg">
+            <p>{error.message}</p>
+            <!-- <p>Code: {error.code}</p> -->
+            <!-- <p>{JSON.stringify(error.metadata)}</p> -->
+          </div>
+        {/if}
+        {#if loginProcess == LoginState.LoggedIn}
+          <div class="p-8">App-Navbar</div>
+        {/if}
+      </footer>
     </div>
   </div>
-</body>
+</div>
