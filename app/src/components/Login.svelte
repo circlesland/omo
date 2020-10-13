@@ -172,7 +172,8 @@
               Logging in ...
             </h1>
             <p class="my-8">
-              Magic Login Link has been send to you, please check you email
+              Magic Login Link wurde an deine Email geschickt. Bitte öffne den
+              Link in deiner Email, um dich anzumelden.
             </p>
           {/if}
           {#if loginProcess == LoginState.LoggedIn}
@@ -191,16 +192,20 @@
           {/if}
         </div>
 
-        <div
-          class="flex justify-between p-8 text-sm border-t border-gray-300 bg-gray-100">
-          <a href="https://textile.io/">Dein privater Omo DatenPod wird bei
-            Textile gehosted:
-            <span
-              class="hover:text-green-500 text-blue-700">{addrGatewayUrl}</span></a>
+        <div class="p-8 text-sm border-t border-gray-300 bg-gray-100">
+          <div>
+            <a href="https://textile.io/">Dein privater Omo DatenPod wird bei
+              Textile gehosted:
+              <span
+                class="hover:text-green-500 text-blue-700">{addrGatewayUrl}</span></a>
+          </div>
+          <div>
+            <img
+              class="pt-2"
+              src="https://github.com/omoearth/omo-marketplace/workflows/dev.omo.earth/badge.svg"
+              alt="deployBadge" />
+          </div>
         </div>
-        
-        <img class="p-1"src="https://github.com/omoearth/omo-marketplace/workflows/dev.omo.earth/badge.svg" alt="deployBadge"/>
-
       </div>
     </div>
   </div>
