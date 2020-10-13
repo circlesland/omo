@@ -135,19 +135,19 @@
   <div class="container mx-auto mt-24 flex">
     <div class="max-w-md w-full mx-auto">
       <div class="bg-white rounded-lg overflow-hidden shadow-2xl">
-        <h1 class="text-3xl pt-12 text-center mb-8">
-          <h3 class="font-title text-primary">Omo Sapien Login</h3>
-          <p class="text-sm px-8">
-            Willkommen in der Omo Welt. Omo's entwickeln und kontrollieren 100%
-            ihrer eigenen Daten und Apps. Um dich als Omo Sapien einzuloggen
-            oder einen neuen OmoPod zu installieren, melde dich bei unserem
-            Daten Hosting Partner
-            <a href="https://textile.io">Textile</a>
-            an.
-          </p>
-        </h1>
         <div class="px-8">
           {#if loginProcess == LoginState.None}
+            <h1 class="text-3xl pt-12 text-center mb-4 font-title text-primary">
+              Omo Sapien Login
+            </h1>
+            <p class="text-sm mb-8">
+              Willkommen in der Omo Welt. Omo's entwickeln und kontrollieren
+              100% ihre eigenen Daten und Apps. Um dich als Omo Sapien
+              einzuloggen oder einen neuen OmoPod zu installieren, melde dich
+              bei unserem Daten Hosting Partner
+              <a href="https://textile.io">Textile</a>
+              an.
+            </p>
             <form method="POST" class="" action="#" onsubmit="return false;">
               <div
                 class="mb-5 w-full px-2 pt-1 rounded bg-gray-200 border border-transparent focus:outline-none">
@@ -168,16 +168,26 @@
             </form>
           {/if}
           {#if loginProcess == LoginState.LoggingIn}
-            <p>Magic Login Link has been send to you, please check you email</p>
+            <h1 class="text-3xl pt-12 text-center mb-4 font-title text-primary">
+              Logging in ...
+            </h1>
+            <p class="my-8">
+              Magic Login Link has been send to you, please check you email
+            </p>
           {/if}
           {#if loginProcess == LoginState.LoggedIn}
-            <p>Herzlich willkommen {user.name}({user.email})</p>
+            <h1 class="text-3xl pt-12 text-center mb-4 font-title text-primary">
+              Herzlich willkommen
+            </h1>
+            <p class="my-8">{user.name}({user.email})</p>
           {/if}
 
           {#if loginProcess == LoginState.Error}
-            <p>Fehler!</p>
-            <p>{error.message} Code: {error.code}</p>
-            <p>{JSON.stringify(error.metadata)}</p>
+            <div class="m-8">
+              <p>Fehler!</p>
+              <p>{error.message} Code: {error.code}</p>
+              <p>{JSON.stringify(error.metadata)}</p>
+            </div>
           {/if}
         </div>
 
