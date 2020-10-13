@@ -160,19 +160,24 @@
     class="shadow-2xl border border-gray-300 bg-white rounded-lg md:m-12 w-full h-full max-w-md justify-center">
     <div class="grid">
       <header
-        class="text-2xl text-center font-title text-primary border-b border-gray-300">
-        Login
+        class="flex flex-col justify-center bg-grey-lighter border-b border-gray-300">
+        <div class="text-primary font-title uppercase text-center">Login</div>
       </header>
+      <!-- <header>
+        <div class="flex flex-col justify-center bg-grey-lighter">Login</div>
+      </header> -->
       {#if loginProcess != LoginState.LoggedIn}
         <main>
-          <h1 class="text-center text-3xl">Willkommen, <br />zu Omo Earth</h1>
-          <p class="text-sm py-8 text-center">
-            Die Bürger auf Omo Earth heißen Omo Sapiens. Jeder Omo entwickelt
-            und kontrolliert 100% seiner eigenen Daten und Apps. Um dich als Omo
-            Sapien einzuloggen oder einen neuen OmoPod zu installieren, melde
-            dich hier über unseren Daten Hosting Partner Textile an.
+          <h1 class="text-center text-3xl font-title text-primary">Willkommen, <br />auf Omo Earth</h1>
+          <p class="text-sm py-8 text-center text-gray-700">
+            Die Menschen auf Omo Earth nennen sich Omo Sapiens. Jeder Omo entwickelt und
+            kontrolliert 100% seiner eigenen Daten und Apps und speichert diese
+            in seinem privaten Omo Haus. Um als Omo Sapien dein Haus zu öffnen
+            oder ein neues Omo Sapien Haus zu bauen, melde dich unten über
+            unseren Daten Hosting Partner textile.io an.
           </p>
-          <div class="flex p-2">
+
+          <div class="flex p-2 mx-auto">
             <img
               src="https://github.com/omoearth/omo-marketplace/workflows/dev.omo.earth/badge.svg"
               alt="deployBadge" />
@@ -220,14 +225,14 @@
             <div
               class="w-full p-3 bg-primary text-bold text-white text-center rounded-lg"
               on:click={() => signInOrSignUpAsync()}>
-              Send Magic Login
+              Omo Haus öffne dich
             </div>
           </form>
         {/if}
         {#if loginProcess == LoginState.LoggingIn}
           <div class="bg-gray-200 p-12 rounded-lg text-lg">
-            Magic Login Link wurde an deine Email geschickt. Bitte öffne den
-            Link in deiner Email, um dich anzumelden.
+            Dein Türschlüssel wurde an deine Email geschickt. Bitte öffne den
+            Link in deiner Email, um dein Haus aufzuschließen.
           </div>
         {/if}
         {#if loginProcess == LoginState.Error}
