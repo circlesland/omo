@@ -12496,61 +12496,90 @@ var app = (function () {
     const { console: console_1 } = globals;
     const file = "src/components/Login.svelte";
 
-    // (123:10) {#if loginProcess == LoginState.None}
+    // (112:10) {#if loginProcess == LoginState.None}
     function create_if_block_3(ctx) {
+    	let h1;
+    	let t1;
+    	let p;
+    	let t2;
+    	let a;
+    	let t4;
+    	let t5;
     	let form;
     	let div;
     	let label;
-    	let t1;
+    	let t7;
     	let input;
-    	let t2;
+    	let t8;
     	let button0;
-    	let t4;
+    	let t10;
     	let button1;
     	let mounted;
     	let dispose;
 
     	const block = {
     		c: function create() {
+    			h1 = element("h1");
+    			h1.textContent = "Omo Sapien Login";
+    			t1 = space();
+    			p = element("p");
+    			t2 = text("Willkommen in der Omo Welt. Omo's entwickeln und kontrollieren\n              100% ihre eigenen Daten und Apps. Um dich als Omo Sapien\n              einzuloggen oder einen neuen OmoPod zu installieren, melde dich\n              bei unserem Daten Hosting Partner\n              ");
+    			a = element("a");
+    			a.textContent = "Textile";
+    			t4 = text("\n              an.");
+    			t5 = space();
     			form = element("form");
     			div = element("div");
     			label = element("label");
     			label.textContent = "Email";
-    			t1 = space();
+    			t7 = space();
     			input = element("input");
-    			t2 = space();
+    			t8 = space();
     			button0 = element("button");
     			button0.textContent = "Send Magic Login";
-    			t4 = space();
+    			t10 = space();
     			button1 = element("button");
+    			attr_dev(h1, "class", "text-3xl pt-12 text-center mb-4 font-title text-primary");
+    			add_location(h1, file, 112, 12, 4654);
+    			attr_dev(a, "href", "https://textile.io");
+    			add_location(a, file, 120, 14, 5097);
+    			attr_dev(p, "class", "text-sm mb-8");
+    			add_location(p, file, 115, 12, 4784);
     			attr_dev(label, "for", "email");
     			attr_dev(label, "class", "block mb-1 text-xs font-medium text-gray-600");
-    			add_location(label, file, 126, 16, 5388);
+    			add_location(label, file, 126, 16, 5398);
     			attr_dev(input, "type", "text");
     			attr_dev(input, "name", "email");
     			attr_dev(input, "class", "block mb-1 text-xl w-full rounded bg-gray-200 border border-transparent focus:outline-none");
-    			add_location(input, file, 130, 16, 5527);
+    			add_location(input, file, 130, 16, 5537);
     			attr_dev(div, "class", "mb-5 w-full px-2 pt-1 rounded bg-gray-200 border border-transparent focus:outline-none");
-    			add_location(div, file, 124, 14, 5255);
+    			add_location(div, file, 124, 14, 5265);
     			attr_dev(button0, "class", "w-full p-3 bg-primary text-white rounded shadow");
-    			add_location(button0, file, 136, 14, 5787);
-    			add_location(button1, file, 139, 14, 5962);
+    			add_location(button0, file, 136, 14, 5797);
+    			add_location(button1, file, 139, 14, 5972);
     			attr_dev(form, "method", "POST");
     			attr_dev(form, "class", "");
     			attr_dev(form, "action", "#");
     			attr_dev(form, "onsubmit", "return false;");
-    			add_location(form, file, 123, 12, 5175);
+    			add_location(form, file, 123, 12, 5185);
     		},
     		m: function mount(target, anchor) {
+    			insert_dev(target, h1, anchor);
+    			insert_dev(target, t1, anchor);
+    			insert_dev(target, p, anchor);
+    			append_dev(p, t2);
+    			append_dev(p, a);
+    			append_dev(p, t4);
+    			insert_dev(target, t5, anchor);
     			insert_dev(target, form, anchor);
     			append_dev(form, div);
     			append_dev(div, label);
-    			append_dev(div, t1);
+    			append_dev(div, t7);
     			append_dev(div, input);
     			set_input_value(input, /*login*/ ctx[0]);
-    			append_dev(form, t2);
+    			append_dev(form, t8);
     			append_dev(form, button0);
-    			append_dev(form, t4);
+    			append_dev(form, t10);
     			append_dev(form, button1);
 
     			if (!mounted) {
@@ -12568,6 +12597,10 @@ var app = (function () {
     			}
     		},
     		d: function destroy(detaching) {
+    			if (detaching) detach_dev(h1);
+    			if (detaching) detach_dev(t1);
+    			if (detaching) detach_dev(p);
+    			if (detaching) detach_dev(t5);
     			if (detaching) detach_dev(form);
     			mounted = false;
     			run_all(dispose);
@@ -12578,7 +12611,7 @@ var app = (function () {
     		block,
     		id: create_if_block_3.name,
     		type: "if",
-    		source: "(123:10) {#if loginProcess == LoginState.None}",
+    		source: "(112:10) {#if loginProcess == LoginState.None}",
     		ctx
     	});
 
@@ -12587,18 +12620,30 @@ var app = (function () {
 
     // (143:10) {#if loginProcess == LoginState.LoggingIn}
     function create_if_block_2(ctx) {
+    	let h1;
+    	let t1;
     	let p;
 
     	const block = {
     		c: function create() {
+    			h1 = element("h1");
+    			h1.textContent = "Logging in ...";
+    			t1 = space();
     			p = element("p");
     			p.textContent = "Magic Login Link has been send to you, please check you email";
-    			add_location(p, file, 143, 12, 6074);
+    			attr_dev(h1, "class", "text-3xl pt-12 text-center mb-4 font-title text-primary");
+    			add_location(h1, file, 143, 12, 6084);
+    			attr_dev(p, "class", "my-8");
+    			add_location(p, file, 146, 12, 6212);
     		},
     		m: function mount(target, anchor) {
+    			insert_dev(target, h1, anchor);
+    			insert_dev(target, t1, anchor);
     			insert_dev(target, p, anchor);
     		},
     		d: function destroy(detaching) {
+    			if (detaching) detach_dev(h1);
+    			if (detaching) detach_dev(t1);
     			if (detaching) detach_dev(p);
     		}
     	};
@@ -12614,40 +12659,49 @@ var app = (function () {
     	return block;
     }
 
-    // (146:10) {#if loginProcess == LoginState.LoggedIn}
+    // (151:10) {#if loginProcess == LoginState.LoggedIn}
     function create_if_block_1(ctx) {
-    	let p;
-    	let t0;
-    	let t1_value = /*user*/ ctx[2].name + "";
+    	let h1;
     	let t1;
+    	let p;
+    	let t2_value = /*user*/ ctx[2].name + "";
     	let t2;
-    	let t3_value = /*user*/ ctx[2].email + "";
     	let t3;
+    	let t4_value = /*user*/ ctx[2].email + "";
     	let t4;
+    	let t5;
 
     	const block = {
     		c: function create() {
+    			h1 = element("h1");
+    			h1.textContent = "Herzlich willkommen";
+    			t1 = space();
     			p = element("p");
-    			t0 = text("Herzlich willkommen ");
-    			t1 = text(t1_value);
-    			t2 = text("(");
-    			t3 = text(t3_value);
-    			t4 = text(")");
-    			add_location(p, file, 146, 12, 6223);
+    			t2 = text(t2_value);
+    			t3 = text("(");
+    			t4 = text(t4_value);
+    			t5 = text(")");
+    			attr_dev(h1, "class", "text-3xl pt-12 text-center mb-4 font-title text-primary");
+    			add_location(h1, file, 151, 12, 6402);
+    			attr_dev(p, "class", "my-8");
+    			add_location(p, file, 154, 12, 6535);
     		},
     		m: function mount(target, anchor) {
+    			insert_dev(target, h1, anchor);
+    			insert_dev(target, t1, anchor);
     			insert_dev(target, p, anchor);
-    			append_dev(p, t0);
-    			append_dev(p, t1);
     			append_dev(p, t2);
     			append_dev(p, t3);
     			append_dev(p, t4);
+    			append_dev(p, t5);
     		},
     		p: function update(ctx, dirty) {
-    			if (dirty & /*user*/ 4 && t1_value !== (t1_value = /*user*/ ctx[2].name + "")) set_data_dev(t1, t1_value);
-    			if (dirty & /*user*/ 4 && t3_value !== (t3_value = /*user*/ ctx[2].email + "")) set_data_dev(t3, t3_value);
+    			if (dirty & /*user*/ 4 && t2_value !== (t2_value = /*user*/ ctx[2].name + "")) set_data_dev(t2, t2_value);
+    			if (dirty & /*user*/ 4 && t4_value !== (t4_value = /*user*/ ctx[2].email + "")) set_data_dev(t4, t4_value);
     		},
     		d: function destroy(detaching) {
+    			if (detaching) detach_dev(h1);
+    			if (detaching) detach_dev(t1);
     			if (detaching) detach_dev(p);
     		}
     	};
@@ -12656,15 +12710,16 @@ var app = (function () {
     		block,
     		id: create_if_block_1.name,
     		type: "if",
-    		source: "(146:10) {#if loginProcess == LoginState.LoggedIn}",
+    		source: "(151:10) {#if loginProcess == LoginState.LoggedIn}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (150:10) {#if loginProcess == LoginState.Error}
+    // (158:10) {#if loginProcess == LoginState.Error}
     function create_if_block(ctx) {
+    	let div;
     	let p0;
     	let t1;
     	let p1;
@@ -12680,6 +12735,7 @@ var app = (function () {
 
     	const block = {
     		c: function create() {
+    			div = element("div");
     			p0 = element("p");
     			p0.textContent = "Fehler!";
     			t1 = space();
@@ -12690,19 +12746,22 @@ var app = (function () {
     			t5 = space();
     			p2 = element("p");
     			t6 = text(t6_value);
-    			add_location(p0, file, 150, 12, 6354);
-    			add_location(p1, file, 151, 12, 6381);
-    			add_location(p2, file, 152, 12, 6435);
+    			add_location(p0, file, 159, 14, 6691);
+    			add_location(p1, file, 160, 14, 6720);
+    			add_location(p2, file, 161, 14, 6776);
+    			attr_dev(div, "class", "m-8");
+    			add_location(div, file, 158, 12, 6659);
     		},
     		m: function mount(target, anchor) {
-    			insert_dev(target, p0, anchor);
-    			insert_dev(target, t1, anchor);
-    			insert_dev(target, p1, anchor);
+    			insert_dev(target, div, anchor);
+    			append_dev(div, p0);
+    			append_dev(div, t1);
+    			append_dev(div, p1);
     			append_dev(p1, t2);
     			append_dev(p1, t3);
     			append_dev(p1, t4);
-    			insert_dev(target, t5, anchor);
-    			insert_dev(target, p2, anchor);
+    			append_dev(div, t5);
+    			append_dev(div, p2);
     			append_dev(p2, t6);
     		},
     		p: function update(ctx, dirty) {
@@ -12711,11 +12770,7 @@ var app = (function () {
     			if (dirty & /*error*/ 8 && t6_value !== (t6_value = JSON.stringify(/*error*/ ctx[3].metadata) + "")) set_data_dev(t6, t6_value);
     		},
     		d: function destroy(detaching) {
-    			if (detaching) detach_dev(p0);
-    			if (detaching) detach_dev(t1);
-    			if (detaching) detach_dev(p1);
-    			if (detaching) detach_dev(t5);
-    			if (detaching) detach_dev(p2);
+    			if (detaching) detach_dev(div);
     		}
     	};
 
@@ -12723,7 +12778,7 @@ var app = (function () {
     		block,
     		id: create_if_block.name,
     		type: "if",
-    		source: "(150:10) {#if loginProcess == LoginState.Error}",
+    		source: "(158:10) {#if loginProcess == LoginState.Error}",
     		ctx
     	});
 
@@ -12735,22 +12790,14 @@ var app = (function () {
     	let div4;
     	let div3;
     	let div2;
-    	let h1;
-    	let h3;
-    	let t1;
-    	let p;
-    	let t2;
-    	let a0;
-    	let t4;
-    	let t5;
     	let div0;
-    	let t6;
-    	let t7;
-    	let t8;
-    	let t9;
+    	let t0;
+    	let t1;
+    	let t2;
+    	let t3;
     	let div1;
-    	let a1;
-    	let t10;
+    	let a;
+    	let t4;
     	let span;
     	let if_block0 = /*loginProcess*/ ctx[1] == /*LoginState*/ ctx[4].None && create_if_block_3(ctx);
     	let if_block1 = /*loginProcess*/ ctx[1] == /*LoginState*/ ctx[4].LoggingIn && create_if_block_2(ctx);
@@ -12763,46 +12810,28 @@ var app = (function () {
     			div4 = element("div");
     			div3 = element("div");
     			div2 = element("div");
-    			h1 = element("h1");
-    			h3 = element("h3");
-    			h3.textContent = "Omo Sapien Login";
-    			t1 = space();
-    			p = element("p");
-    			t2 = text("Willkommen in der Omo Welt. Omo's entwickeln und kontrollieren 100%\n            ihrer eigenen Daten und Apps. Um dich als Omo Sapien einzuloggen\n            oder einen neuen OmoPod zu installieren, melde dich bei unserem\n            Daten Hosting Partner\n            ");
-    			a0 = element("a");
-    			a0.textContent = "Textile";
-    			t4 = text("\n            an.");
-    			t5 = space();
     			div0 = element("div");
     			if (if_block0) if_block0.c();
-    			t6 = space();
+    			t0 = space();
     			if (if_block1) if_block1.c();
-    			t7 = space();
+    			t1 = space();
     			if (if_block2) if_block2.c();
-    			t8 = space();
+    			t2 = space();
     			if (if_block3) if_block3.c();
-    			t9 = space();
+    			t3 = space();
     			div1 = element("div");
-    			a1 = element("a");
-    			t10 = text("Dein privater Omo DatenPod wird bei\n            Textile gehosted:\n            ");
+    			a = element("a");
+    			t4 = text("Dein privater Omo DatenPod wird bei\n            Textile gehosted:\n            ");
     			span = element("span");
     			span.textContent = `${/*addrGatewayUrl*/ ctx[5]}`;
-    			attr_dev(h3, "class", "font-title text-primary");
-    			add_location(h3, file, 111, 10, 4630);
-    			attr_dev(a0, "href", "https://textile.io");
-    			add_location(a0, file, 117, 12, 5002);
-    			attr_dev(p, "class", "text-sm px-8");
-    			add_location(p, file, 112, 10, 4698);
-    			attr_dev(h1, "class", "text-3xl pt-12 text-center mb-8");
-    			add_location(h1, file, 110, 8, 4575);
     			attr_dev(div0, "class", "px-8");
-    			add_location(div0, file, 121, 8, 5096);
+    			add_location(div0, file, 110, 8, 4575);
     			attr_dev(span, "class", "hover:text-green-500 text-blue-700");
-    			add_location(span, file, 160, 12, 6727);
-    			attr_dev(a1, "href", "https://textile.io/");
-    			add_location(a1, file, 158, 10, 6619);
+    			add_location(span, file, 170, 12, 7087);
+    			attr_dev(a, "href", "https://textile.io/");
+    			add_location(a, file, 168, 10, 6979);
     			attr_dev(div1, "class", "flex justify-between p-8 text-sm border-t border-gray-300 bg-gray-100");
-    			add_location(div1, file, 156, 8, 6515);
+    			add_location(div1, file, 166, 8, 6875);
     			attr_dev(div2, "class", "bg-white rounded-lg overflow-hidden shadow-2xl");
     			add_location(div2, file, 109, 6, 4506);
     			attr_dev(div3, "class", "max-w-md w-full mx-auto");
@@ -12820,27 +12849,19 @@ var app = (function () {
     			append_dev(body, div4);
     			append_dev(div4, div3);
     			append_dev(div3, div2);
-    			append_dev(div2, h1);
-    			append_dev(h1, h3);
-    			append_dev(h1, t1);
-    			append_dev(h1, p);
-    			append_dev(p, t2);
-    			append_dev(p, a0);
-    			append_dev(p, t4);
-    			append_dev(div2, t5);
     			append_dev(div2, div0);
     			if (if_block0) if_block0.m(div0, null);
-    			append_dev(div0, t6);
+    			append_dev(div0, t0);
     			if (if_block1) if_block1.m(div0, null);
-    			append_dev(div0, t7);
+    			append_dev(div0, t1);
     			if (if_block2) if_block2.m(div0, null);
-    			append_dev(div0, t8);
+    			append_dev(div0, t2);
     			if (if_block3) if_block3.m(div0, null);
-    			append_dev(div2, t9);
+    			append_dev(div2, t3);
     			append_dev(div2, div1);
-    			append_dev(div1, a1);
-    			append_dev(a1, t10);
-    			append_dev(a1, span);
+    			append_dev(div1, a);
+    			append_dev(a, t4);
+    			append_dev(a, span);
     		},
     		p: function update(ctx, [dirty]) {
     			if (/*loginProcess*/ ctx[1] == /*LoginState*/ ctx[4].None) {
@@ -12849,7 +12870,7 @@ var app = (function () {
     				} else {
     					if_block0 = create_if_block_3(ctx);
     					if_block0.c();
-    					if_block0.m(div0, t6);
+    					if_block0.m(div0, t0);
     				}
     			} else if (if_block0) {
     				if_block0.d(1);
@@ -12860,7 +12881,7 @@ var app = (function () {
     				if (if_block1) ; else {
     					if_block1 = create_if_block_2(ctx);
     					if_block1.c();
-    					if_block1.m(div0, t7);
+    					if_block1.m(div0, t1);
     				}
     			} else if (if_block1) {
     				if_block1.d(1);
@@ -12873,7 +12894,7 @@ var app = (function () {
     				} else {
     					if_block2 = create_if_block_1(ctx);
     					if_block2.c();
-    					if_block2.m(div0, t8);
+    					if_block2.m(div0, t2);
     				}
     			} else if (if_block2) {
     				if_block2.d(1);
