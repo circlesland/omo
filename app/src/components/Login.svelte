@@ -131,31 +131,39 @@
   }
 </script>
 
-<body class="bg-gray-200 font-sans text-gray-700">
-  <div class="container mx-auto p-8 flex">
+<body class="flex h-screen bg-gray-200 font-sans text-gray-600">
+  <div class="container mx-auto mt-24 flex">
     <div class="max-w-md w-full mx-auto">
-      <h1 class="text-4xl text-center mb-8 font-thin">
-        <h3 class="font-title">Omo Sapien <br />Login with textile.io</h3>
-      </h1>
-
       <div class="bg-white rounded-lg overflow-hidden shadow-2xl">
-        <div class="p-8">
+        <h1 class="text-3xl pt-12 text-center mb-8">
+          <h3 class="font-title text-primary">Omo Sapien Login</h3>
+          <p class="text-sm px-8">
+            Willkommen in der Omo Welt. Omo's entwickeln und kontrollieren 100%
+            ihrer eigenen Daten und Apps. Um dich als Omo Sapien einzuloggen
+            oder einen neuen OmoPod zu installieren, melde dich bei unserem
+            Daten Hosting Partner
+            <a href="https://textile.io">Textile</a>
+            an.
+          </p>
+        </h1>
+        <div class="px-8">
           {#if loginProcess == LoginState.None}
             <form method="POST" class="" action="#" onsubmit="return false;">
-              <div class="mb-5">
+              <div
+                class="mb-5 w-full px-2 pt-1 rounded bg-gray-200 border border-transparent focus:outline-none">
                 <label
                   for="email"
-                  class="block mb-2 text-sm font-medium text-gray-600">Email</label>
+                  class="block mb-1 text-xs font-medium text-gray-600">Email</label>
 
                 <input
                   type="text"
                   name="email"
-                  class="block w-full p-3 rounded bg-gray-200 border border-transparent focus:outline-none"
+                  class="block mb-1 text-xl w-full rounded bg-gray-200 border border-transparent focus:outline-none"
                   bind:value={login} />
               </div>
               <button
-                class="w-full p-3 mt-4 bg-primary text-white rounded shadow"
-                on:click={() => signInOrSignUpAsync()}>Send Magic Login Link</button>
+                class="w-full p-3 bg-primary text-white rounded shadow"
+                on:click={() => signInOrSignUpAsync()}>Send Magic Textile Login</button>
               <button />
             </form>
           {/if}
@@ -175,8 +183,10 @@
 
         <div
           class="flex justify-between p-8 text-sm border-t border-gray-300 bg-gray-100">
-          HUB:
-          {addrGatewayUrl}
+          <a href="https://textile.io/">Dein privater Omo DatenPod wird bei
+            Textile gehosted:
+            <span
+              class="hover:text-green-500 text-blue-700">{addrGatewayUrl}</span></a>
         </div>
       </div>
     </div>

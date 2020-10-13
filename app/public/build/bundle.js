@@ -12496,7 +12496,7 @@ var app = (function () {
     const { console: console_1 } = globals;
     const file = "src/components/Login.svelte";
 
-    // (116:10) {#if loginProcess == LoginState.None}
+    // (123:10) {#if loginProcess == LoginState.None}
     function create_if_block_3(ctx) {
     	let form;
     	let div;
@@ -12520,26 +12520,26 @@ var app = (function () {
     			input = element("input");
     			t2 = space();
     			button0 = element("button");
-    			button0.textContent = "Send Magic Login Link";
+    			button0.textContent = "Send Magic Textile Login";
     			t4 = space();
     			button1 = element("button");
     			attr_dev(label, "for", "email");
-    			attr_dev(label, "class", "block mb-2 text-sm font-medium text-gray-600");
-    			add_location(label, file, 118, 16, 4895);
+    			attr_dev(label, "class", "block mb-1 text-xs font-medium text-gray-600");
+    			add_location(label, file, 126, 16, 5388);
     			attr_dev(input, "type", "text");
     			attr_dev(input, "name", "email");
-    			attr_dev(input, "class", "block w-full p-3 rounded bg-gray-200 border border-transparent focus:outline-none");
-    			add_location(input, file, 122, 16, 5034);
-    			attr_dev(div, "class", "mb-5");
-    			add_location(div, file, 117, 14, 4860);
-    			attr_dev(button0, "class", "w-full p-3 mt-4 bg-primary text-white rounded shadow");
-    			add_location(button0, file, 128, 14, 5285);
-    			add_location(button1, file, 131, 14, 5470);
+    			attr_dev(input, "class", "block mb-1 text-xl w-full rounded bg-gray-200 border border-transparent focus:outline-none");
+    			add_location(input, file, 130, 16, 5527);
+    			attr_dev(div, "class", "mb-5 w-full px-2 pt-1 rounded bg-gray-200 border border-transparent focus:outline-none");
+    			add_location(div, file, 124, 14, 5255);
+    			attr_dev(button0, "class", "w-full p-3 bg-primary text-white rounded shadow");
+    			add_location(button0, file, 136, 14, 5787);
+    			add_location(button1, file, 139, 14, 5970);
     			attr_dev(form, "method", "POST");
     			attr_dev(form, "class", "");
     			attr_dev(form, "action", "#");
     			attr_dev(form, "onsubmit", "return false;");
-    			add_location(form, file, 116, 12, 4780);
+    			add_location(form, file, 123, 12, 5175);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, form, anchor);
@@ -12578,14 +12578,14 @@ var app = (function () {
     		block,
     		id: create_if_block_3.name,
     		type: "if",
-    		source: "(116:10) {#if loginProcess == LoginState.None}",
+    		source: "(123:10) {#if loginProcess == LoginState.None}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (135:10) {#if loginProcess == LoginState.LoggingIn}
+    // (143:10) {#if loginProcess == LoginState.LoggingIn}
     function create_if_block_2(ctx) {
     	let p;
 
@@ -12593,7 +12593,7 @@ var app = (function () {
     		c: function create() {
     			p = element("p");
     			p.textContent = "Magic Login Link has been send to you, please check you email";
-    			add_location(p, file, 135, 12, 5582);
+    			add_location(p, file, 143, 12, 6082);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, p, anchor);
@@ -12607,14 +12607,14 @@ var app = (function () {
     		block,
     		id: create_if_block_2.name,
     		type: "if",
-    		source: "(135:10) {#if loginProcess == LoginState.LoggingIn}",
+    		source: "(143:10) {#if loginProcess == LoginState.LoggingIn}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (138:10) {#if loginProcess == LoginState.LoggedIn}
+    // (146:10) {#if loginProcess == LoginState.LoggedIn}
     function create_if_block_1(ctx) {
     	let p;
     	let t0;
@@ -12633,7 +12633,7 @@ var app = (function () {
     			t2 = text("(");
     			t3 = text(t3_value);
     			t4 = text(")");
-    			add_location(p, file, 138, 12, 5731);
+    			add_location(p, file, 146, 12, 6231);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, p, anchor);
@@ -12656,14 +12656,14 @@ var app = (function () {
     		block,
     		id: create_if_block_1.name,
     		type: "if",
-    		source: "(138:10) {#if loginProcess == LoginState.LoggedIn}",
+    		source: "(146:10) {#if loginProcess == LoginState.LoggedIn}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (142:10) {#if loginProcess == LoginState.Error}
+    // (150:10) {#if loginProcess == LoginState.Error}
     function create_if_block(ctx) {
     	let p0;
     	let t1;
@@ -12690,9 +12690,9 @@ var app = (function () {
     			t5 = space();
     			p2 = element("p");
     			t6 = text(t6_value);
-    			add_location(p0, file, 142, 12, 5862);
-    			add_location(p1, file, 143, 12, 5889);
-    			add_location(p2, file, 144, 12, 5943);
+    			add_location(p0, file, 150, 12, 6362);
+    			add_location(p1, file, 151, 12, 6389);
+    			add_location(p2, file, 152, 12, 6443);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, p0, anchor);
@@ -12723,7 +12723,7 @@ var app = (function () {
     		block,
     		id: create_if_block.name,
     		type: "if",
-    		source: "(142:10) {#if loginProcess == LoginState.Error}",
+    		source: "(150:10) {#if loginProcess == LoginState.Error}",
     		ctx
     	});
 
@@ -12734,19 +12734,24 @@ var app = (function () {
     	let body;
     	let div4;
     	let div3;
+    	let div2;
     	let h1;
     	let h3;
-    	let t0;
-    	let br;
     	let t1;
+    	let p;
     	let t2;
-    	let div2;
-    	let div0;
-    	let t3;
+    	let a0;
     	let t4;
     	let t5;
+    	let div0;
     	let t6;
+    	let t7;
+    	let t8;
+    	let t9;
     	let div1;
+    	let a1;
+    	let t10;
+    	let span;
     	let if_block0 = /*loginProcess*/ ctx[1] == /*LoginState*/ ctx[4].None && create_if_block_3(ctx);
     	let if_block1 = /*loginProcess*/ ctx[1] == /*LoginState*/ ctx[4].LoggingIn && create_if_block_2(ctx);
     	let if_block2 = /*loginProcess*/ ctx[1] == /*LoginState*/ ctx[4].LoggedIn && create_if_block_1(ctx);
@@ -12757,43 +12762,54 @@ var app = (function () {
     			body = element("body");
     			div4 = element("div");
     			div3 = element("div");
+    			div2 = element("div");
     			h1 = element("h1");
     			h3 = element("h3");
-    			t0 = text("Omo Sapien ");
-    			br = element("br");
-    			t1 = text("Login with textile.io");
-    			t2 = space();
-    			div2 = element("div");
+    			h3.textContent = "Omo Sapien Login";
+    			t1 = space();
+    			p = element("p");
+    			t2 = text("Willkommen in der Omo Welt. Omo's entwickeln und kontrollieren 100%\n            ihrer eigenen Daten und Apps. Um dich als Omo Sapien einzuloggen\n            oder einen neuen OmoPod zu installieren, melde dich bei unserem\n            Daten Hosting Partner\n            ");
+    			a0 = element("a");
+    			a0.textContent = "Textile";
+    			t4 = text("\n            an.");
+    			t5 = space();
     			div0 = element("div");
     			if (if_block0) if_block0.c();
-    			t3 = space();
-    			if (if_block1) if_block1.c();
-    			t4 = space();
-    			if (if_block2) if_block2.c();
-    			t5 = space();
-    			if (if_block3) if_block3.c();
     			t6 = space();
+    			if (if_block1) if_block1.c();
+    			t7 = space();
+    			if (if_block2) if_block2.c();
+    			t8 = space();
+    			if (if_block3) if_block3.c();
+    			t9 = space();
     			div1 = element("div");
-
-    			div1.textContent = `HUB:
-          ${/*addrGatewayUrl*/ ctx[5]}`;
-
-    			add_location(br, file, 110, 42, 4581);
-    			attr_dev(h3, "class", "font-title");
-    			add_location(h3, file, 110, 8, 4547);
-    			attr_dev(h1, "class", "text-4xl text-center mb-8 font-thin");
-    			add_location(h1, file, 109, 6, 4490);
-    			attr_dev(div0, "class", "p-8");
-    			add_location(div0, file, 114, 8, 4702);
+    			a1 = element("a");
+    			t10 = text("Dein privater Omo DatenPod wird bei\n            Textile gehosted:\n            ");
+    			span = element("span");
+    			span.textContent = `${/*addrGatewayUrl*/ ctx[5]}`;
+    			attr_dev(h3, "class", "font-title text-primary");
+    			add_location(h3, file, 111, 10, 4630);
+    			attr_dev(a0, "href", "https://textile.io");
+    			add_location(a0, file, 117, 12, 5002);
+    			attr_dev(p, "class", "text-sm px-8");
+    			add_location(p, file, 112, 10, 4698);
+    			attr_dev(h1, "class", "text-3xl pt-12 text-center mb-8");
+    			add_location(h1, file, 110, 8, 4575);
+    			attr_dev(div0, "class", "px-8");
+    			add_location(div0, file, 121, 8, 5096);
+    			attr_dev(span, "class", "hover:text-green-500 text-blue-700");
+    			add_location(span, file, 160, 12, 6735);
+    			attr_dev(a1, "href", "https://textile.io/");
+    			add_location(a1, file, 158, 10, 6627);
     			attr_dev(div1, "class", "flex justify-between p-8 text-sm border-t border-gray-300 bg-gray-100");
-    			add_location(div1, file, 148, 8, 6023);
+    			add_location(div1, file, 156, 8, 6523);
     			attr_dev(div2, "class", "bg-white rounded-lg overflow-hidden shadow-2xl");
-    			add_location(div2, file, 113, 6, 4633);
+    			add_location(div2, file, 109, 6, 4506);
     			attr_dev(div3, "class", "max-w-md w-full mx-auto");
-    			add_location(div3, file, 108, 4, 4446);
-    			attr_dev(div4, "class", "container mx-auto p-8 flex");
-    			add_location(div4, file, 107, 2, 4401);
-    			attr_dev(body, "class", "bg-gray-200 font-sans text-gray-700");
+    			add_location(div3, file, 108, 4, 4462);
+    			attr_dev(div4, "class", "container mx-auto mt-24 flex");
+    			add_location(div4, file, 107, 2, 4415);
+    			attr_dev(body, "class", "flex h-screen bg-gray-200 font-sans text-gray-600");
     			add_location(body, file, 106, 0, 4348);
     		},
     		l: function claim(nodes) {
@@ -12803,23 +12819,28 @@ var app = (function () {
     			insert_dev(target, body, anchor);
     			append_dev(body, div4);
     			append_dev(div4, div3);
-    			append_dev(div3, h1);
-    			append_dev(h1, h3);
-    			append_dev(h3, t0);
-    			append_dev(h3, br);
-    			append_dev(h3, t1);
-    			append_dev(div3, t2);
     			append_dev(div3, div2);
+    			append_dev(div2, h1);
+    			append_dev(h1, h3);
+    			append_dev(h1, t1);
+    			append_dev(h1, p);
+    			append_dev(p, t2);
+    			append_dev(p, a0);
+    			append_dev(p, t4);
+    			append_dev(div2, t5);
     			append_dev(div2, div0);
     			if (if_block0) if_block0.m(div0, null);
-    			append_dev(div0, t3);
+    			append_dev(div0, t6);
     			if (if_block1) if_block1.m(div0, null);
-    			append_dev(div0, t4);
+    			append_dev(div0, t7);
     			if (if_block2) if_block2.m(div0, null);
-    			append_dev(div0, t5);
+    			append_dev(div0, t8);
     			if (if_block3) if_block3.m(div0, null);
-    			append_dev(div2, t6);
+    			append_dev(div2, t9);
     			append_dev(div2, div1);
+    			append_dev(div1, a1);
+    			append_dev(a1, t10);
+    			append_dev(a1, span);
     		},
     		p: function update(ctx, [dirty]) {
     			if (/*loginProcess*/ ctx[1] == /*LoginState*/ ctx[4].None) {
@@ -12828,7 +12849,7 @@ var app = (function () {
     				} else {
     					if_block0 = create_if_block_3(ctx);
     					if_block0.c();
-    					if_block0.m(div0, t3);
+    					if_block0.m(div0, t6);
     				}
     			} else if (if_block0) {
     				if_block0.d(1);
@@ -12839,7 +12860,7 @@ var app = (function () {
     				if (if_block1) ; else {
     					if_block1 = create_if_block_2(ctx);
     					if_block1.c();
-    					if_block1.m(div0, t4);
+    					if_block1.m(div0, t7);
     				}
     			} else if (if_block1) {
     				if_block1.d(1);
@@ -12852,7 +12873,7 @@ var app = (function () {
     				} else {
     					if_block2 = create_if_block_1(ctx);
     					if_block2.c();
-    					if_block2.m(div0, t5);
+    					if_block2.m(div0, t8);
     				}
     			} else if (if_block2) {
     				if_block2.d(1);
