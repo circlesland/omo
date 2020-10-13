@@ -37,7 +37,7 @@ jobs:
         secret: ${{ secrets.TEXTILE_ACCOUNT_SECRET }}
         bucket: 'omo-marketplace-dev'
         thread: 'bafk3hjqnsapk7bbedswqq5pfhi3jue3kq7h6wnhgd5o7eedlrkroeva'
-        path: 'public/'
+        path: 'app/public/'
       #  remove: true
     - run: echo "bucket - ${{ steps.bucket.outputs.key }}"
     - run: echo "ipfs - ${{ steps.bucket.outputs.ipfs }}"
