@@ -1,5 +1,7 @@
 <script lang="ts">
-  import Login from './components/Login.svelte'
+  import Tailwind from "./Tailwind.svelte";
+  import Login from "./components/Login.svelte";
 </script>
 
-<Login></Login>
+<Tailwind />
+<Login />
