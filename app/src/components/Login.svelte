@@ -163,7 +163,7 @@
               </div>
               <button
                 class="w-full p-3 bg-primary text-white rounded shadow"
-                on:click={() => signInOrSignUpAsync()}>Send Magic Textile Login</button>
+                on:click={() => signInOrSignUpAsync()}>Send Magic Login</button>
               <button />
             </form>
           {/if}

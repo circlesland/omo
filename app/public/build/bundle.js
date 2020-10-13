@@ -12520,7 +12520,7 @@ var app = (function () {
     			input = element("input");
     			t2 = space();
     			button0 = element("button");
-    			button0.textContent = "Send Magic Textile Login";
+    			button0.textContent = "Send Magic Login";
     			t4 = space();
     			button1 = element("button");
     			attr_dev(label, "for", "email");
@@ -12534,7 +12534,7 @@ var app = (function () {
     			add_location(div, file, 124, 14, 5255);
     			attr_dev(button0, "class", "w-full p-3 bg-primary text-white rounded shadow");
     			add_location(button0, file, 136, 14, 5787);
-    			add_location(button1, file, 139, 14, 5970);
+    			add_location(button1, file, 139, 14, 5962);
     			attr_dev(form, "method", "POST");
     			attr_dev(form, "class", "");
     			attr_dev(form, "action", "#");
@@ -12593,7 +12593,7 @@ var app = (function () {
     		c: function create() {
     			p = element("p");
     			p.textContent = "Magic Login Link has been send to you, please check you email";
-    			add_location(p, file, 143, 12, 6082);
+    			add_location(p, file, 143, 12, 6074);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, p, anchor);
@@ -12633,7 +12633,7 @@ var app = (function () {
     			t2 = text("(");
     			t3 = text(t3_value);
     			t4 = text(")");
-    			add_location(p, file, 146, 12, 6231);
+    			add_location(p, file, 146, 12, 6223);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, p, anchor);
@@ -12690,9 +12690,9 @@ var app = (function () {
     			t5 = space();
     			p2 = element("p");
     			t6 = text(t6_value);
-    			add_location(p0, file, 150, 12, 6362);
-    			add_location(p1, file, 151, 12, 6389);
-    			add_location(p2, file, 152, 12, 6443);
+    			add_location(p0, file, 150, 12, 6354);
+    			add_location(p1, file, 151, 12, 6381);
+    			add_location(p2, file, 152, 12, 6435);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, p0, anchor);
@@ -12798,11 +12798,11 @@ var app = (function () {
     			attr_dev(div0, "class", "px-8");
     			add_location(div0, file, 121, 8, 5096);
     			attr_dev(span, "class", "hover:text-green-500 text-blue-700");
-    			add_location(span, file, 160, 12, 6735);
+    			add_location(span, file, 160, 12, 6727);
     			attr_dev(a1, "href", "https://textile.io/");
-    			add_location(a1, file, 158, 10, 6627);
+    			add_location(a1, file, 158, 10, 6619);
     			attr_dev(div1, "class", "flex justify-between p-8 text-sm border-t border-gray-300 bg-gray-100");
-    			add_location(div1, file, 156, 8, 6523);
+    			add_location(div1, file, 156, 8, 6515);
     			attr_dev(div2, "class", "bg-white rounded-lg overflow-hidden shadow-2xl");
     			add_location(div2, file, 109, 6, 4506);
     			attr_dev(div3, "class", "max-w-md w-full mx-auto");
