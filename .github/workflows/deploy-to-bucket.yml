@@ -1,4 +1,4 @@
-name: "Textile Bucket - Deploy"
+name: "dev.omo.earth"
 on:
   push:
     branches:

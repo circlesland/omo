@@ -188,6 +188,9 @@
             <span
               class="hover:text-green-500 text-blue-700">{addrGatewayUrl}</span></a>
         </div>
+        
+        <img class="p-1"src="https://github.com/omoearth/omo-marketplace/workflows/dev.omo.earth/badge.svg" alt="deployBadge"/>
+
       </div>
     </div>
   </div>

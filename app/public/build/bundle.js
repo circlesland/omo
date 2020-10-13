@@ -12752,6 +12752,9 @@ var app = (function () {
     	let a1;
     	let t10;
     	let span;
+    	let t12;
+    	let img;
+    	let img_src_value;
     	let if_block0 = /*loginProcess*/ ctx[1] == /*LoginState*/ ctx[4].None && create_if_block_3(ctx);
     	let if_block1 = /*loginProcess*/ ctx[1] == /*LoginState*/ ctx[4].LoggingIn && create_if_block_2(ctx);
     	let if_block2 = /*loginProcess*/ ctx[1] == /*LoginState*/ ctx[4].LoggedIn && create_if_block_1(ctx);
@@ -12787,6 +12790,8 @@ var app = (function () {
     			t10 = text("Dein privater Omo DatenPod wird bei\n            Textile gehosted:\n            ");
     			span = element("span");
     			span.textContent = `${/*addrGatewayUrl*/ ctx[5]}`;
+    			t12 = space();
+    			img = element("img");
     			attr_dev(h3, "class", "font-title text-primary");
     			add_location(h3, file, 111, 10, 4630);
     			attr_dev(a0, "href", "https://textile.io");
@@ -12803,6 +12808,10 @@ var app = (function () {
     			add_location(a1, file, 158, 10, 6619);
     			attr_dev(div1, "class", "flex justify-between p-8 text-sm border-t border-gray-300 bg-gray-100");
     			add_location(div1, file, 156, 8, 6515);
+    			attr_dev(img, "class", "p-1");
+    			if (img.src !== (img_src_value = "https://github.com/omoearth/omo-marketplace/workflows/dev.omo.earth/badge.svg")) attr_dev(img, "src", img_src_value);
+    			attr_dev(img, "alt", "deployBadge");
+    			add_location(img, file, 164, 8, 6850);
     			attr_dev(div2, "class", "bg-white rounded-lg overflow-hidden shadow-2xl");
     			add_location(div2, file, 109, 6, 4506);
     			attr_dev(div3, "class", "max-w-md w-full mx-auto");
@@ -12841,6 +12850,8 @@ var app = (function () {
     			append_dev(div1, a1);
     			append_dev(a1, t10);
     			append_dev(a1, span);
+    			append_dev(div2, t12);
+    			append_dev(div2, img);
     		},
     		p: function update(ctx, [dirty]) {
     			if (/*loginProcess*/ ctx[1] == /*LoginState*/ ctx[4].None) {
