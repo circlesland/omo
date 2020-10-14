@@ -22,13 +22,14 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
     - run: npm install
-    - run: npm run build --if-present
-      env:
-        Environment: production
+  #  - run: npm run build --if-present
+  #    env:
+  #      Environment: production
     - name: Update index.html
       run: |
         rm dist/index.html
         cd dist
+        ls -la
         cp devomoearth.html index.html 
         cd ..
     - name: push action
