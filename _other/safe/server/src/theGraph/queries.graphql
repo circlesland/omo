@@ -1,0 +1,57 @@
+query safeAddressByOwner($address:ID!) {
+    users(where: { id: $address }) {
+        id
+        safes {
+            id
+        }
+    }
+}
+
+query safeDetails($safeAddress:ID!) {
+    safes(where: {id: $safeAddress})
+    {
+        id
+        incoming(orderBy: limit, orderDirection: desc) {
+            limit
+            limitPercentage
+            user {
+                id
+            }
+        }
+        outgoing(orderBy: limit, orderDirection: desc) {
+            limit
+            limitPercentage
+            canSendTo {
+                id
+            }
+        }
+        balances(orderBy: amount, orderDirection: desc) {
+            id
+            amount
+            token {
+                id
+                owner {
+                    id
+                }
+            }
+        }
+    }
+}
+
+query transfers($safeAddress:String!) {
+    notifications(
+        orderBy: time
+        orderDirection: desc
+        where: {
+            safe: $safeAddress
+            type: TRANSFER
+        }
+    ) {
+        time
+        transfer {
+            from
+            to
+            amount
+        }
+    }
+}

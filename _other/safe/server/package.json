@@ -1,0 +1,43 @@
+{
+  "name": "@omo/safe",
+  "version": "1.0.0",
+  "description": "",
+  "keywords": [],
+  "author": "omo.earth",
+  "license": "LGPL-3.0-or-later",
+  "scripts": {
+    "generate": "graphql-codegen --config codegen.yml",
+    "run": "node -r dotenv/config dist/main.js"
+  },
+  "devDependencies": {
+    "@graphql-codegen/cli": "^1.17.10",
+    "@graphql-codegen/typescript": "^1.17.10",
+    "@graphql-codegen/typescript-graphql-request": "^2.0.1",
+    "@graphql-codegen/typescript-operations": "^1.17.8",
+    "@types/jasmine": "^3.5.14",
+    "@types/node": "^14.0.1",
+    "jasmine": "^3.6.1",
+    "jasmine-spec-reporter": "^6.0.0",
+    "jasmine-ts": "^0.3.0",
+    "mocha": "^8.1.3",
+    "ts-node": "^8.10.2",
+    "typescript": "^3.9.2"
+  },
+  "dependencies": {
+    "@circles/core": "^2.8.0",
+    "@types/expect.js": "^0.3.29",
+    "isomorphic-fetch": "^3.0.0",
+    "apollo-server": "^2.13.1",
+    "apollo-server-plugin-http-headers": "^0.1.3",
+    "bcrypt": "^4.0.1",
+    "bip39": "^3.0.2",
+    "dotenv": "^8.2.0",
+    "expect.js": "^0.3.1",
+    "graphql": "^15.3.0",
+    "graphql-import": "^1.0.2",
+    "graphql-request": "^3.1.0",
+    "jsonwebtoken": "^8.5.1",
+    "truffle": "^5.1.48",
+    "web3": "^1.3.0"
+  }
+}
