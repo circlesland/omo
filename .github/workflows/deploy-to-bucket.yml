@@ -28,8 +28,9 @@ jobs:
     - name: Update index.html
       run: |
         rm dist/index.html
-        ls dist
-        cp dist/devomoearth.html  dist/index.html 
+        cd dist
+        cp devomoearth.html index.html 
+        cd ..
     - name: push action
       id: bucket
       uses: textileio/github-action-buckets@v20
