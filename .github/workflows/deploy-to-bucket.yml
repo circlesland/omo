@@ -28,7 +28,7 @@ jobs:
     - name: remove old index.html
       run: |
         rm dist/index.html
-        mv dist/devomoearth.html index.html
+        mv dist/devomoearth.html dist/index.html
     - name: push action
       id: bucket
       uses: textileio/github-action-buckets@v20
