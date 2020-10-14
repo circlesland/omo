@@ -6,6 +6,7 @@
   import { DeviceClass } from "../interfaces/component";
   import type { SetLayout } from "../gridCompositor/setLayout";
   import type { ResetLayout } from "../gridCompositor/resetLayout";
+  import {runtime} from "../runtime";
 
 
 
@@ -37,11 +38,11 @@
 
   onMount(() => {
     // Determine the DeviceClass
-    deviceClass = loader.runtime.getDeviceClass();
+    deviceClass = runtime.getDeviceClass();
 
     // Register all component runtime instances
     if (component && component.id) {
-      eventStream = loader.runtime.register(component.id, componentInstance);
+      eventStream = runtime.register(component.id, componentInstance);
       id = component.id;
     }
   });
@@ -49,7 +50,7 @@
   onDestroy(() => {
     // Remove all component runtime instances
     if (component && component.id) {
-      loader.runtime.remove(component.id);
+      runtime.remove(component.id);
       eventStream = null;
       if (eventSubscription) {
         eventSubscription.unsubscribe();
@@ -94,7 +95,7 @@
 
   $: {
     if (component) {
-      const def = loader.runtime.findComponentDefinition(component);
+      const def = runtime.findComponentDefinition(component);
 
       if (def && overrideLayout) {
         def.layout = overrideLayout;
@@ -104,7 +105,7 @@
 
       // Remove the instance if the underlying Component its id
       if (id && id !== component.id) {
-        loader.runtime.remove(id);
+        runtime.remove(id);
         eventStream = null;
         if (eventSubscription) {
           eventSubscription.unsubscribe();
@@ -112,8 +113,8 @@
       }
 
       id = component.id;
-      if (id && componentInstance && !loader.runtime.find(id)) {
-        eventStream = loader.runtime.register(id, componentInstance);
+      if (id && componentInstance && !runtime.find(id)) {
+        eventStream = runtime.register(id, componentInstance);
       }
     }
 
