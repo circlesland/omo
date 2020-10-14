@@ -8,8 +8,6 @@
   import type { ResetLayout } from "../gridCompositor/resetLayout";
   import {runtime} from "../runtime";
 
-
-
   // If the compositor or the contained display component (leaf) should be able to receive events,
   // they need to have a id.
   // The id is specified in the "Component" and must be unique.
@@ -136,7 +134,7 @@
 </style>
 
 <svelte:options accessors />
-{#if componentDefinition && (!componentDefinition.children || componentDefinition.children.length === 0 || componentDefinition.component)}
+{#if componentDefinition && (!componentDefinition.children || componentDefinition.children.length === 0 || componentDefinition.view)}
   <!-- This branch handles leaf-components -->
   <section
     bind:this={domElement}
@@ -144,11 +142,11 @@
     'minmax(1fr)'; grid-template-rows: 'minmax(1fr)'; overflow: hidden; height:100%;">
      <!-- <div class={componentDefinition.cssClasses} style="width:100%; height:100%; overflow:auto">-->
         <svelte:component
-          this={loader.getComponentByName(componentDefinition.component)}
+          this={loader.getComponentByName(componentDefinition.view)}
           bind:this={componentInstance}
           {loader}
           {component}
-          data={componentDefinition.properties} />
+          data={componentDefinition.data} />
       <!--</div>-->
   </section>
 {:else if componentDefinition}

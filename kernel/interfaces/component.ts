@@ -8,7 +8,7 @@ export enum DeviceClass {
 
 export type ComponentDefinition = {
   data?: any;
-  component?: string;
+  view?: string;
   children?: Component[];
   area: string;
   trigger: Trigger[];
@@ -17,7 +17,7 @@ export type ComponentDefinition = {
    */
   cssClasses?: string;
   layout?: string
-}
+};
 
 export interface Component
 {

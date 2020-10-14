@@ -7,13 +7,13 @@ export const Login: Component = {
   children: [
     {
       area: "main",
-      component: "Login",
-      properties: { title: "Follow your passion", image: "/start.jpg", link: "safe" },
+      view: "Login",
+      data: { title: "Follow your passion", image: "/start.jpg", link: "safe" },
       trigger: [],
       children: [
         {
           area: "",
-          component: "Login",
+          view: "Login",
         },
       ],
     },
