@@ -3,12 +3,12 @@
     "short_name": "",
     "icons": [
         {
-            "src": "/android-chrome-192x192.png",
+            "src": "https://ipfs.io/ipfs/QmWMcv6z4DZ8zQTrzvtt6AoKJvxjTRAeKkCQy7TUttnyzc",
             "sizes": "192x192",
             "type": "image/png"
         },
         {
-            "src": "/android-chrome-384x384.png",
+            "src": "https://ipfs.io/ipfs/QmSrkYdQAbT4aGBZ8ZvMsjM1XmEAvSn8bFfy5YLnw5o73i",
             "sizes": "384x384",
             "type": "image/png"
         }

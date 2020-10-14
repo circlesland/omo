@@ -6,6 +6,7 @@ import OmoFavicon from "../views/atoms/OmoFavicon.svelte";
   import { Login } from "../dapps/omo/odentity/Login";
 
   let viewDocument = Login;
+
 </script>
 <style global>
   @import url("https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@1,300&family=Josefin+Sans:wght@700&family=Nunito+Sans:wght@400&display=swap");

@@ -25,6 +25,10 @@ jobs:
     - run: npm run build --if-present
       env:
         Environment: production
+    - name: Commit files
+      run: |
+        rm dist/build/index.html
+        mv dist/build/index.production.html dist/build/index.html 
     - name: push action
       id: bucket
       uses: textileio/github-action-buckets@v20
