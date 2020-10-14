@@ -30,7 +30,7 @@ jobs:
         rm dist/index.html
         cd dist
         ls -la
-        cp devomoearth.html index.html 
+        cp ./devomoearth.html ./index.html 
         cd ..
     - name: push action
       id: bucket
