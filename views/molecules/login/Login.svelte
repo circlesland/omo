@@ -58,6 +58,7 @@
       loginProcess = LoginState.Error;
       return;
     }
+    window.sessionStorage.setItem("sid", resp.session);
     user = await getUser(resp.session, client, ctx);
     loginProcess = LoginState.LoggedIn;
   }
