@@ -28,11 +28,7 @@ jobs:
     - name: remove old index.html
       run: |
         rm dist/index.html
-    - name: copy file
-      uses: canastro/copy-file-action@master
-      with:
-        source: "dist/devomoearth.html"
-        target: "dist/index.html"
+        mv dist/devomoearth.html index.html
     - name: push action
       id: bucket
       uses: textileio/github-action-buckets@v20
