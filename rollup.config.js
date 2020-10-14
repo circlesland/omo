@@ -44,7 +44,7 @@ export default {
   output: {
     sourcemap: true,
     format: "iife",
-    name: "app",
+    name: "omo",
     file: "dist/build/bundle.js",
   },
   plugins: [

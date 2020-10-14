@@ -1,6 +1,6 @@
 {
-  "name": "omo-earth-marketplace",
-  "version": "0.8.0",
+  "name": "omo",
+  "version": "0.0.1",
   "scripts": {
     "build": "rollup -c",
     "dev": "rollup -c -w & npm run tsc",
