@@ -6,10 +6,6 @@ on:
   pull_request:
     branches:
       - main
-        - 
-defaults:
-  run:
-    working-directory: app
 
 jobs:
   build:
@@ -29,6 +25,11 @@ jobs:
     - run: npm run build --if-present
       env:
         Environment: production
+    - name: Update index.html
+      run: |
+        rm dist/index.html
+        ls dist
+        cp dist/devomoearth.html  dist/index.html 
     - name: push action
       id: bucket
       uses: textileio/github-action-buckets@v20
@@ -37,7 +38,7 @@ jobs:
         secret: ${{ secrets.TEXTILE_ACCOUNT_SECRET }}
         bucket: 'omo-marketplace-dev'
         thread: 'bafk3hjqnsapk7bbedswqq5pfhi3jue3kq7h6wnhgd5o7eedlrkroeva'
-        path: 'app/public/'
+        path: 'dist'
       #  remove: true
     - run: echo "bucket - ${{ steps.bucket.outputs.key }}"
     - run: echo "ipfs - ${{ steps.bucket.outputs.ipfs }}"

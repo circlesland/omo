@@ -1,0 +1,43 @@
+scalar Json
+
+type Mutation {
+    # Exchanges a JWT for a session cookie.
+    # This will load the deposited private key that was associated
+    # with the subject ("sub"-claim) of the token and make it available
+    # trough a session.
+    # This mutation sets a Cookie header which will be read by all subsequent
+    # mutation- and query-calls.
+    # When a User exchanges a token for the first time, a new PPK-pair will be generated
+    # and associated with the "User" object in the database.
+    exchangeToken(jwt:String!) : ExchangeTokenResponse!
+
+    # Announces a new safe at the Relayer
+    generateSafe : GenerateSafeResponse!
+}
+
+type Query {
+    version : Version
+}
+
+interface ActionResponse {
+    success: Boolean!
+    errorMessage: String
+}
+
+type ExchangeTokenResponse implements ActionResponse {
+    success: Boolean!
+    errorMessage: String
+}
+
+type GenerateSafeResponse implements ActionResponse {
+    success: Boolean!
+    errorMessage: String
+    # The predicted safe address as returned by the Relayer
+    safeAddress: String
+}
+
+type Version {
+    major: Int!
+    minor: Int!
+    revision: Int!
+}
