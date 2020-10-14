@@ -174,7 +174,7 @@
             kontrolliert 100% seiner eigenen Daten und Apps und speichert diese
             in seinem privaten Omo Haus. Um als Omo Sapien dein Haus zu öffnen
             oder ein neues Omo Sapien Haus zu bauen, melde dich unten über
-            unseren Daten Hosting Partner textile.io an.
+            unseren Hosting Partner textile.io an.
           </p>
 
           <div class="flex p-2 mx-auto">
