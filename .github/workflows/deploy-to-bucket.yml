@@ -25,13 +25,14 @@ jobs:
   #  - run: npm run build --if-present
   #    env:
   #      Environment: production
-    - name: Update index.html
+    - name: remove old index.html
       run: |
         rm dist/index.html
-        cd dist
-        ls -la
-        cp ./devomoearth.html ./index.html 
-        cd ..
+    - name: copy file
+      uses: canastro/copy-file-action@master
+      with:
+        source: "dist/devomoearth.html"
+        target: "dist/index.html"
     - name: push action
       id: bucket
       uses: textileio/github-action-buckets@v20
