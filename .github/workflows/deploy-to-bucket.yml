@@ -25,11 +25,10 @@ jobs:
     - run: npm run build --if-present
       env:
         Environment: production
-    - name: Update index.html
+    - name: remove old index.html
       run: |
         rm dist/index.html
-        ls dist
-        cp dist/devomoearth.html  dist/index.html 
+        mv dist/devomoearth.html dist/index.html
     - name: push action
       id: bucket
       uses: textileio/github-action-buckets@v20
