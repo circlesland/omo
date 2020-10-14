@@ -1,15 +1,11 @@
 <script lang="ts">
-</script>
-<!--
-<script lang="ts">
-  import OmoFavicon from "./components/OmoFavicon.svelte";
-  import GridCompositor from "./components/GridCompositor.svelte";
-  import Tailwind from "./Tailwind.svelte";
-  import { library } from "./library";
+import OmoFavicon from "../views/atoms/OmoFavicon.svelte";
+  import GridCompositor from "./gridCompositor/GridCompositor.svelte";
+  import { loader } from "./_other/loader";
 
-  import { Home } from "./pages/Home";
+  import { Login } from "../dapps/omo/odentity/Login";
 
-  let viewDocument = Home;
+  let viewDocument = Login;
 </script>
 <style global>
   @import url("https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@1,300&family=Josefin+Sans:wght@700&family=Nunito+Sans:wght@400&display=swap");
@@ -34,7 +30,6 @@
 </style>
 
 <OmoFavicon />
-<Tailwind />
-<GridCompositor {library} component={viewDocument} />
--->
+<GridCompositor {loader} component={viewDocument} />
+
 works

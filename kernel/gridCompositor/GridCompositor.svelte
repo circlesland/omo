@@ -1,12 +1,11 @@
 <script lang="ts">
-  import type { Component, ComponentDefinition} from "../../../kernel/interfaces/component";
-  import type { Trigger } from "../../../kernel/interfaces/trigger";
+  import type { Component, ComponentDefinition} from "../interfaces/component";
+  import type { Trigger } from "../interfaces/trigger";
   import { onDestroy, onMount } from "svelte";
-  import { Actions } from "../actions/actions";
-  import { DeviceClass } from "../../../kernel/interfaces/component";
-  import type { SetLayout } from "../trigger/compositor/setLayout";
-  import type { ResetLayout } from "../trigger/compositor/resetLayout";
-  import { InstanceResized } from "../trigger/shell/instanceResized";
+  import { Actions } from "../interfaces/actions";
+  import { DeviceClass } from "../interfaces/component";
+  import type { SetLayout } from "../gridCompositor/setLayout";
+  import type { ResetLayout } from "../gridCompositor/resetLayout";
 
 
 
@@ -18,7 +17,7 @@
   // The "composition" contains the display document.
   export let component: Component;
 
-  export let library;
+  export let loader;
 
   export let domElement;
 
@@ -38,11 +37,11 @@
 
   onMount(() => {
     // Determine the DeviceClass
-    deviceClass = library.runtime.getDeviceClass();
+    deviceClass = loader.runtime.getDeviceClass();
 
     // Register all component runtime instances
     if (component && component.id) {
-      eventStream = library.runtime.register(component.id, componentInstance);
+      eventStream = loader.runtime.register(component.id, componentInstance);
       id = component.id;
     }
   });
@@ -50,7 +49,7 @@
   onDestroy(() => {
     // Remove all component runtime instances
     if (component && component.id) {
-      library.runtime.remove(component.id);
+      loader.runtime.remove(component.id);
       eventStream = null;
       if (eventSubscription) {
         eventSubscription.unsubscribe();
@@ -68,15 +67,15 @@
   };
 
   function getAreas(componentDefinition) {
-    return library.layout.getLayoutByName(componentDefinition.layout).areas;
+    return loader.layout.getLayoutByName(componentDefinition.layout).areas;
   }
 
   function getRows(componentDefinition) {
-    return library.layout.getLayoutByName(componentDefinition.layout).rows;
+    return loader.layout.getLayoutByName(componentDefinition.layout).rows;
   }
 
   function getColumns(componentDefinition) {
-    return library.layout.getLayoutByName(componentDefinition.layout).columns;
+    return loader.layout.getLayoutByName(componentDefinition.layout).columns;
   }
 
   /**
@@ -95,7 +94,7 @@
 
   $: {
     if (component) {
-      const def = library.runtime.findComponentDefinition(component);
+      const def = loader.runtime.findComponentDefinition(component);
 
       if (def && overrideLayout) {
         def.layout = overrideLayout;
@@ -105,7 +104,7 @@
 
       // Remove the instance if the underlying Component its id
       if (id && id !== component.id) {
-        library.runtime.remove(id);
+        loader.runtime.remove(id);
         eventStream = null;
         if (eventSubscription) {
           eventSubscription.unsubscribe();
@@ -113,8 +112,8 @@
       }
 
       id = component.id;
-      if (id && componentInstance && !library.runtime.find(id)) {
-        eventStream = library.runtime.register(id, componentInstance);
+      if (id && componentInstance && !loader.runtime.find(id)) {
+        eventStream = loader.runtime.register(id, componentInstance);
       }
     }
 
@@ -144,9 +143,9 @@
     'minmax(1fr)'; grid-template-rows: 'minmax(1fr)'; overflow: hidden; height:100%;">
      <!-- <div class={componentDefinition.cssClasses} style="width:100%; height:100%; overflow:auto">-->
         <svelte:component
-          this={library.getComponentByName(componentDefinition.component)}
+          this={loader.getComponentByName(componentDefinition.component)}
           bind:this={componentInstance}
-          {library}
+          {loader}
           {component}
           data={componentDefinition.properties} />
       <!--</div>-->
@@ -159,9 +158,9 @@
           style="grid-area: {componentDefinition.area}; --areas: {getAreas(componentDefinition)};
             --columns: {getColumns(componentDefinition)}; --rows: {getRows(componentDefinition)};">
     {#each componentDefinition.children as child}
-      {#if library.layout.isAreaAvailable(componentDefinition.layout, child)}
+      {#if loader.layout.isAreaAvailable(componentDefinition.layout, child)}
         <svelte:self
-                {library}
+                {loader}
                 bind:this={componentInstance}
                 component={child} />
       {:else}
@@ -169,7 +168,7 @@
         we simply shoot it to the moon.. -->
         <div style="position:absolute; left:-2000em; top:-2000em; visibility:hidden;">
           <svelte:self
-                  {library}
+                  {loader}
                   bind:this={componentInstance}
                   component={child} />
         </div>

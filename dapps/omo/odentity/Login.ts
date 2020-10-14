@@ -7,13 +7,13 @@ export const Login: Component = {
   children: [
     {
       area: "main",
-      component: "OmoLogin",
+      component: "Login",
       properties: { title: "Follow your passion", image: "/start.jpg", link: "safe" },
       trigger: [],
       children: [
         {
           area: "",
-          component: "OmoLogin",
+          component: "Login",
         },
       ],
     },

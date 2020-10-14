@@ -1,29 +1,27 @@
-export const deineMudda = 1;
+import Login from "../../views/molecules/login/Login.svelte";
 
-/*import OmoLogin from "./components/OmoLogin.svelte";
-
-import { LayoutHeaderMain } from "./layouts/LayoutHeaderMain";
-import { LayoutHeaderMainFooter } from "./layouts/LayoutHeaderMainFooter";
-import { LayoutMain } from "./layouts/LayoutMain";
-import { LayoutTopMainAside } from "./layouts/LayoutTopMainAside";
-import { LayoutNavMain } from "./layouts/LayoutNavMain";
-import { LayoutNav } from "./layouts/LayoutNav";
+import { LayoutHeaderMain } from "../../views/layouts/LayoutHeaderMain";
+import { LayoutHeaderMainFooter } from "../../views/layouts/LayoutHeaderMainFooter";
+import { LayoutMain } from "../../views/layouts/LayoutMain";
+import { LayoutTopMainAside } from "../../views/layouts/LayoutTopMainAside";
+import { LayoutNavMain } from "../../views/layouts/LayoutNavMain";
+import { LayoutNav } from "../../views/layouts/LayoutNav";
 
 import type { Observable } from "rxjs";
-import type { Trigger } from "./trigger/trigger";
+import type { Trigger } from "../interfaces/trigger";
 import {
   Component,
   ComponentDefinition,
   DeviceClass,
-} from "./interfaces/component";
-import { NewRuntimeInstance } from "./trigger/shell/newRuntimeInstance";
-import { RemovedRuntimeInstance } from "./trigger/shell/removedRuntimeInstance";
+} from "../interfaces/component";
+import { NewRuntimeInstance } from "./newRuntimeInstance";
+import { RemovedRuntimeInstance } from "./removedRuntimeInstance";
 
 export const loader = {
   getComponentByName: (name) => {
     switch (name) {
-      case "OmoLogin":
-        return OmoLogin;
+      case "Login":
+        return Login;
     }
   },
 
@@ -165,4 +163,3 @@ export const loader = {
     },
   },
 };
-*/

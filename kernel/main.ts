@@ -1,6 +1,5 @@
 import App from "./App.svelte";
-/*
-import {EventBroker, Topic} from "./eventBroker";
+import {EventBroker, Topic} from "./_other/eventBroker";
 import type Web3 from "web3";
 
 declare global
@@ -31,7 +30,7 @@ window.trigger = (trigger:any) => {
 window.shellEvents.observable.subscribe(event => {
   console.log("main.ts receive 'omo.shell' event:", event);
 })
-*/
+
 const app = new App({
   target: document.body,
 });
