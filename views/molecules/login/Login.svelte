@@ -164,20 +164,19 @@
         class="flex flex-col justify-center bg-grey-lighter border-b border-gray-300">
         <div class="text-primary font-title uppercase text-center">Login</div>
       </header>
-      <!-- <header>
-        <div class="flex flex-col justify-center bg-grey-lighter">Login</div>
-      </header> -->
       {#if loginProcess != LoginState.LoggedIn}
         <main>
-          <h1 class="text-center text-3xl font-title text-primary">Willkommen, <br />auf Omo Earth</h1>
+          <h1 class="text-center text-3xl font-title text-primary">
+            Willkommen,
+            <br />auf Omo Earth
+          </h1>
           <p class="text-sm py-8 text-center text-gray-700">
-            Die Menschen auf Omo Earth nennen sich Omo Sapiens. Jeder Omo entwickelt und
-            kontrolliert 100% seiner eigenen Daten und Apps und speichert diese
-            in seinem privaten Omo Haus. Um als Omo Sapien dein Haus zu öffnen
-            oder ein neues Omo Sapien Haus zu bauen, melde dich unten über
-            unseren Hosting Partner textile.io an.
+            Die Menschen auf Omo Earth nennen sich Omo Sapiens. Jeder Omo
+            entwickelt und kontrolliert 100% seiner eigenen Daten und Apps und
+            speichert diese in seinem privaten Omo Haus. Um als Omo Sapien dein
+            Haus zu öffnen oder ein neues Omo Sapien Haus zu bauen, melde dich
+            unten über unseren Hosting Partner textile.io an.
           </p>
-
           <div class="flex p-2 mx-auto">
             <img
               src="https://github.com/omoearth/omo-marketplace/workflows/dev.omo.earth/badge.svg"
@@ -200,7 +199,7 @@
         {#if loginProcess == LoginState.None}
           <form method="POST" onsubmit="return false;">
             <div
-              class="w-full mb-2 px-2 pt-1 rounded-lg bg-gray-200 border border-transparent focus:outline-none">
+              class="w-full mb-2 px-2 pt-1 rounded-lg bg-gray-200 border border-gray-300 focus:outline-none">
               <label
                 for="gateway"
                 class="block text-xs font-medium text-gray-600">Gateway</label>
@@ -212,7 +211,7 @@
                 bind:value={addrGatewayUrl} />
             </div>
             <div
-              class="w-full mb-2 px-2 pt-1 rounded-lg bg-gray-200 border border-transparent focus:outline-none">
+              class="w-full mb-2 px-2 pt-1 rounded-lg bg-gray-200 border border-gray-300 focus:outline-none">
               <label
                 for="email"
                 class="block text-xs font-medium text-gray-600">Email</label>
