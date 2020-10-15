@@ -3,6 +3,10 @@ import {EventBroker, Topic} from "./_other/eventBroker";
 import type Web3 from "web3";
 import type { Event } from "./interfaces/event";
 
+const appHashNameLookup = {
+  "bafzbeidz3eazquyorhjdiosdgbc5j73yz5omnyqrasuz7pertimlmz7e5y": "odentity",
+}
+
 export const isLocal = window.location.hostname == "localhost"
   || window.location.hostname == "127.0.0.1"
   || window.location.hostname == "omo.local";
@@ -32,10 +36,6 @@ declare global
         trigger: (trigger: any) => void;
         web3: Web3;
     }
-}
-
-const appHashNameLookup = {
-  "bafzbeidz3eazquyorhjdiosdgbc5j73yz5omnyqrasuz7pertimlmz7e5y": "odentity",
 }
 
 try
