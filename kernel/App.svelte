@@ -10,7 +10,7 @@
 
   page.base('/');
   page('*', parse)
-  page('/', show)
+  page('*', show)
   page()
 
   function parse(ctx, next) {
@@ -18,14 +18,14 @@
     next();
   }
 
-  function show(ctx) {
-    console.log(ctx.query);
+  async function show(ctx) {
+    let page = ctx.query["page"];
+    if (!page) {
+      page = "index"
+    }
+    page += ".json";
+    viewDocument = await xfetch("bafzbeidz3eazquyorhjdiosdgbc5j73yz5omnyqrasuz7pertimlmz7e5y", page);
   }
-
-  async function load() {
-    viewDocument = await xfetch("bafzbeidz3eazquyorhjdiosdgbc5j73yz5omnyqrasuz7pertimlmz7e5y")
-  }
-  load();
 
   let local = window.location.hostname == "localhost" || window.location.hostname == "127.0.0.1";
   let development = window.location.hostname == "omo.local";

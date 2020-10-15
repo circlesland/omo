@@ -1,4 +1,5 @@
 import Login from "../../views/molecules/login/Login.svelte";
+import Blubb from "../../views/molecules/login/Blubb.svelte";
 
 import { LayoutHeaderMain } from "../../views/layouts/LayoutHeaderMain";
 import { LayoutHeaderMainFooter } from "../../views/layouts/LayoutHeaderMainFooter";
@@ -15,6 +16,8 @@ export const loader = {
     switch (name) {
       case "Login":
         return Login;
+      case "Blubb":
+        return Blubb;
     }
   },
 
