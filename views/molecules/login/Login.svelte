@@ -1,134 +1,50 @@
 <script lang="ts">
-  import { Context, defaultHost } from "@textile/context";
-  import {
-    APIServiceClient,
-    ServiceError,
-  } from "@textile/hub-grpc/hub_pb_service";
-  import { WebsocketTransport } from "@textile/grpc-transport";
-  import * as pb from "@textile/hub-grpc/hub_pb";
-
-  enum LoginState {
-    None = 1,
-    LoggingIn,
-    LoggedIn,
-    Error,
-    Register,
-  }
-
-  class ApiResponse {
-    error: ServiceError | null;
-    session: string | null;
-  }
-
-  class User {
-    name: string;
-    email: string;
-  }
+  import { SessionService } from "../../../kernel/services/sessionService";
+  // import { DagService } from "../../../kernel/services/dagService";
+  import type { User } from "../../../kernel/interfaces/user";
+  import { LoginState } from "../../../kernel/enums/loginState";
+  import type { ServiceError } from "@textile/hub-grpc/hub_pb_service";
+import { isModuleDeclaration } from "typescript";
 
   export let login: string = "";
   export let loginProcess = LoginState.None;
   export let user: User;
   export let error: ServiceError;
-  let local =
-    window.location.hostname == "localhost" ||
-    window.location.hostname == "127.0.0.1";
-  let development = window.location.hostname == "dev.omo.local";
-  let addrGatewayUrl =
-    local || development
-      ? "https://hub.dev.omo.earth"
-      : "https://hub.textile.io";
-  let addrAPIUrl =
-    local || development ? "https://webapi.dev.omo.earth" : defaultHost;
+  let addrGatewayUrl = "";
+  SessionService.GetInstance().then(
+    (instance: SessionService) => (addrGatewayUrl = instance.addrGatewayUrl)
+  );
 
   async function signInOrSignUpAsync() {
     if (login == null || login == "") return;
-
     loginProcess = LoginState.LoggingIn;
-    const ctx = new Context(addrAPIUrl);
-    const client = new APIServiceClient(ctx.host, {
-      transport: WebsocketTransport(),
-    });
-    let resp = await signIn(client, ctx);
-    if (resp.error && resp.error.code == 5) {
-      console.log("signUp");
-      resp = await signUp(client, ctx);
-    }
+    let resp = await SessionService.signInOrSignUp(login);
+
     if (resp.error) {
       error = resp.error;
       loginProcess = LoginState.Error;
       return;
     }
-    window.sessionStorage.setItem("sid", resp.session);
-    user = await getUser(resp.session, client, ctx);
     loginProcess = LoginState.LoggedIn;
+    var session = await SessionService.GetInstance();
+    user = { email: session.getUserMail(), name: session.getUsername() };
+
+
+    //     console.log(await TextileSession.Instance.listBuckets(key.getKey(), key.getSecret()));
+    //     key = keys.getListList()[3];
+    //     console.log(await TextileSession.Instance.listBuckets(key.getKey(), key.getSecret()));
+    //     key = keys.getListList()[4];
+    //    
+    //  console.log(await SessionService.GetInstance.listBuckets(key.getKey(), key.getSecret()));
   }
+  async function  dostuff(){
 
-  async function getUser(
-    session: string,
-    client: APIServiceClient,
-    ctx: Context
-  ): Promise<User> {
-    let meta = await ctx.withSession(session).toMetadata();
-    let req = new pb.GetSessionInfoRequest();
-    return new Promise((resolve) => {
-      client.getSessionInfo(
-        req,
-        meta,
-        (
-          error: ServiceError | null,
-          message: pb.GetSessionInfoResponse | null
-        ) => {
-          let user: User = error
-            ? { name: "", email: "" }
-            : { name: message.getUsername(), email: message.getEmail() };
-          resolve(user);
-        }
-      );
-    });
-  }
-
-  async function signUp(
-    client: APIServiceClient,
-    ctx: Context
-  ): Promise<ApiResponse> {
-    let meta = await ctx.toMetadata();
-    let req = new pb.SignupRequest();
-    req.setEmail(login);
-    req.setUsername(login.split("@")[0]);
-
-    return new Promise((resolve) => {
-      client.signup(
-        req,
-        meta,
-        (error: ServiceError | null, message: pb.SignupResponse | null) => {
-          let resp: ApiResponse = error
-            ? { error, session: null }
-            : { error: null, session: message?.getSession() };
-          resolve(resp);
-        }
-      );
-    });
-  }
-
-  async function signIn(
-    client: APIServiceClient,
-    ctx: Context
-  ): Promise<ApiResponse> {
-    let meta = await ctx.toMetadata();
-    let req = new pb.SigninRequest();
-    req.setUsernameOrEmail(login);
-    return new Promise((resolve) => {
-      client.signin(
-        req,
-        meta,
-        (error: ServiceError | null, message: pb.SigninResponse | null) => {
-          let resp: ApiResponse = error
-            ? { error, session: null }
-            : { error: null, session: message?.getSession() };
-          resolve(resp);
-        }
-      );
-    });
+    let instance = await SessionService.GetInstance();
+        let keys = await  instance.listKeys();
+    var key = keys.getListList()[2];
+  await instance.listBuckets(key.getKey,key.getSecret);
+//   let dag = await  DagService.getInstance();
+//  await  dag.deinemudda();
   }
 </script>
 
@@ -245,6 +161,7 @@
         {#if loginProcess == LoginState.LoggedIn}
           <div class="p-8">App-Navbar</div>
         {/if}
+        <button on:click="{()=>dostuff()}">klick mich</button>
       </footer>
     </div>
   </div>
