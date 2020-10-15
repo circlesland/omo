@@ -50,6 +50,21 @@ import { isModuleDeclaration } from "typescript";
 </script>
 
 <style>
+  @media screen and (min-width: 600px) {
+    .wrap {
+      height: 95%;
+    }
+  }
+  @media screen and (min-width: 1024px) {
+    .wrap {
+      height: 85%;
+    }
+  }
+  @media screen and (min-width: 1600px) {
+    .wrap {
+      height: 75%;
+    }
+  }
   .grid {
     @apply h-full w-full;
     grid-template-areas:
@@ -64,7 +79,7 @@ import { isModuleDeclaration } from "typescript";
   }
   main {
     grid-area: main;
-    @apply overflow-hidden h-full bg-gray-100 p-8;
+    @apply overflow-y-scroll h-full bg-gray-100 p-8;
   }
   footer {
     grid-area: footer;
@@ -72,10 +87,10 @@ import { isModuleDeclaration } from "typescript";
 </style>
 
 <div
-  class="bg-white h-screen flex flex-col items-center justify-center bg-grey-lighter bg-cover bg-center"
+  class=" bg-white h-screen flex flex-col items-center justify-center bg-grey-lighter bg-cover bg-center"
   style="background-image: url(https://source.unsplash.com/7awMZWDS4rg)">
   <div
-    class="shadow-2xl border border-gray-300 bg-white rounded-lg md:m-12 w-full h-full max-w-md justify-center">
+    class="wrap shadow-2xl border border-gray-300 bg-white rounded-lg md:m-12 w-full h-full max-w-md justify-center">
     <div class="grid">
       <header
         class="flex flex-col justify-center bg-grey-lighter border-b border-gray-300">
@@ -114,37 +129,44 @@ import { isModuleDeclaration } from "typescript";
 
       <footer class="text-sm border-t border-gray-300 p-6">
         {#if loginProcess == LoginState.None}
-          <form method="POST" onsubmit="return false;">
-            <div
-              class="w-full mb-2 px-2 pt-1 rounded-lg bg-gray-200 border border-gray-300 focus:outline-none">
-              <label
-                for="gateway"
-                class="block text-xs font-medium text-gray-600">Gateway</label>
-              <input
-                type="text"
-                name="gateway"
-                disabled
-                class="text-xl w-full rounded-lg text-gray-500  bg-gray-200 border border-transparent focus:outline-none"
-                bind:value={addrGatewayUrl} />
-            </div>
-            <div
-              class="w-full mb-2 px-2 pt-1 rounded-lg bg-gray-200 border border-gray-300 focus:outline-none">
-              <label
-                for="email"
-                class="block text-xs font-medium text-gray-600">Email</label>
+          <div>
+            <form method="POST" onsubmit="return false;">
+              <p class="p-1 text-gray-700">Wähle deinen Haus Anbieter</p>
+              <div class="flex">
+                <div
+                  class="mr-1 rounded-lg bg-gray-100 border border-gray-300 p-4 bg-gray-200 h-20 w-20">
+                  <img src="images/logo.png" />
+                </div>
+                <div
+                  class="mr-1 rounded-lg bg-gray-100 p-4 bg-gray-100 p-4 h-20 w-20">
+                  <img src="images/textile.png" />
+                </div>
+              </div>
+              <p
+                class="p-2 mt-2 rounded-lg bg-gray-100 border border-gray-300 text-gray-600">
+                {addrGatewayUrl}
+              </p>
 
-              <input
-                type="text"
-                name="email"
-                class=" text-xl w-full rounded-lg bg-gray-200 border border-transparent focus:outline-none"
-                bind:value={login} />
-            </div>
-            <div
-              class="w-full p-3 bg-primary text-bold text-white text-center rounded-lg"
-              on:click={() => signInOrSignUpAsync()}>
-              Omo Haus öffne dich
-            </div>
-          </form>
+              <p class="p-1 text-gray-700">Anmelden</p>
+              <div
+                class="w-full mb-2 px-2 pt-1 rounded-lg bg-gray-200 border border-gray-300 focus:outline-none">
+                <label
+                  for="email"
+                  class="block text-xs font-medium text-gray-600">Email</label>
+
+                <input
+                  type="text"
+                  name="email"
+                  class=" text-xl w-full rounded-lg bg-gray-200 border border-transparent focus:outline-none"
+                  bind:value={login} />
+              </div>
+              <div
+                class="w-full p-3 bg-primary text-bold text-white text-center rounded-lg"
+                on:click={() => signInOrSignUpAsync()}>
+                Omo Haus öffne dich
+              </div>
+            </form>
+          </div>
         {/if}
         {#if loginProcess == LoginState.LoggingIn}
           <div class="bg-gray-200 p-12 rounded-lg text-lg">
