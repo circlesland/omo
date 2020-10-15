@@ -135,11 +135,11 @@ import { isModuleDeclaration } from "typescript";
               <div class="flex">
                 <div
                   class="mr-1 rounded-lg bg-gray-100 border border-gray-300 p-4 bg-gray-200 h-20 w-20">
-                  <img src="images/logo.png" />
+                  <img src="images/textile.png" />
                 </div>
                 <div
-                  class="mr-1 rounded-lg bg-gray-100 p-4 bg-gray-100 p-4 h-20 w-20">
-                  <img src="images/textile.png" />
+                class="text-xs text-center text-gray-500 mr-1 rounded-lg bg-gray-100 bg-gray-100 p-3 h-20 w-20">
+                more coming soon
                 </div>
               </div>
               <p
