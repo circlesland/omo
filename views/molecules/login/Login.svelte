@@ -133,6 +133,21 @@
 </script>
 
 <style>
+  @media screen and (min-width: 600px) {
+    .wrap {
+      height: 95%;
+    }
+  }
+  @media screen and (min-width: 1024px) {
+    .wrap {
+      height: 85%;
+    }
+  }
+  @media screen and (min-width: 1600px) {
+    .wrap {
+      height: 75%;
+    }
+  }
   .grid {
     @apply h-full w-full;
     grid-template-areas:
@@ -147,7 +162,7 @@
   }
   main {
     grid-area: main;
-    @apply overflow-hidden h-full bg-gray-100 p-8;
+    @apply overflow-y-scroll h-full bg-gray-100 p-8;
   }
   footer {
     grid-area: footer;
@@ -155,10 +170,10 @@
 </style>
 
 <div
-  class="bg-white h-screen flex flex-col items-center justify-center bg-grey-lighter bg-cover bg-center"
+  class=" bg-white h-screen flex flex-col items-center justify-center bg-grey-lighter bg-cover bg-center"
   style="background-image: url(https://source.unsplash.com/7awMZWDS4rg)">
   <div
-    class="shadow-2xl border border-gray-300 bg-white rounded-lg md:m-12 w-full h-full max-w-md justify-center">
+    class="wrap shadow-2xl border border-gray-300 bg-white rounded-lg md:m-12 w-full h-full max-w-md justify-center">
     <div class="grid">
       <header
         class="flex flex-col justify-center bg-grey-lighter border-b border-gray-300">
@@ -197,23 +212,24 @@
 
       <footer class="text-sm border-t border-gray-300 p-6">
         {#if loginProcess == LoginState.None}
-          <!-- <div>
-            <p>Wähle deinen Hosting Provider</p>
-            <span class="bg-gray-100 border border-gray-300 p-4">Textile
-              (remote)</span>
-            <span class="bg-gray-100 border border-gray-300 p-4">Local (coming
-              soon)</span>
-          </div> -->
           <div>
             <form method="POST" onsubmit="return false;">
               <p class="p-1 text-gray-700">Wähle deinen Haus Anbieter</p>
               <div class="flex">
-                <div class="mr-1 rounded-lg bg-gray-100 border border-gray-300 p-4 bg-gray-200 h-20 w-20"><img src="images/logo.png"></div>
-                <div class="mr-1 rounded-lg bg-gray-100 p-4 bg-gray-100 p-4 h-20 w-20"><img src="images/textile.png"></div>
+                <div
+                  class="mr-1 rounded-lg bg-gray-100 border border-gray-300 p-4 bg-gray-200 h-20 w-20">
+                  <img src="images/logo.png" />
+                </div>
+                <div
+                  class="mr-1 rounded-lg bg-gray-100 p-4 bg-gray-100 p-4 h-20 w-20">
+                  <img src="images/textile.png" />
+                </div>
               </div>
-              <p class="p-2 mt-2 rounded-lg bg-gray-100 border border-gray-300 text-gray-600">{addrGatewayUrl}</p>
-           
-              
+              <p
+                class="p-2 mt-2 rounded-lg bg-gray-100 border border-gray-300 text-gray-600">
+                {addrGatewayUrl}
+              </p>
+
               <p class="p-1 text-gray-700">Anmelden</p>
               <div
                 class="w-full mb-2 px-2 pt-1 rounded-lg bg-gray-200 border border-gray-300 focus:outline-none">
