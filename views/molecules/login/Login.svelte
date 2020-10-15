@@ -208,8 +208,8 @@
             <form method="POST" onsubmit="return false;">
               <p class="p-1 text-gray-700">Wähle deinen Haus Anbieter</p>
               <div class="flex">
-                <div class="mr-1 rounded-lg bg-gray-100 border border-gray-300 p-4 bg-gray-200"><img src="images/logo.png" width="30px" height="30px"></div>
-                <div class="mr-1 rounded-lg bg-gray-100 p-4 bg-gray-100"><img src="images/textile.png" width="30px" height="30px"></div>
+                <div class="mr-1 rounded-lg bg-gray-100 border border-gray-300 p-4 bg-gray-200 h-20 w-20"><img src="images/logo.png"></div>
+                <div class="mr-1 rounded-lg bg-gray-100 p-4 bg-gray-100 p-4 h-20 w-20"><img src="images/textile.png"></div>
               </div>
               <p class="p-2 mt-2 rounded-lg bg-gray-100 border border-gray-300 text-gray-600">{addrGatewayUrl}</p>
            
