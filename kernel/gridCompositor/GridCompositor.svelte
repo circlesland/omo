@@ -3,8 +3,8 @@
   import type { Trigger } from "../interfaces/trigger";
   import { onDestroy, onMount } from "svelte";
   import { DeviceClass } from "../interfaces/component";
-  import type { SetLayout } from "../gridCompositor/setLayout";
-  import type { ResetLayout } from "../gridCompositor/resetLayout";
+  import { SetLayout } from "./setLayout";
+  import { ResetLayout } from "./resetLayout";
   import {runtime} from "../runtime";
 
   // If the compositor or the contained display component (leaf) should be able to receive events,
