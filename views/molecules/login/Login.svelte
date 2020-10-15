@@ -197,37 +197,43 @@
 
       <footer class="text-sm border-t border-gray-300 p-6">
         {#if loginProcess == LoginState.None}
-          <form method="POST" onsubmit="return false;">
-            <div
-              class="w-full mb-2 px-2 pt-1 rounded-lg bg-gray-200 border border-gray-300 focus:outline-none">
-              <label
-                for="gateway"
-                class="block text-xs font-medium text-gray-600">Gateway</label>
-              <input
-                type="text"
-                name="gateway"
-                disabled
-                class="text-xl w-full rounded-lg text-gray-500  bg-gray-200 border border-transparent focus:outline-none"
-                bind:value={addrGatewayUrl} />
-            </div>
-            <div
-              class="w-full mb-2 px-2 pt-1 rounded-lg bg-gray-200 border border-gray-300 focus:outline-none">
-              <label
-                for="email"
-                class="block text-xs font-medium text-gray-600">Email</label>
+          <!-- <div>
+            <p>Wähle deinen Hosting Provider</p>
+            <span class="bg-gray-100 border border-gray-300 p-4">Textile
+              (remote)</span>
+            <span class="bg-gray-100 border border-gray-300 p-4">Local (coming
+              soon)</span>
+          </div> -->
+          <div>
+            <form method="POST" onsubmit="return false;">
+              <p class="p-1 text-gray-700">Wähle deinen Haus Anbieter</p>
+              <div class="flex">
+                <div class="mr-1 rounded-lg bg-gray-100 border border-gray-300 p-4 bg-gray-200"><img src="images/logo.png" width="30px" height="30px"></div>
+                <div class="mr-1 rounded-lg bg-gray-100 p-4 bg-gray-100"><img src="images/textile.png" width="30px" height="30px"></div>
+              </div>
+              <p class="p-2 mt-2 rounded-lg bg-gray-100 border border-gray-300 text-gray-600">{addrGatewayUrl}</p>
+           
+              
+              <p class="p-1 text-gray-700">Anmelden</p>
+              <div
+                class="w-full mb-2 px-2 pt-1 rounded-lg bg-gray-200 border border-gray-300 focus:outline-none">
+                <label
+                  for="email"
+                  class="block text-xs font-medium text-gray-600">Email</label>
 
-              <input
-                type="text"
-                name="email"
-                class=" text-xl w-full rounded-lg bg-gray-200 border border-transparent focus:outline-none"
-                bind:value={login} />
-            </div>
-            <div
-              class="w-full p-3 bg-primary text-bold text-white text-center rounded-lg"
-              on:click={() => signInOrSignUpAsync()}>
-              Omo Haus öffne dich
-            </div>
-          </form>
+                <input
+                  type="text"
+                  name="email"
+                  class=" text-xl w-full rounded-lg bg-gray-200 border border-transparent focus:outline-none"
+                  bind:value={login} />
+              </div>
+              <div
+                class="w-full p-3 bg-primary text-bold text-white text-center rounded-lg"
+                on:click={() => signInOrSignUpAsync()}>
+                Omo Haus öffne dich
+              </div>
+            </form>
+          </div>
         {/if}
         {#if loginProcess == LoginState.LoggingIn}
           <div class="bg-gray-200 p-12 rounded-lg text-lg">
