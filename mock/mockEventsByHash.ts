@@ -1,10 +1,19 @@
-import {Continuation} from "../kernel/continuation/continuation";
+import {Command} from "../kernel/command/command";
+
+export const marketplaceProductMocks = {
+  "#2983823598": {
+    seller: "#8437538905",
+    name: "Deine Mudda ..",
+    description: ".. kocht und putzt für nur:",
+    price: 25332.50,
+  }
+};
 
 export const mockEventsByHash = {
   // 1) User comes from a product detail page on the market and wants to buy the
   //    product.
-  "#1": <Continuation>{
-    _eventType: Continuation.type,
+  "#1": <Command>{
+    _eventType: Command.type,
     _timestamp: Date.now(),
     receiver: {
       dapp: "omo/marketplace",
@@ -28,8 +37,8 @@ export const mockEventsByHash = {
   },
   // 2) The checkout page gathered the buyer-, seller- and price-information
   //    and transfers the user to the wallet to do the payment.
-  "#2": <Continuation> {
-    _eventType: Continuation.type,
+  "#2": <Command> {
+    _eventType: Command.type,
     _timestamp: Date.now(),
     _previous: "#1",
     _noReEntry: true,
@@ -58,8 +67,8 @@ export const mockEventsByHash = {
   },
   // 3) The payment was successfully transferred and the user is brought to the
   //    "checkout completed" page. This is a final state because it has no continuations.
-  "#3": <Continuation> {
-    _eventType: Continuation.type,
+  "#3": <Command> {
+    _eventType: Command.type,
     _timestamp: Date.now(),
     _previous: "#2",
     receiver: {

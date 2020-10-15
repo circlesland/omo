@@ -6,20 +6,20 @@ export interface Receiver {
   readonly page: string;
 }
 
-export type ContinuationArgs = { [key: string]: (string | number | object | []) };
+export type CommandArgs = { [key: string]: (string | number | object | []) };
 
-export class Continuation implements Event {
-  public static readonly type = "Continuation";
+export class Command implements Event {
+  public static readonly type = "Command";
 
-  readonly _eventType: string = Continuation.type;
+  readonly _eventType: string = Command.type;
   readonly _timestamp: Number = new Date().getTime();
   readonly _previous?: string;
   readonly _noReEntry?: boolean;
 
   readonly receiver: Receiver;
 
-  readonly args?:ContinuationArgs;
-  readonly context?:ContinuationArgs;
+  readonly args?:CommandArgs;
+  readonly context?:CommandArgs;
 
   canceled?: boolean;
 
@@ -31,7 +31,7 @@ export class Continuation implements Event {
   constructor(
     dapp: string,
     page: string,
-    args?: ContinuationArgs,
+    args?: CommandArgs,
     canceled?: boolean,
     success?: string,
     error?: string
@@ -54,12 +54,12 @@ export class Continuation implements Event {
       }
   }
 
-  static store<T extends Storage<Continuation>>(storage: T, continuation: Continuation): string {
+  static store<T extends Storage<Command>>(storage: T, continuation: Command): string {
     // hash content
     // save to session storage
     return storage.store(continuation);
   }
-  static load<T extends Storage<Continuation>>(storage: T, hash: string): Continuation {
+  static load<T extends Storage<Command>>(storage: T, hash: string): Command {
     // get session value
     return storage.load(hash);
   }

@@ -1,11 +1,11 @@
-import type { Continuation } from "./continuation";
+import type { Command } from "./command";
 import type { Storage } from "../interfaces/storage";
 
-export class BucketContinuationStorage implements Storage<Continuation>{
-    load(hash: string): Continuation {
+export class BucketContinuationStorage implements Storage<Command>{
+    load(hash: string): Command {
         throw new Error("Method not implemented.");
     }
-    store(continuation: Continuation): string {
+    store(continuation: Command): string {
         // write to localstore
         // push to bucket 
             //->/then/ on success remove from localstore

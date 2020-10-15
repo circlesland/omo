@@ -1,55 +1,88 @@
 import App from "./App.svelte";
 import {EventBroker, Topic} from "./_other/eventBroker";
 import type Web3 from "web3";
-import type {Event} from "./interfaces/event";
-import {Continuation} from "./continuation/continuation";
-import {mockEventsByHash} from "../mock/mockEventsByHash";
+import type { Event } from "./interfaces/event";
+import {Command, CommandArgs} from "./command/command";
+import {marketplaceProductMocks, mockEventsByHash} from "../mock/mockEventsByHash"
 
 export interface IReceiver {
-  receive(continuation:Continuation) : void;
+  activate(continuation:Command) : void;
 }
 
 export type ReceiverMap = {[dapp:string]:{[page:string]:IReceiver}};
 
+function next(currentHash:string, current:Command, args:CommandArgs) {
+  const nextReceiver = current.continuations.success;
+  const next = <Command> {
+    _timestamp: Date.now(),
+    _eventType: Command.type,
+    _previous: currentHash,
+    receiver: nextReceiver,
+    context: current.context,
+    args: args,
+  };
+  window.omoEvents.publish(next);
+}
+
+function error(continuation:Command, e:Error) {
+}
+
 const mockReceivers:ReceiverMap = {
-  "omo/marketplace":{
+  "omo/marketplace": {
     "checkout": {
-      receive(continuation: Continuation)
+      async activate(command: Command)
       {
-        console.log("omo/marketplace/checkout received:", continuation);
-        window.omoEvents.publish(mockEventsByHash["#2"]); // Send to payment
+        console.log("omo/marketplace/checkout received:", command);
+        try {
+          // Find the product from the context
+          const productHash = <string>command.context["product"];
+          const product = marketplaceProductMocks[productHash];
+
+          // Create the args for the continuation from the found product
+          const paymentArgs = {
+            sender: <string>command.context["buyer"],
+            receiver: <string>command.context["seller"],
+            amount: product.price
+          };
+
+          // Invoke the continuation
+          next("#123", command, paymentArgs);
+        } catch (e) {
+          // Something went wrong, invoke the error continuation
+          error(command, e)
+        }
       }
     },
     "checkoutComplete": {
-      receive(continuation: Continuation)
+      activate(command: Command)
       {
-        console.log("omo/marketplace/checkoutComplete received:", continuation);
+        console.log("omo/marketplace/checkoutComplete received:", command);
       }
     }
   },
-  "omo/odentity":{
+  "omo/odentity": {
     "login": {
-      receive(continuation: Continuation)
+      activate(command: Command)
       {
-        console.log("omo/odentity/login received:", continuation);
+        console.log("omo/odentity/login received:", command);
       }
     }
   },
-  "omo/shell":{},
-  "omo/wallet":{
+  "omo/shell": {},
+  "omo/wallet": {
     "transfer": {
-      receive(continuation: Continuation)
+      activate(command: Command)
       {
-        console.log("omo/wallet/transfer received:", continuation);
+        console.log("omo/wallet/transfer received:", command);
         window.omoEvents.publish(mockEventsByHash["#3"]); // Send to checkout complete
       }
     }
-  },
+  }
 }
 
-const mockContinuationInterpreter = (continuation:Continuation) => {
+const mockContinuationInterpreter = (continuation:Command) => {
   const receiver = mockReceivers[continuation.receiver.dapp][continuation.receiver.page];
-  receiver.receive(continuation);
+  receiver.activate(continuation);
 };
 
 declare global
@@ -89,8 +122,8 @@ try
     window.omoEvents.observable.subscribe(event =>
     {
       switch (event._eventType) {
-        case Continuation.type:
-          mockContinuationInterpreter(<Continuation>event);
+        case Command.type:
+          mockContinuationInterpreter(<Command>event);
           break;
       }
     });
