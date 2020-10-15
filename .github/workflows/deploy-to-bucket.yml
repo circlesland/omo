@@ -21,7 +21,7 @@ jobs:
           thread: 'bafk3hjqnsapk7bbedswqq5pfhi3jue3kq7h6wnhgd5o7eedlrkroeva'
           path: 'dapps/omo/odentity/'
 
-  build:
+  kernel-deploy:
     runs-on: ubuntu-latest
     strategy:
       matrix:
