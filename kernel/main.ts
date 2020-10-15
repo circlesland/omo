@@ -4,6 +4,10 @@ import type Web3 from "web3";
 import type {Event} from "./interfaces/event";
 import {Continuation} from "./continuation/continuation";
 
+const mockContinuationInterpreter = (continuation:Continuation) => {
+
+};
+
 declare global
 {
     interface Window
@@ -42,7 +46,6 @@ try
     {
       switch (event._eventType) {
         case Continuation.type:
-
           break;
       }
     })

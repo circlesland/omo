@@ -1,30 +1,43 @@
 import type { Storage } from "../interfaces/storage";
 import type { Event } from "../interfaces/event";
 
+export interface Receiver {
+  readonly dapp: string;
+  readonly page: string;
+}
+
+export type ContinuationArgs = { [key: string]: (string | number | object | []) };
+
 export class Continuation implements Event {
   public static readonly type = "Continuation";
 
   readonly _eventType: string = Continuation.type;
   readonly _timestamp: Number = new Date().getTime();
+  readonly _previous?: string;
+  readonly _noReEntry?: boolean;
 
-  readonly dapp: string;
-  readonly page: string;
-  readonly args?: { [key: string]: string | number | object }[]
+  readonly receiver: Receiver;
+
+  readonly args?:ContinuationArgs;
+  readonly context?:ContinuationArgs;
+
   canceled?: boolean;
+
   readonly continuations?: {
-    success: string,
-    error: string,
+    success: Receiver | string,
+    error: Receiver | string,
   }
-  readonly previousHash: string;
 
   constructor(dapp: string,
     page: string,
-    args?: { [key: string]: string | number | object }[],
+    args?: ContinuationArgs,
     canceled?: boolean,
     success?: string,
     error?: string) {
-    this.dapp = dapp;
-    this.page = page;
+    this.receiver = {
+      dapp,
+      page
+    };
     this.args = args;
     this.canceled = canceled;
 
