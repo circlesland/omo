@@ -3,9 +3,9 @@
   import GridCompositor from "./gridCompositor/GridCompositor.svelte";
   import { loader } from "./_other/loader";
 
-  import { Login } from "../dapps/omo/odentity/login";
+  // import { Login } from "../dapps/omo/odentity/index.json";
 
-  let viewDocument = Login;
+  let viewDocument;
 </script>
 
 <style global>

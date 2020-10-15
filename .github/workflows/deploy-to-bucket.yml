@@ -8,9 +8,21 @@ on:
       - main
 
 jobs:
+  odentity-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: push odentity
+        id: odentity
+        uses: textileio/github-action-buckets@v20
+        with:
+          key: ${{ secrets.TEXTILE_ACCOUNT_KEY }}
+          secret: ${{ secrets.TEXTILE_ACCOUNT_SECRET }}
+          bucket: 'odentity'
+          thread: 'bafk3hjqnsapk7bbedswqq5pfhi3jue3kq7h6wnhgd5o7eedlrkroeva'
+          path: 'dapps/omo/odentity'
+
   build:
     runs-on: ubuntu-latest
-
     strategy:
       matrix:
         node-version: [14.x]
