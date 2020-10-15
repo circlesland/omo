@@ -107,5 +107,8 @@ dist/build
 
 **/[Bb]undle*
 
+# Remove js and js.map files from git, except config files
 *.js
 *.js.map
+
+!/*.config.js
