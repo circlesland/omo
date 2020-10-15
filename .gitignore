@@ -107,6 +107,5 @@ dist/build
 
 **/[Bb]undle*
 
-views/**.js
-dapps/**.js
-kernel/**.js
+*.js
+*.js.map
