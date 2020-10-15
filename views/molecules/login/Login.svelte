@@ -16,6 +16,7 @@ import { isModuleDeclaration } from "typescript";
   );
 
   async function signInOrSignUpAsync() {
+    debugger;
     if (login == null || login == "") return;
     loginProcess = LoginState.LoggingIn;
     let resp = await SessionService.signInOrSignUp(login);
@@ -25,10 +26,10 @@ import { isModuleDeclaration } from "typescript";
       loginProcess = LoginState.Error;
       return;
     }
-    loginProcess = LoginState.LoggedIn;
     var session = await SessionService.GetInstance();
     user = { email: session.getUserMail(), name: session.getUsername() };
 
+    loginProcess = LoginState.LoggedIn;
 
     //     console.log(await TextileSession.Instance.listBuckets(key.getKey(), key.getSecret()));
     //     key = keys.getListList()[3];
@@ -39,10 +40,10 @@ import { isModuleDeclaration } from "typescript";
   }
   async function  dostuff(){
 
-    let instance = await SessionService.GetInstance();
-        let keys = await  instance.listKeys();
-    var key = keys.getListList()[2];
-  await instance.listBuckets(key.getKey,key.getSecret);
+  //   let instance = await SessionService.GetInstance();
+  //       let keys = await  instance.listKeys();
+  //   var key = keys.getListList()[2];
+  // await instance.listBuckets(key.getKey,key.getSecret);
 //   let dag = await  DagService.getInstance();
 //  await  dag.deinemudda();
   }

@@ -55,6 +55,7 @@ export class SessionService {
 
     static async signInOrSignUp(userEmail: string, username?: string): Promise<ApiResponse> {
         let resp = await SessionService.signIn(userEmail);
+        debugger;
         if (resp.error && resp.error.code == 5) {
             resp = await SessionService.signUp(userEmail, username);
         }
@@ -124,6 +125,7 @@ export class SessionService {
                 req,
                 meta,
                 (error: ServiceError | null, message: pb.SigninResponse | null) => {
+                    debugger;
                     let resp: ApiResponse = error
                         ? { error, session: null }
                         : { error: null, session: message?.getSession() };
