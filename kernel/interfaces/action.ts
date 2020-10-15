@@ -1,4 +1,4 @@
-import type {Trigger} from "../interfaces/trigger";
+import type {Trigger} from "./trigger";
 
 export interface Action
 {

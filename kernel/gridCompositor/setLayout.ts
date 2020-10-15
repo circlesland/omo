@@ -1,9 +1,10 @@
 import type {Trigger} from "../interfaces/trigger";
-import {Actions} from "../interfaces/actions";
 
 export class SetLayout implements Trigger {
-  title: string = "SetLayout";
-  triggers: Actions = Actions.setLayout;
+  public static readonly type = "SetLayout";
+
+  readonly _eventType: string = SetLayout.type;
+  readonly _timestamp: Number = new Date().getTime();
 
   layoutName:string;
   id:string;

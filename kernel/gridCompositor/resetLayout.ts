@@ -1,9 +1,10 @@
 import type {Trigger} from "../interfaces/trigger";
-import {Actions} from "../interfaces/actions";
 
 export class ResetLayout implements Trigger {
-  title: string = "ResetLayout";
-  triggers: Actions = Actions.resetLayout;
+  public static readonly type = "ResetLayout";
+
+  readonly _eventType: string = ResetLayout.type;
+  readonly _timestamp: Number = new Date().getTime();
 
   id:string;
 
@@ -11,4 +12,5 @@ export class ResetLayout implements Trigger {
   {
     this.id = targetId;
   }
+
 }

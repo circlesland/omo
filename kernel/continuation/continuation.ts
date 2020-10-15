@@ -1,6 +1,12 @@
 import type { Storage } from "../interfaces/storage";
+import type { Event } from "../interfaces/event";
 
-export class Continuation {
+export class Continuation implements Event {
+  public static readonly type = "Continuation";
+
+  readonly _eventType: string = Continuation.type;
+  readonly _timestamp: Number = new Date().getTime();
+
   readonly dapp: string;
   readonly page: string;
   readonly args?: { [key: string]: string | number | object }[]
@@ -10,7 +16,6 @@ export class Continuation {
     error: string,
   }
   readonly previousHash: string;
-  readonly timestamp: Number;
 
   constructor(dapp: string,
     page: string,
@@ -35,17 +40,15 @@ export class Continuation {
   }
 
   static store<T extends Storage<Continuation>>(storage: T, continuation: Continuation): string {
-    // hasch content
-    // ssave to sesssion storage
+    // hash content
+    // save to session storage
     return storage.store(continuation);
   }
   static load<T extends Storage<Continuation>>(storage: T, hash: string): Continuation {
     // get session value
-
     return storage.load(hash);
   }
 }
-
 
 
 

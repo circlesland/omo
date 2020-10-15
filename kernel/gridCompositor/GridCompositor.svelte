@@ -2,7 +2,6 @@
   import type { Component, ComponentDefinition} from "../interfaces/component";
   import type { Trigger } from "../interfaces/trigger";
   import { onDestroy, onMount } from "svelte";
-  import { Actions } from "../interfaces/actions";
   import { DeviceClass } from "../interfaces/component";
   import type { SetLayout } from "../gridCompositor/setLayout";
   import type { ResetLayout } from "../gridCompositor/resetLayout";
@@ -57,10 +56,10 @@
   });
 
   let actions = {
-    [Actions.resetLayout]: (trigger: ResetLayout) => {
+    [ResetLayout.type]: (trigger: ResetLayout) => {
       overrideLayout = undefined;
     },
-    [Actions.setLayout]: (trigger: SetLayout) => {
+    [SetLayout.type]: (trigger: SetLayout) => {
       overrideLayout = trigger.layoutName;
     },
   };
