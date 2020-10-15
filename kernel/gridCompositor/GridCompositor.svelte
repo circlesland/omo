@@ -141,7 +141,7 @@
     'minmax(1fr)'; grid-template-rows: 'minmax(1fr)'; overflow: hidden; height:100%;">
      <!-- <div class={componentDefinition.cssClasses} style="width:100%; height:100%; overflow:auto">-->
         <svelte:component
-          this={loader.getComponentByName(componentDefinition.view)}
+          this={loader.getViewByName(componentDefinition.view)}
           bind:this={componentInstance}
           {loader}
           {component}

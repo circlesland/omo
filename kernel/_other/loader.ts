@@ -11,7 +11,7 @@ import type { Component } from "../interfaces/component";
 import {runtime} from "../runtime";
 
 export const loader = {
-  getComponentByName: (name) => {
+  getViewByName: (name) => {
     switch (name) {
       case "Login":
         return Login;
