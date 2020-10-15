@@ -11,6 +11,7 @@ jobs:
   odentity-deploy:
     runs-on: ubuntu-latest
     steps:
+      - run: ll
       - name: push odentity
         id: odentity
         uses: textileio/github-action-buckets@v20
