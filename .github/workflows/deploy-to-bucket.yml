@@ -11,6 +11,7 @@ jobs:
   odentity-deploy:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v2
       - run: ls -la
       - name: push odentity
         id: odentity
