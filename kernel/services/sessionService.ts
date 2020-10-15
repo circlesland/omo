@@ -55,7 +55,6 @@ export class SessionService {
 
     static async signInOrSignUp(userEmail: string, username?: string): Promise<ApiResponse> {
         let resp = await SessionService.signIn(userEmail);
-        debugger;
         if (resp.error && resp.error.code == 5) {
             resp = await SessionService.signUp(userEmail, username);
         }
@@ -67,7 +66,6 @@ export class SessionService {
     static async updateSession(sessionId: string, instance?: SessionService): Promise<SessionService> {
         SessionService.storeSession(sessionId);
         var instance = instance ? instance : await SessionService.GetInstance();
-        instance.session = sessionId;
         let meta = await instance.context.withSession(instance.session).toMetadata();
         let req = new pb.GetSessionInfoRequest();
 
@@ -82,10 +80,11 @@ export class SessionService {
                     instance.username = message.getUsername();
                     instance.useremail = message.getEmail();
                     instance.privateKey = message.getKey_asB64();
+                    instance.session = sessionId;
 
                     let user: User = error
                         ? { name: "", email: "" }
-                        : { name: message.getUsername(), email: message.getEmail() };
+                        : { name: message?.getUsername(), email: message?.getEmail() };
                     resolve(instance);
                 }
             );
@@ -125,7 +124,6 @@ export class SessionService {
                 req,
                 meta,
                 (error: ServiceError | null, message: pb.SigninResponse | null) => {
-                    debugger;
                     let resp: ApiResponse = error
                         ? { error, session: null }
                         : { error: null, session: message?.getSession() };
@@ -143,7 +141,8 @@ export class SessionService {
     }
 
     async listKeys(): Promise<pb.ListKeysResponse> {
-        let meta = await this.context.withSession(this.session).toMetadata();
+        this.context = this.context.withSession(this.session);
+        let meta = await this.context.toMetadata();
         let req = new pb.ListKeysRequest();
         return new Promise((resolve) => {
             this.client.listKeys(req, meta, (error: ServiceError | null,
@@ -157,9 +156,17 @@ export class SessionService {
     async listBuckets(key, secret) {
         const buckets = await Buckets.withKeyInfo({ key, secret });
         let buck = await buckets.getOrCreate("mein bucket");
-        const buf = Buffer.from(JSON.stringify("testcontent", null, 2))
-        const path = `index.json`
-       var foo =  await buckets.pushPath(buck.root.key, path, buf);
+        
+        let start = new Date();
+        for(let i=0;i<100;i++)
+        {
+            const path = `index${i}.json`
+            const buf = Buffer.from(JSON.stringify("testcontent"+i, null, 2))
+            var foo =  await buckets.pushPath(buck.root.key, path, buf);
+        }
+       
+       let end = new Date();
+       console.log("hub push take (average 100) "+(end.getMilliseconds()-start.getMilliseconds())/100+" milliseconds")
        console.log("uploaded mudda",foo);
        
         // console.log(await buckets.listPathFlat(buck.root.key, "/"));
