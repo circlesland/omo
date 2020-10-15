@@ -66,7 +66,7 @@ module.exports = {
   devServer: {
     compress: true,
     disableHostCheck: true,
-    contentBase: path.join(__dirname, 'dist'),
+    contentBase: [path.join(__dirname, 'dist'),path.join(__dirname, 'dapps')],
     port: 5000
  }   
  

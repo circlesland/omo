@@ -9,6 +9,9 @@ import type { ApiResponse } from "../interfaces/apiResponse";
 import type { User } from "../interfaces/user";
 import { Buckets, Identity, KeyInfo } from '@textile/hub'
 
+const isLocal = window.location.hostname == "localhost" || window.location.hostname == "127.0.0.1";
+const isDevelopment = window.location.hostname == "dev.omo.local";
+
 export class SessionService {
     private session: string;
     private publicKey: string;
@@ -21,10 +24,8 @@ export class SessionService {
     useremail: string;
 
     private constructor() {
-        let local = window.location.hostname == "localhost" || window.location.hostname == "127.0.0.1";
-        let development = window.location.hostname == "dev.omo.local";
-        this.addrGatewayUrl = local || development ? "https://hub.dev.omo.earth" : "https://hub.textile.io";
-        this.addrAPIUrl = local || development ? "https://webapi.dev.omo.earth" : defaultHost;
+        this.addrGatewayUrl = isLocal || isDevelopment ? "https://hub.dev.omo.earth" : "https://hub.textile.io";
+        this.addrAPIUrl = isLocal || isDevelopment ? "https://webapi.dev.omo.earth" : defaultHost;
         this.context = new Context(this.addrAPIUrl);
         this.client = new APIServiceClient(this.context.host, { transport: WebsocketTransport(), });
 

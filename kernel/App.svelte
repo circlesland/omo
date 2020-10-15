@@ -2,10 +2,18 @@
   import OmoFavicon from "../views/atoms/OmoFavicon.svelte";
   import GridCompositor from "./gridCompositor/GridCompositor.svelte";
   import { loader } from "./_other/loader";
+  import {xfetch} from "./main";
 
   // import { Login } from "../dapps/omo/odentity/index.json";
 
   let viewDocument;
+
+  async function load() {
+    viewDocument = await xfetch("bafzbeidz3eazquyorhjdiosdgbc5j73yz5omnyqrasuz7pertimlmz7e5y")
+  }
+  load();
+
+
 
   let local = window.location.hostname == "localhost" || window.location.hostname == "127.0.0.1";
   let development = window.location.hostname == "omo.local";
