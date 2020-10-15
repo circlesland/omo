@@ -12,12 +12,7 @@
         "link": "safe"
       },
       "trigger": [],
-      "children": [
-        {
-          "area": "",
-          "view": "Login",
-        },
-      ],
-    },
-  ],
+      "children": []
+    }
+  ]
 }

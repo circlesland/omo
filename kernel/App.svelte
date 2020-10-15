@@ -6,6 +6,11 @@
   // import { Login } from "../dapps/omo/odentity/index.json";
 
   let viewDocument;
+
+  let local = window.location.hostname == "localhost" || window.location.hostname == "127.0.0.1";
+  let development = window.location.hostname == "omo.local";
+  let css = (local || development) ? "bundle.css" : "https://hub.textile.io/ipns/bafzbeigrqxbkog345dvrbl7puqjw4aggbbqrgtkq6cx6hvtpy326oifycq/build/bundle.css";
+
 </script>
 
 <style global>
@@ -31,6 +36,13 @@
     @apply font-sans;
   }
 </style>
+
+<svelte:head>
+  <meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width,initial-scale=1" />
+	<title>Omo Earth</title>
+	<link rel="stylesheet" href="{css}" />
+</svelte:head>
 
 <OmoFavicon />
 <GridCompositor {loader} component={viewDocument} />
