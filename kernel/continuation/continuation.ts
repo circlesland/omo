@@ -28,12 +28,14 @@ export class Continuation implements Event {
     error: Receiver | string,
   }
 
-  constructor(dapp: string,
+  constructor(
+    dapp: string,
     page: string,
     args?: ContinuationArgs,
     canceled?: boolean,
     success?: string,
-    error?: string) {
+    error?: string
+  ) {
     this.receiver = {
       dapp,
       page
@@ -62,6 +64,3 @@ export class Continuation implements Event {
     return storage.load(hash);
   }
 }
-
-
-

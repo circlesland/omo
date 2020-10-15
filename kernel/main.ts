@@ -3,9 +3,53 @@ import {EventBroker, Topic} from "./_other/eventBroker";
 import type Web3 from "web3";
 import type {Event} from "./interfaces/event";
 import {Continuation} from "./continuation/continuation";
+import {mockEventsByHash} from "../mock/mockEventsByHash";
+
+export interface IReceiver {
+  receive(continuation:Continuation) : void;
+}
+
+export type ReceiverMap = {[dapp:string]:{[page:string]:IReceiver}};
+
+const mockReceivers:ReceiverMap = {
+  "omo/marketplace":{
+    "checkout": {
+      receive(continuation: Continuation)
+      {
+        console.log("omo/marketplace/checkout received:", continuation);
+        window.omoEvents.publish(mockEventsByHash["#2"]); // Send to payment
+      }
+    },
+    "checkoutComplete": {
+      receive(continuation: Continuation)
+      {
+        console.log("omo/marketplace/checkoutComplete received:", continuation);
+      }
+    }
+  },
+  "omo/odentity":{
+    "login": {
+      receive(continuation: Continuation)
+      {
+        console.log("omo/odentity/login received:", continuation);
+      }
+    }
+  },
+  "omo/shell":{},
+  "omo/wallet":{
+    "transfer": {
+      receive(continuation: Continuation)
+      {
+        console.log("omo/wallet/transfer received:", continuation);
+        window.omoEvents.publish(mockEventsByHash["#3"]); // Send to checkout complete
+      }
+    }
+  },
+}
 
 const mockContinuationInterpreter = (continuation:Continuation) => {
-
+  const receiver = mockReceivers[continuation.receiver.dapp][continuation.receiver.page];
+  receiver.receive(continuation);
 };
 
 declare global
@@ -46,9 +90,12 @@ try
     {
       switch (event._eventType) {
         case Continuation.type:
+          mockContinuationInterpreter(<Continuation>event);
           break;
       }
-    })
+    });
+
+  window.omoEvents.publish(mockEventsByHash["#1"]);
 }
 catch (e)
 {

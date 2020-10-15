@@ -70,6 +70,6 @@ export const mockEventsByHash = {
       product: "#2983823598",
       seller: "#8437538905",
       buyer: "#8437538905"
-    },
+    }
   }
 }
