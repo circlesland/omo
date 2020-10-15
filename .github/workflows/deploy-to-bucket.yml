@@ -19,7 +19,7 @@ jobs:
           secret: ${{ secrets.TEXTILE_ACCOUNT_SECRET }}
           bucket: 'odentity'
           thread: 'bafk3hjqnsapk7bbedswqq5pfhi3jue3kq7h6wnhgd5o7eedlrkroeva'
-          path: 'dapps/omo/odentity'
+          path: 'dapps/omo/odentity/'
 
   build:
     runs-on: ubuntu-latest
