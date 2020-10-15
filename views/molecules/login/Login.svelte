@@ -5,6 +5,7 @@
   import { LoginState } from "../../../kernel/enums/loginState";
   import type { ServiceError } from "@textile/hub-grpc/hub_pb_service";
 import { isModuleDeclaration } from "typescript";
+import { DagService } from "../../../kernel/services/dagService";
 
   export let login: string = "";
   export let loginProcess = LoginState.None;
@@ -16,7 +17,6 @@ import { isModuleDeclaration } from "typescript";
   );
 
   async function signInOrSignUpAsync() {
-    debugger;
     if (login == null || login == "") return;
     loginProcess = LoginState.LoggingIn;
     let resp = await SessionService.signInOrSignUp(login);
@@ -40,12 +40,12 @@ import { isModuleDeclaration } from "typescript";
   }
   async function  dostuff(){
 
-  //   let instance = await SessionService.GetInstance();
-  //       let keys = await  instance.listKeys();
-  //   var key = keys.getListList()[2];
-  // await instance.listBuckets(key.getKey,key.getSecret);
-//   let dag = await  DagService.getInstance();
-//  await  dag.deinemudda();
+    let instance = await SessionService.GetInstance();
+        let keys = await  instance.listKeys();
+    var key = keys.getListList()[2];
+  await instance.listBuckets(key.getKey(),key.getSecret());
+  let dag = new  DagService();
+ await  dag.testhash();
   }
 </script>
 
