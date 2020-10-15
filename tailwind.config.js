@@ -9,9 +9,9 @@ module.exports = {
   },
   theme: {
     fontFamily: {
-      'title': ['"Baloo Bhai 2"', 'cursive'],
+      'title': ['Aclonica', 'sans-serif'],
       'subtitle': ['Exo 2', 'sans-serif'],
-      'sans': ['"Nunito Sans"', 'sans-serif']
+      'sans': ['"Quicksand"', 'sans-serif']
     },
     extend: {
       colors: {

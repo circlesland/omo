@@ -177,7 +177,7 @@
     <div class="grid">
       <header
         class="flex flex-col justify-center bg-grey-lighter border-b border-gray-300">
-        <div class="text-primary font-title uppercase text-center">Login</div>
+        <div class="text-primary font-bold uppercase text-center">Login</div>
       </header>
       {#if loginProcess != LoginState.LoggedIn}
         <main>
@@ -185,7 +185,7 @@
             Willkommen,
             <br />auf Omo Earth
           </h1>
-          <p class="text-sm py-8 text-center text-gray-700">
+          <p class="text-sm py-4 text-center text-gray-700">
             Die Menschen auf Omo Earth nennen sich Omo Sapiens. Jeder Omo
             entwickelt und kontrolliert 100% seiner eigenen Daten und Apps und
             speichert diese in seinem privaten Omo Haus. Um als Omo Sapien dein
@@ -240,11 +240,11 @@
                 <input
                   type="text"
                   name="email"
-                  class=" text-xl w-full rounded-lg bg-gray-200 border border-transparent focus:outline-none"
+                  class=" text-xl w-full rounded-lg bg-gray-200 border text-gray-700 border-transparent focus:outline-none"
                   bind:value={login} />
               </div>
               <div
-                class="w-full p-3 bg-primary text-bold text-white text-center rounded-lg"
+                class="w-full p-3 bg-primary uppercase font-bold text-white text-center rounded-lg"
                 on:click={() => signInOrSignUpAsync()}>
                 Omo Haus öffne dich
               </div>
