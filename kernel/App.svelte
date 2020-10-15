@@ -3,17 +3,29 @@
   import GridCompositor from "./gridCompositor/GridCompositor.svelte";
   import { loader } from "./_other/loader";
   import {xfetch} from "./main";
-
-  // import { Login } from "../dapps/omo/odentity/index.json";
+  import * as qs from "./_other/query";
+  import * as page from "page";
 
   let viewDocument;
+
+  page.base('/');
+  page('*', parse)
+  page('/', show)
+  page()
+
+  function parse(ctx, next) {
+    ctx.query = qs.parse(location.search.slice(1));
+    next();
+  }
+
+  function show(ctx) {
+    console.log(ctx.query);
+  }
 
   async function load() {
     viewDocument = await xfetch("bafzbeidz3eazquyorhjdiosdgbc5j73yz5omnyqrasuz7pertimlmz7e5y")
   }
   load();
-
-
 
   let local = window.location.hostname == "localhost" || window.location.hostname == "127.0.0.1";
   let development = window.location.hostname == "omo.local";
