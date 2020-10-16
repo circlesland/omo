@@ -5,8 +5,9 @@ import type { Event } from "./interfaces/event";
 
 const appHashNameLookup = {
   "bafzbeidz3eazquyorhjdiosdgbc5j73yz5omnyqrasuz7pertimlmz7e5y": "odentity",
-  //"": "wallet",
-  //"": "marketplace",
+  "bafzbeicmtet2ytuo5jlg2jtuh4rbtfvntznwah5mt2kb4xj3zgxt2ol5ma": "wallet",
+  "bafzbeiafbjcuy4dxnily3nbt7nab6ebdwyti3z7jgdrblnm4ivqw7hubki": "textile",
+  "": "marketplace"
 }
 
 export const isLocal = window.location.hostname == "localhost"
