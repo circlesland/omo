@@ -5,6 +5,8 @@ import type { Event } from "./interfaces/event";
 
 const appHashNameLookup = {
   "bafzbeidz3eazquyorhjdiosdgbc5j73yz5omnyqrasuz7pertimlmz7e5y": "odentity",
+  //"": "wallet",
+  //"": "marketplace",
 }
 
 export const isLocal = window.location.hostname == "localhost"
@@ -14,7 +16,7 @@ export const isLocal = window.location.hostname == "localhost"
 export async function xfetch(hash:string, page?:string) {
   let baseUrl = isLocal
     ? `http://${window.location.hostname}:5000/omo/${appHashNameLookup[hash]}/`
-    : `https://hub.textile.io/ipns/${hash}/`;
+    : `https://${window.location.hostname}/ipns/${hash}/`;
 
   let url = page
     ? baseUrl + page
