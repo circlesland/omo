@@ -22,13 +22,13 @@ jobs:
           bucket: 'odentity'
           thread: 'bafk3hjqnsapk7bbedswqq5pfhi3jue3kq7h6wnhgd5o7eedlrkroeva'
           path: 'dapps/omo/odentity/'
-    - run: echo "bucket - ${{ steps.bucket.outputs.key }}"
-    - run: echo "ipfs - ${{ steps.bucket.outputs.ipfs }}"
-    - run: echo "ipfs link - ${{ steps.bucket.outputs.ipfsUrl }}"
-    - run: echo "ipns - ${{ steps.bucket.outputs.ipns }}"
-    - run: echo "ipns link - ${{ steps.bucket.outputs.ipnsUrl }}"
-    - run: echo "hub - ${{ steps.bucket.outputs.hub }}"
-    - run: echo "www - ${{ steps.bucket.outputs.www }}"
+      - run: echo "bucket - ${{ steps.bucket.outputs.key }}"
+      - run: echo "ipfs - ${{ steps.bucket.outputs.ipfs }}"
+      - run: echo "ipfs link - ${{ steps.bucket.outputs.ipfsUrl }}"
+      - run: echo "ipns - ${{ steps.bucket.outputs.ipns }}"
+      - run: echo "ipns link - ${{ steps.bucket.outputs.ipnsUrl }}"
+      - run: echo "hub - ${{ steps.bucket.outputs.hub }}"
+      - run: echo "www - ${{ steps.bucket.outputs.www }}"
 
   wallet-deploy:
     runs-on: ubuntu-latest
@@ -44,13 +44,13 @@ jobs:
           bucket: 'wallet'
           thread: 'bafk3hjqnsapk7bbedswqq5pfhi3jue3kq7h6wnhgd5o7eedlrkroeva'
           path: 'dapps/omo/wallet/'
-    - run: echo "bucket - ${{ steps.bucket.outputs.key }}"
-    - run: echo "ipfs - ${{ steps.bucket.outputs.ipfs }}"
-    - run: echo "ipfs link - ${{ steps.bucket.outputs.ipfsUrl }}"
-    - run: echo "ipns - ${{ steps.bucket.outputs.ipns }}"
-    - run: echo "ipns link - ${{ steps.bucket.outputs.ipnsUrl }}"
-    - run: echo "hub - ${{ steps.bucket.outputs.hub }}"
-    - run: echo "www - ${{ steps.bucket.outputs.www }}"
+      - run: echo "bucket - ${{ steps.bucket.outputs.key }}"
+      - run: echo "ipfs - ${{ steps.bucket.outputs.ipfs }}"
+      - run: echo "ipfs link - ${{ steps.bucket.outputs.ipfsUrl }}"
+      - run: echo "ipns - ${{ steps.bucket.outputs.ipns }}"
+      - run: echo "ipns link - ${{ steps.bucket.outputs.ipnsUrl }}"
+      - run: echo "hub - ${{ steps.bucket.outputs.hub }}"
+      - run: echo "www - ${{ steps.bucket.outputs.www }}"
 
   kernel-deploy:
     runs-on: ubuntu-latest
