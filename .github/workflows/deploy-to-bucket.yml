@@ -52,6 +52,50 @@ jobs:
       - run: echo "hub - ${{ steps.bucket.outputs.hub }}"
       - run: echo "www - ${{ steps.bucket.outputs.www }}"
 
+  textile-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: ls -la
+      - name: push textile
+        id: textile
+        uses: textileio/github-action-buckets@v20
+        with:
+          key: ${{ secrets.TEXTILE_ACCOUNT_KEY }}
+          secret: ${{ secrets.TEXTILE_ACCOUNT_SECRET }}
+          bucket: 'textile'
+          thread: 'bafk3hjqnsapk7bbedswqq5pfhi3jue3kq7h6wnhgd5o7eedlrkroeva'
+          path: 'dapps/omo/textile/'
+      - run: echo "bucket - ${{ steps.bucket.outputs.key }}"
+      - run: echo "ipfs - ${{ steps.bucket.outputs.ipfs }}"
+      - run: echo "ipfs link - ${{ steps.bucket.outputs.ipfsUrl }}"
+      - run: echo "ipns - ${{ steps.bucket.outputs.ipns }}"
+      - run: echo "ipns link - ${{ steps.bucket.outputs.ipnsUrl }}"
+      - run: echo "hub - ${{ steps.bucket.outputs.hub }}"
+      - run: echo "www - ${{ steps.bucket.outputs.www }}"
+
+  marketplace-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: ls -la
+      - name: push marketplace
+        id: marketplace
+        uses: textileio/github-action-buckets@v20
+        with:
+          key: ${{ secrets.TEXTILE_ACCOUNT_KEY }}
+          secret: ${{ secrets.TEXTILE_ACCOUNT_SECRET }}
+          bucket: 'wallet'
+          thread: 'bafk3hjqnsapk7bbedswqq5pfhi3jue3kq7h6wnhgd5o7eedlrkroeva'
+          path: 'dapps/omo/marketplace/'
+      - run: echo "bucket - ${{ steps.bucket.outputs.key }}"
+      - run: echo "ipfs - ${{ steps.bucket.outputs.ipfs }}"
+      - run: echo "ipfs link - ${{ steps.bucket.outputs.ipfsUrl }}"
+      - run: echo "ipns - ${{ steps.bucket.outputs.ipns }}"
+      - run: echo "ipns link - ${{ steps.bucket.outputs.ipnsUrl }}"
+      - run: echo "hub - ${{ steps.bucket.outputs.hub }}"
+      - run: echo "www - ${{ steps.bucket.outputs.www }}"
+
   kernel-deploy:
     runs-on: ubuntu-latest
     strategy:
