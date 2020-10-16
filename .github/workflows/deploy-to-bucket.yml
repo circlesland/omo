@@ -88,7 +88,7 @@ jobs:
         with:
           key: ${{ secrets.TEXTILE_ACCOUNT_KEY }}
           secret: ${{ secrets.TEXTILE_ACCOUNT_SECRET }}
-          bucket: 'wallet'
+          bucket: 'marketplace'
           thread: 'bafk3hjqnsapk7bbedswqq5pfhi3jue3kq7h6wnhgd5o7eedlrkroeva'
           path: 'dapps/omo/marketplace/'
       - run: echo "bucket - ${{ steps.marketplace.outputs.key }}"
