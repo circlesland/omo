@@ -29,7 +29,6 @@ export async function xfetch(hash:string, page?:string) {
   return json;
 }
 
-
 declare global
 {
     interface Window

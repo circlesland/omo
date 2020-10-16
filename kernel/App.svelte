@@ -8,11 +8,6 @@
 
   let viewDocument;
 
-  page.base('/');
-  page('*', parse)
-  page('*', show)
-  page()
-
   function parse(ctx, next) {
     ctx.query = qs.parse(location.search.slice(1));
     next();
@@ -26,6 +21,19 @@
     page += ".json";
     viewDocument = await xfetch("bafzbeidz3eazquyorhjdiosdgbc5j73yz5omnyqrasuz7pertimlmz7e5y", page);
   }
+
+  page.base('/');
+  page('*', parse)
+  page('*', show)
+  page.start({popstate:true});
+
+
+  setTimeout(() => {
+    page.default.redirect("?page=blubb");
+    setTimeout(() => {
+      page.default.redirect("?page=index");
+    }, 5000);
+  }, 5000);
 
   let local = window.location.hostname == "localhost" || window.location.hostname == "127.0.0.1";
   let development = window.location.hostname == "omo.local";

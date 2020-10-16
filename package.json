@@ -37,6 +37,7 @@
     "cids": "^1.0.2",
     "crypto": "^1.0.1",
     "crypto-js": "^4.0.0",
+    "ipfs": "^0.50.2",
     "ipfs-only-hash": "^2.0.1",
     "multihashes": "^3.0.1",
     "page": "^1.11.6",

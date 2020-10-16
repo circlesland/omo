@@ -23,12 +23,13 @@ export class CirclesFlows {
     const safeAddress = await CirclesWrapper.createSafe(safeOwner);
 
     // Let Alice, Bob and Charly trust the new safe
+/*
     await Promise.all([
       CirclesWrapper.addTrustLine(this.aliceAccount, this.aliceSafeAddress, safeAddress, 0)
     , CirclesWrapper.addTrustLine(this.bobAccount, this.bobSafeAddress, safeAddress, 0)
     , CirclesWrapper.addTrustLine(this.charlyAccount, this.charlySafeAddress, safeAddress, 0)]);
-
     await delay(20000);
+*/
 
     // Deploy the new safe
     await CirclesWrapper.deploySafe(safeOwner, safeAddress);
@@ -36,11 +37,12 @@ export class CirclesFlows {
     await delay(20000);
 
     await CirclesWrapper.deployToken(safeOwner, safeAddress);
-
+/*
     // Let Alice, Bob and Charly un-trust the new safe
     await Promise.all([
       CirclesWrapper.removeTrustLine(this.aliceAccount, this.aliceSafeAddress, safeAddress)
     , CirclesWrapper.removeTrustLine(this.bobAccount, this.bobSafeAddress, safeAddress)
     , CirclesWrapper.removeTrustLine(this.charlyAccount, this.charlySafeAddress, safeAddress)]);
+ */
   }
 }

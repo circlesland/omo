@@ -25,10 +25,52 @@ const provider = new Web3.providers.WebsocketProvider(
 
 const web3 = new Web3();
 web3.setProvider(provider);
+
+
+/*
+Testnet:
+            API_SERVICE_EXTERNAL: "https://api.test.circles.garden",
+            BASE_PATH: "https://test.circles.garden",
+            ETHEREUM_NODE_WS: "wss://sokol.poa.network/wss",
+            GRAPH_NODE_EXTERNAL: "https://graph.test.circles.garden",
+            HUB_ADDRESS: "0x5D0dDd1d35D3FA9950Defd99F92053b3B9E236D0",
+            NODE_ENV: "production",
+            PROXY_FACTORY_ADDRESS: "0x0F9f9C38E53674EF7a29A1DE38EAbF34e1DCB81C",
+            RELAY_SERVICE_EXTERNAL: "https://relay.test.circles.garden",
+            SAFE_ADDRESS: "0x8b4404DE0CaECE4b966a9959f134f0eFDa636156",
+            SAFE_FUNDER_ADDRESS: "0x691b74E59b7D65572DFF5543e5A0e23c2F32049a",
+            SUBGRAPH_NAME: "CirclesUBI/circles-subgraph",
+            EXPLORER_URL: "https://blockscout.com/poa/sokol/address/:address",
+            SENTRY_DSN_URL: "https://8136e680db704fdfbde93258342082b0@o334096.ingest.sentry.io/5446125",
+            STAGING_NOTIFICATION: "1",
+            STORAGE_NAMESPACE: "sokol-v1",
+            RELEASE_VERSION: "1.7.2",
+            CORE_RELEASE_VERSION: "2.9.2"
+ */
+/*
+Production:
+            API_SERVICE_EXTERNAL: "https://api.circles.garden",
+            BASE_PATH: "https://circles.garden",
+            ETHEREUM_NODE_WS: "wss://frosty-delicate-sunset.xdai.quiknode.pro/",
+            GRAPH_NODE_EXTERNAL: "https://graph.circles.garden",
+            HUB_ADDRESS: "0x29b9a7fBb8995b2423a71cC17cf9810798F6C543",
+            NODE_ENV: "production",
+            PROXY_FACTORY_ADDRESS: "0x8b4404DE0CaECE4b966a9959f134f0eFDa636156",
+            RELAY_SERVICE_EXTERNAL: "https://relay.circles.garden",
+            SAFE_ADDRESS: "0x2CB0ebc503dE87CFD8f0eCEED8197bF7850184ae",
+            SAFE_FUNDER_ADDRESS: "0x9219D44191b2709955FE67D03814b0DA6b224e0b",
+            SUBGRAPH_NAME: "CirclesUBI/circles-subgraph",
+            EXPLORER_URL: "https://blockscout.com/poa/xdai/address/:address",
+            SENTRY_DSN_URL: "https://1c5b1a302d3d4e7a8037e67b31fefbd0@o334096.ingest.sentry.io/5446133",
+            STORAGE_NAMESPACE: "mainnet",
+            RELEASE_VERSION: "1.7.2",
+            CORE_RELEASE_VERSION: "2.9.2"
+ */
+
 const core = new CirclesCore(web3, {
-  hubAddress: '0xab9E38F5f5798d26849Db4AA84Dd45199595B8B0',
-  proxyFactoryAddress: '0xf15b5a833B14051141711e66fE045a4Aa27531a7',
-  safeMasterAddress: '0x16c08FD4d098a6d72Da7196AD129D8B04425Df91',
+  hubAddress: '0x5D0dDd1d35D3FA9950Defd99F92053b3B9E236D0',
+  proxyFactoryAddress: '0x0F9f9C38E53674EF7a29A1DE38EAbF34e1DCB81C',
+  safeMasterAddress: '0x8b4404DE0CaECE4b966a9959f134f0eFDa636156',
   apiServiceEndpoint: 'https://api.test.circles.garden',
   graphNodeEndpoint: 'https://api.thegraph.com',
   relayServiceEndpoint: 'https://relay.test.circles.garden',
@@ -98,6 +140,7 @@ export class CirclesWrapper
     safeAddress: string,
   )
   {
+
     await core.safe.deploy(safeOwner, {safeAddress});
   }
 
