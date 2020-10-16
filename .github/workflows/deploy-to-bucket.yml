@@ -78,7 +78,7 @@ jobs:
 
   marketplace-deploy:
     runs-on: ubuntu-latest
-    needs: textile
+    needs: textile-deploy
     steps:
       - uses: actions/checkout@v2
       - run: ls -la
