@@ -4,15 +4,12 @@
   import type { User } from "../../../kernel/interfaces/user";
   import { LoginState } from "../../../kernel/enums/loginState";
   import type { ServiceError } from "@textile/hub-grpc/hub_pb_service";
-  import { isModuleDeclaration } from "typescript";
   import { DagService } from "../../../kernel/services/dagService";
   import page from "page";
   export let login: string = "";
   export let loginProcess = LoginState.None;
   export let user: User;
   export let error: ServiceError;
-
-  SessionService.GetInstance().then();
 
   let addrGatewayUrl = "";
   SessionService.GetInstance().then((instance: SessionService) => {

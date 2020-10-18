@@ -35,7 +35,6 @@ export class DagService {
 
 
     async testhash() {
-        debugger;
         let start = new Date();
         const buf = Buffer.from(JSON.stringify("testcontent", null, 2))
 

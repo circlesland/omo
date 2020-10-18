@@ -54,10 +54,12 @@
         <div class="text-primary font-bold uppercase text-center">Login</div>
       </header>
       <main>
+        {#if user}
         <h1 class="text-center text-3xl font-title text-primary">
           Willkommen {user.name},
           <br />{user.email}
         </h1>
+        {/if}
         <p class="text-sm py-4 text-center text-gray-700">Yeah!</p>
       </main>
 

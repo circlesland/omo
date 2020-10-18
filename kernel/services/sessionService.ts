@@ -40,31 +40,27 @@ export class SessionService {
     private static _instance: SessionService | null = null;
 
     static async GetInstance(): Promise<SessionService> {
-        let instance = SessionService._instance;
-        if (instance == null) {
-            instance = window.sessionStorage["sid"] ?
-                await instance.restoreSession()
-                : new SessionService();
+        if (this._instance == null) {
+            this._instance = new SessionService();
+            if (window.localStorage["sid"])
+                await this._instance.restoreSession(window.localStorage["sid"]);
         }
-        window["session"] = instance;
-        return instance;
+        return this._instance;
     }
 
     async storeSession(sessionId) {
-    
         if (this.hostsWhiteList.some(x => x == window.location.host))
-            window.sessionStorage.setItem("sid", sessionId);
+            window.localStorage.setItem("sid", sessionId);
+        this.session = sessionId;
     }
 
     async restoreSession(sessionId?: string): Promise<SessionService> {
-
-        
         if (this.session) sessionId = this.session;
-        sessionId = sessionId ? sessionId : window.sessionStorage.getItem("sid");
-        SessionService._instance = new SessionService();
-        SessionService._instance.session = window.sessionStorage["sid"];
-        await this.updateSession(sessionId, SessionService._instance);
-        return SessionService._instance;
+        else sessionId = sessionId ? sessionId : window.localStorage.getItem("sid");
+        await this.updateSession(sessionId, this);
+        window["session"] = this;
+
+        return this;
     }
 
     async signInOrSignUp(userEmail: string, username?: string): Promise<ApiResponse> {
@@ -79,7 +75,7 @@ export class SessionService {
     }
     async updateSession(sessionId: string, instance?: SessionService): Promise<SessionService> {
         this.storeSession(sessionId);
-        var instance = instance ? instance : await SessionService.GetInstance();
+        var instance = instance ? instance : await SessionService._instance;
         let meta = await instance.context.withSession(instance.session).toMetadata();
         let req = new pb.GetSessionInfoRequest();
 
@@ -192,5 +188,20 @@ export class SessionService {
 
     get hasSession() {
         return this.session != "";
+    }
+
+    async logout() {
+        this.context = this.context.withSession(this.session);
+        let meta = await this.context.toMetadata();
+        let req = new pb.SignoutRequest();
+        return new Promise((resolve) => {
+            this.client.signout(req, meta, (error: ServiceError | null,
+                message: pb.SignoutResponse | null
+            ) => {
+                localStorage.removeItem("sid");
+                SessionService._instance = null;
+                resolve(message)
+            });
+        });
     }
 }
