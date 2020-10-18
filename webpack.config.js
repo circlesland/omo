@@ -66,8 +66,16 @@ module.exports = {
   devServer: {
     compress: true,
     disableHostCheck: true,
-    contentBase: [path.join(__dirname, 'dist'),path.join(__dirname, 'dapps')],
-    port: 5000
- }   
- 
+    contentBase: [path.join(__dirname, 'dist'), path.join(__dirname, 'dapps')],
+    port: 5000,
+    allowedHosts: [
+      'localhost',
+      '127.0.0.1',
+      'omo.local'],
+    https: true,
+    historyApiFallback: {
+      index: 'index.html'
+    }
+  }
+
 }
