@@ -45,6 +45,8 @@ export class SessionService {
             if (window.localStorage["sid"])
                 await this._instance.restoreSession(window.localStorage["sid"]);
         }
+        else if (!this._instance.username) await this._instance.restoreSession(window.localStorage["sid"]);
+
         return this._instance;
     }
 
