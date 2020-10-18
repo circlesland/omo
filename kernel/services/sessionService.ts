@@ -13,7 +13,7 @@ const isLocal = window.location.hostname == "localhost" || window.location.hostn
 const isDevelopment = window.location.hostname == "dev.omo.local";
 
 export class SessionService {
-    private session: string;
+    private session: string = "";
     private publicKey: string;
     private privateKey: string;
     addrGatewayUrl: string;
@@ -23,49 +23,62 @@ export class SessionService {
     username: string;
     useremail: string;
 
+    private hostsWhiteList: string[] = [
+        "omo.earth:5000",
+        "omo.local:5000",
+        "127.0.0.1:5000",
+        "localhost:5000"
+    ];
+
     private constructor() {
         this.addrGatewayUrl = isLocal || isDevelopment ? "https://hub.dev.omo.earth" : "https://hub.textile.io";
         this.addrAPIUrl = isLocal || isDevelopment ? "https://webapi.dev.omo.earth" : defaultHost;
         this.context = new Context(this.addrAPIUrl);
         this.client = new APIServiceClient(this.context.host, { transport: WebsocketTransport(), });
-
     }
+
     private static _instance: SessionService | null = null;
+
     static async GetInstance(): Promise<SessionService> {
         let instance = SessionService._instance;
         if (instance == null) {
             instance = window.sessionStorage["sid"] ?
-                await this.restoreSession()
+                await instance.restoreSession()
                 : new SessionService();
         }
         window["session"] = instance;
         return instance;
     }
 
-    static async storeSession(sessionId) {
-        window.sessionStorage.setItem("sid", sessionId);
+    async storeSession(sessionId) {
+    
+        if (this.hostsWhiteList.some(x => x == window.location.host))
+            window.sessionStorage.setItem("sid", sessionId);
     }
 
-    static async restoreSession(sessionId?: string): Promise<SessionService> {
+    async restoreSession(sessionId?: string): Promise<SessionService> {
+
+        
+        if (this.session) sessionId = this.session;
         sessionId = sessionId ? sessionId : window.sessionStorage.getItem("sid");
-        let instance = new SessionService();
-        instance.session = window.sessionStorage["sid"];
-        await SessionService.updateSession(sessionId, instance);
-        return instance;
+        SessionService._instance = new SessionService();
+        SessionService._instance.session = window.sessionStorage["sid"];
+        await this.updateSession(sessionId, SessionService._instance);
+        return SessionService._instance;
     }
 
-    static async signInOrSignUp(userEmail: string, username?: string): Promise<ApiResponse> {
-        let resp = await SessionService.signIn(userEmail);
+    async signInOrSignUp(userEmail: string, username?: string): Promise<ApiResponse> {
+        let resp = await this.signIn(userEmail);
         if (resp.error && resp.error.code == 5) {
-            resp = await SessionService.signUp(userEmail, username);
+            resp = await this.signUp(userEmail, username);
         }
         if (!resp.error) {
-            await SessionService.updateSession(resp.session);
+            await this.updateSession(resp.session);
         }
         return resp;
     }
-    static async updateSession(sessionId: string, instance?: SessionService): Promise<SessionService> {
-        SessionService.storeSession(sessionId);
+    async updateSession(sessionId: string, instance?: SessionService): Promise<SessionService> {
+        this.storeSession(sessionId);
         var instance = instance ? instance : await SessionService.GetInstance();
         let meta = await instance.context.withSession(instance.session).toMetadata();
         let req = new pb.GetSessionInfoRequest();
@@ -82,10 +95,7 @@ export class SessionService {
                     instance.useremail = message.getEmail();
                     instance.privateKey = message.getKey_asB64();
                     instance.session = sessionId;
-
-                    let user: User = error
-                        ? { name: "", email: "" }
-                        : { name: message?.getUsername(), email: message?.getEmail() };
+                    SessionService._instance = instance;
                     resolve(instance);
                 }
             );
@@ -93,7 +103,7 @@ export class SessionService {
 
     }
 
-    static async signUp(userEmail: string, username?: string): Promise<ApiResponse> {
+    async signUp(userEmail: string, username?: string): Promise<ApiResponse> {
         let instance = await SessionService.GetInstance();
         let meta = await instance.context.toMetadata();
         let req = new pb.SignupRequest();
@@ -115,7 +125,7 @@ export class SessionService {
         });
     }
 
-    static async signIn(usernameOrEmail): Promise<ApiResponse> {
+    async signIn(usernameOrEmail): Promise<ApiResponse> {
         let instance = await SessionService.GetInstance();
         let meta = await instance.context.toMetadata();
         let req = new pb.SigninRequest();
@@ -157,19 +167,18 @@ export class SessionService {
     async listBuckets(key, secret) {
         const buckets = await Buckets.withKeyInfo({ key, secret });
         let buck = await buckets.getOrCreate("mein bucket");
-        
+
         let start = new Date();
-        for(let i=0;i<100;i++)
-        {
+        for (let i = 0; i < 100; i++) {
             const path = `index${i}.json`
-            const buf = Buffer.from(JSON.stringify("testcontent"+i, null, 2))
-            var foo =  await buckets.pushPath(buck.root.key, path, buf);
+            const buf = Buffer.from(JSON.stringify("testcontent" + i, null, 2))
+            var foo = await buckets.pushPath(buck.root.key, path, buf);
         }
-       
-       let end = new Date();
-       console.log("hub push take (average 100) "+(end.getMilliseconds()-start.getMilliseconds())/100+" milliseconds")
-       console.log("uploaded mudda",foo);
-       
+
+        let end = new Date();
+        console.log("hub push take (average 100) " + (end.getMilliseconds() - start.getMilliseconds()) / 100 + " milliseconds")
+        console.log("uploaded mudda", foo);
+
         // console.log(await buckets.listPathFlat(buck.root.key, "/"));
         // let bucks = await buckets.list();
         // console.log(bucks);
@@ -181,4 +190,7 @@ export class SessionService {
         return null;
     }
 
+    get hasSession() {
+        return this.session != "";
+    }
 }

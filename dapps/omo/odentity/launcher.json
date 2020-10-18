@@ -1,0 +1,18 @@
+{
+  "needsAuthorization": false,
+  "area": "main",
+  "layout": "LayoutMain",
+  "children": [
+    {
+      "area": "main",
+      "view": "Blubb",
+      "data": {
+        "title": "Follow your passion",
+        "image": "/start.jpg",
+        "link": "safe"
+      },
+      "trigger": [],
+      "children": []
+    }
+  ]
+}

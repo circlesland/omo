@@ -4,30 +4,36 @@
   import type { User } from "../../../kernel/interfaces/user";
   import { LoginState } from "../../../kernel/enums/loginState";
   import type { ServiceError } from "@textile/hub-grpc/hub_pb_service";
-import { isModuleDeclaration } from "typescript";
-import { DagService } from "../../../kernel/services/dagService";
-
+  import { isModuleDeclaration } from "typescript";
+  import { DagService } from "../../../kernel/services/dagService";
+  import page from "page";
   export let login: string = "";
   export let loginProcess = LoginState.None;
   export let user: User;
   export let error: ServiceError;
+
+  SessionService.GetInstance().then();
+
   let addrGatewayUrl = "";
-  SessionService.GetInstance().then(
-    (instance: SessionService) => (addrGatewayUrl = instance.addrGatewayUrl)
-  );
+  SessionService.GetInstance().then((instance: SessionService) => {
+    if (instance.hasSession) {
+      page.redirect("/blubb");
+    }
+    addrGatewayUrl = instance.addrGatewayUrl;
+  });
 
   async function signInOrSignUpAsync() {
     if (login == null || login == "") return;
     loginProcess = LoginState.LoggingIn;
-    let resp = await SessionService.signInOrSignUp(login);
+    let sessionService = await SessionService.GetInstance();
+    let resp = await sessionService.signInOrSignUp(login);
 
     if (resp.error) {
       error = resp.error;
       loginProcess = LoginState.Error;
       return;
     }
-    var session = await SessionService.GetInstance();
-    user = { email: session.getUserMail(), name: session.getUsername() };
+    user = { email: sessionService.getUserMail(), name: sessionService.getUsername() };
 
     loginProcess = LoginState.LoggedIn;
 
@@ -35,17 +41,16 @@ import { DagService } from "../../../kernel/services/dagService";
     //     key = keys.getListList()[3];
     //     console.log(await TextileSession.Instance.listBuckets(key.getKey(), key.getSecret()));
     //     key = keys.getListList()[4];
-    //    
+    //
     //  console.log(await SessionService.GetInstance.listBuckets(key.getKey(), key.getSecret()));
   }
-  async function  dostuff(){
-
+  async function dostuff() {
     let instance = await SessionService.GetInstance();
-        let keys = await  instance.listKeys();
+    let keys = await instance.listKeys();
     var key = keys.getListList()[2];
-  await instance.listBuckets(key.getKey(),key.getSecret());
-  let dag = new  DagService();
- await  dag.testhash();
+    await instance.listBuckets(key.getKey(), key.getSecret());
+    let dag = new DagService();
+    await dag.testhash();
   }
 </script>
 
@@ -138,8 +143,8 @@ import { DagService } from "../../../kernel/services/dagService";
                   <img src="images/textile.png" />
                 </div>
                 <div
-                class="text-xs text-center text-gray-500 mr-1 rounded-lg bg-gray-100 bg-gray-100 p-3 h-20 w-20">
-                more coming soon
+                  class="text-xs text-center text-gray-500 mr-1 rounded-lg bg-gray-100 bg-gray-100 p-3 h-20 w-20">
+                  more coming soon
                 </div>
               </div>
               <p
@@ -184,7 +189,7 @@ import { DagService } from "../../../kernel/services/dagService";
         {#if loginProcess == LoginState.LoggedIn}
           <div class="p-8">App-Navbar</div>
         {/if}
-        <button on:click="{()=>dostuff()}">klick mich</button>
+        <button on:click={() => dostuff()}>klick mich</button>
       </footer>
     </div>
   </div>

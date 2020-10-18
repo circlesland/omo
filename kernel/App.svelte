@@ -71,15 +71,15 @@ function getIpnsHashFromUrl(){
    xfetch(getIpnsHashFromUrl()).then(json => {viewDocument = json;});
 
 // page.redirect("/ipns/bafzbeidz3eazquyorhjdiosdgbc5j73yz5omnyqrasuz7pertimlmz7e5y")
-  setTimeout(() => {
-    page.redirect("/blubb");
-    setTimeout(() => {
-      page.redirect("/");
-      setTimeout(() => {
-      page.redirect("/index");
-    }, 5000);
-    }, 5000);
-  }, 5000);
+  // setTimeout(() => {
+  //   page.redirect("/blubb");
+  //   setTimeout(() => {
+  //     page.redirect("/");
+  //     setTimeout(() => {
+  //     page.redirect("/index");
+  //   }, 5000);
+  //   }, 5000);
+  // }, 5000);
 
   let local = window.location.hostname == "localhost" || window.location.hostname == "127.0.0.1";
   let development = window.location.hostname == "omo.local";

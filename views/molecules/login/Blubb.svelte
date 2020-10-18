@@ -1,4 +1,9 @@
 <script lang="ts">
+  import { SessionService } from "../../../kernel/services/sessionService";
+  let user: { name: string; email: string };
+  SessionService.GetInstance().then((session) => {
+    user = { name: session.getUsername(), email: session.getUserMail() };
+  });
 </script>
 
 <style>
@@ -48,25 +53,23 @@
         class="flex flex-col justify-center bg-grey-lighter border-b border-gray-300">
         <div class="text-primary font-bold uppercase text-center">Login</div>
       </header>
-        <main>
-          <h1 class="text-center text-3xl font-title text-primary">
-            Willkommen,
-            <br />auf Blubb
-          </h1>
-          <p class="text-sm py-4 text-center text-gray-700">
-            Yeah!
-          </p>
-        </main>
+      <main>
+        <h1 class="text-center text-3xl font-title text-primary">
+          Willkommen {user.name},
+          <br />{user.email}
+        </h1>
+        <p class="text-sm py-4 text-center text-gray-700">Yeah!</p>
+      </main>
 
       <footer class="text-sm border-t border-gray-300 p-6">
-          <div>
-            <form method="POST" onsubmit="return false;">
-              <div
-                class="w-full p-3 bg-primary uppercase font-bold text-white text-center rounded-lg">
-                Oida!
-              </div>
-            </form>
-          </div>
+        <div>
+          <form method="POST" onsubmit="return false;">
+            <div
+              class="w-full p-3 bg-primary uppercase font-bold text-white text-center rounded-lg">
+              Oida!
+            </div>
+          </form>
+        </div>
       </footer>
     </div>
   </div>
