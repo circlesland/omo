@@ -78,6 +78,8 @@ export class SessionService {
     async updateSession(sessionId: string, instance?: SessionService): Promise<SessionService> {
         this.storeSession(sessionId);
         var instance = instance ? instance : await SessionService._instance;
+        if (!instance.session)
+            return;
         let meta = await instance.context.withSession(instance.session).toMetadata();
         let req = new pb.GetSessionInfoRequest();
 
