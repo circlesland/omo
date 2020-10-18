@@ -17,9 +17,9 @@ export const isLocal = window.location.hostname == "localhost"
   || window.location.hostname == "omo.local";
 
 export async function xfetch(hash: string, page?: string): Promise<object> {
-  let baseUrl = `${window.location.origin}/omo/${isLocal
-    ? appHashNameLookup[hash]
-    : hash}/`;
+  let baseUrl = `${window.location.origin}/${isLocal
+    ? `omo/${appHashNameLookup[hash]}`
+    : `ipns/${hash}/`}`;
   page = page == "" || page == "/" || !page ? "index" : page;
   const data = await fetch(baseUrl + page + ".json");
   const json = await data.json();
