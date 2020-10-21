@@ -10,11 +10,12 @@
   export let loginProcess = LoginState.None;
   export let user: User;
   export let error: ServiceError;
+  import {navigateTo} from "../../../kernel/main";
 
   let addrGatewayUrl = "";
   SessionService.GetInstance().then((instance: SessionService) => {
     if (instance.hasSession) {
-      page.redirect("/blubb");
+      navigateTo("odentity","blubb");
     }
     addrGatewayUrl = instance.addrGatewayUrl;
   });
@@ -186,7 +187,7 @@
         {#if loginProcess == LoginState.LoggedIn}
           <div class="p-8">App-Navbar</div>
         {/if}
-        <button on:click={() => dostuff()}>klick mich</button>
+        <button on:click={() => navigateTo("wallet","index")}>klick mich</button>
       </footer>
     </div>
   </div>

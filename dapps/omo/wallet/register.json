@@ -5,7 +5,7 @@
   "children": [
     {
       "area": "main",
-      "view": "Index",
+      "view": "Register",
       "data": {
         "title": "Follow your passion",
         "image": "/start.jpg",

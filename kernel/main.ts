@@ -4,12 +4,28 @@ import type Web3 from "web3";
 import type { Event } from "./interfaces/event";
 import Process, { LoginProcess } from "./processes/process";
 import { Kernel, Registry } from "./registry";
+import page from "page";
 
 const appHashNameLookup = {
   "bafzbeidz3eazquyorhjdiosdgbc5j73yz5omnyqrasuz7pertimlmz7e5y": "odentity",
   "bafzbeicmtet2ytuo5jlg2jtuh4rbtfvntznwah5mt2kb4xj3zgxt2ol5ma": "wallet",
   "bafzbeiafbjcuy4dxnily3nbt7nab6ebdwyti3z7jgdrblnm4ivqw7hubki": "textile",
   "bafzbeiahddbruy5letgjx6tiijzaednwr3zngtk57u3yyrjcsba7sqjbdq": "marketplace"
+}
+const hashAppNameLookup = {
+  "odentity": "bafzbeidz3eazquyorhjdiosdgbc5j73yz5omnyqrasuz7pertimlmz7e5y",
+  "wallet": "bafzbeicmtet2ytuo5jlg2jtuh4rbtfvntznwah5mt2kb4xj3zgxt2ol5ma",
+  "textile": "bafzbeiafbjcuy4dxnily3nbt7nab6ebdwyti3z7jgdrblnm4ivqw7hubki",
+  "marketplace": "bafzbeiahddbruy5letgjx6tiijzaednwr3zngtk57u3yyrjcsba7sqjbdq"
+}
+export const navigateTo = function navigateTo(dapp: string, action: string) {
+  // page.base(`/ipns/`);
+  let dappLink = `/ipns/${hashAppNameLookup[dapp.toLowerCase()]}`
+  if (dappLink != window.location.pathname) {
+    window.history.pushState(null, null, dappLink);
+    page.base(dappLink);
+  }
+  page.redirect(action.toLowerCase());
 }
 
 export const isLocal = window.location.hostname == "localhost"

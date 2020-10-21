@@ -1,6 +1,13 @@
-import Login from "../../views/molecules/login/Login.svelte";
+import TextileLogin from "../../views/molecules/login/TextileLogin.svelte";
 import Blubb from "../../views/molecules/login/Blubb.svelte";
-
+import ErrorView from "../../views/_other/ErrorView.svelte";
+import GetTrust from "../../views/_other/GetTrust.svelte";
+import Index from "../../views/_other/Index.svelte";
+import Login from "../../views/_other/Login.svelte";
+import Register from "../../views/_other/Register.svelte";
+import Safe from "../../views/_other/Safe.svelte";
+import TrustSomeone from "../../views/_other/TrustSomeone.svelte";
+import UnlockSafe from "../../views/_other/UnlockSafe.svelte";
 import { LayoutHeaderMain } from "../../views/layouts/LayoutHeaderMain";
 import { LayoutHeaderMainFooter } from "../../views/layouts/LayoutHeaderMainFooter";
 import { LayoutMain } from "../../views/layouts/LayoutMain";
@@ -9,7 +16,7 @@ import { LayoutNavMain } from "../../views/layouts/LayoutNavMain";
 import { LayoutNav } from "../../views/layouts/LayoutNav";
 
 import type { Component } from "../interfaces/component";
-import {runtime} from "../runtime";
+import { runtime } from "../runtime";
 
 export const loader = {
   getViewByName: (name) => {
@@ -18,11 +25,27 @@ export const loader = {
         return Login;
       case "Blubb":
         return Blubb;
+      case "ErrorView":
+        return ErrorView;
+      case "GetTrust":
+        return GetTrust;
+      case "Index":
+        return Index;
+      case "Register":
+        return Register;
+      case "TextileLogin":
+        return TextileLogin;
+      case "Safe":
+        return Safe;
+      case "TrustSomeone":
+        return TrustSomeone;
+      case "UnlockSafe":
+        return UnlockSafe;
     }
   },
 
   layout: {
-    getLayoutByName: (name) => {
+    getLayoutByName: (name: string) => {
       switch (name) {
         case "LayoutHeaderMain":
           return LayoutHeaderMain;
@@ -37,7 +60,7 @@ export const loader = {
         case "LayoutNav":
           return LayoutNav;
       }
-      throw new Error("Couldn't find layout with the name " + name);
+      throw new Error("Couldn't find layout with the name ");
     },
     isAreaAvailable(layoutName: string, component: Component) {
       const layout = loader.layout.getLayoutByName(layoutName);

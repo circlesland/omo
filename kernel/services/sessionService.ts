@@ -42,7 +42,7 @@ export class SessionService {
     static async GetInstance(): Promise<SessionService> {
         if (this._instance == null) {
             this._instance = new SessionService();
-            if (window.localStorage["sid"])
+            if (window.localStorage["sid"] != undefined && window.localStorage["sid"] != null && window.localStorage["sid"] != "" && window.localStorage["sid"] != "null")
                 await this._instance.restoreSession(window.localStorage["sid"]);
         }
         else if (!this._instance.username) await this._instance.restoreSession(window.localStorage["sid"]);
