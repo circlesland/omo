@@ -112,3 +112,5 @@ dist/build
 *.js.map
 
 !/*.config.js
+.DS_Store
+.DS_Store?
