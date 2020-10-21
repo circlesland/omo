@@ -23,6 +23,7 @@
 		{
 			"name":"°ipfs",
 			"path": "services/o-ipfs"
+			
 		},
 		{
 			"name": "°views",
