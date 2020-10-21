@@ -1,55 +1,51 @@
-if [ -z "$(ls -A °os)" ]; then
-    git clone https://github.com/omoearth/o-os.git °os
+if [ -z "$(ls -A os)" ]; then
+    git clone https://github.com/omoearth/o-os.git o-os
 else
-   git fetch °os
+   git fetch o-os
+fi
+
+
+if [ -z "$(ls -A dapps/o-dentity)" ]; then
+    git clone https://github.com/omoearth/o-dapp-odentity.git dapps/o-dentity
+else
+    git fetch dapps/o-dentity
+fi
+
+
+if [ -z "$(ls -A o-circles-protocol)" ]; then
+    git clone https://github.com/omoearth/o-circles-protocol.git o-circles-protocol
+else
+   git fetch o-circles-protocol
+fi
+
+
+if [ -z "$(ls -A o-views)" ]; then
+    git clone https://github.com/omoearth/o-views.git o-views
+else
+   git fetch o-views
+fi
+
+
+if [ -z "$(ls -A dapps/o-market)" ]; then
+    git clone https://github.com/omoearth/o-dapp-market.git dapps/o-market
+else
+    git fetch dapps/o-market
 fi
 
 
 
-if [ -z "$(ls -A °circles-protocol)" ]; then
-    git clone https://github.com/omoearth/o-circles-protocol.git °circles-protocol
+if [ -z "$(ls -A dapps/o-wallet)" ]; then
+    git clone https://github.com/omoearth/o-dapp-wallet.git dapps/o-wallet
 else
-   git fetch °circles-protocol
+    git fetch dapps/o-wallet
 fi
 
 
 
-if [ -z "$(ls -A °views)" ]; then
-    git clone https://github.com/omoearth/o-views.git °views
+if [ -z "$(ls -A services/o-ipfs)" ]; then
+    git clone https://github.com/omoearth/o-service-ipfs.git services/o-ipfs  
 else
-   git fetch °views
-fi
-
-
-
-if [ -z "$(ls -A dapps/°dentity)" ]; then
-    git clone https://github.com/omoearth/o-dapp-odentity.git dapps/°dentity
-else
-    git fetch dapps/°dentity
-fi
-
-
-
-if [ -z "$(ls -A dapps/°market)" ]; then
-    git clone https://github.com/omoearth/o-dapp-market.git dapps/°market
-else
-    git fetch dapps/°market
-fi
-
-
-
-if [ -z "$(ls -A dapps/°wallet)" ]; then
-    git clone https://github.com/omoearth/o-dapp-wallet.git dapps/°wallet
-else
-    git fetch dapps/°wallet
-fi
-
-
-
-if [ -z "$(ls -A services/°ipfs)" ]; then
-    git clone https://github.com/omoearth/o-service-ipfs.git services/°ipfs  
-else
-    git fetch services/°ipfs
+    git fetch services/o-ipfs
 fi
 
 echo "° ready"

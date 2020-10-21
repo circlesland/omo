@@ -9,12 +9,12 @@
 			"path": "dapps/o-dentity"
 		},
 		{
-			"name":"°wallet",
-			"path": "dapps/o-wallet",
+			"name":"°market",
+			"path": "dapps/o-market"
 		},
 		{
-			"name":"°market",
-			"path": "dapps/o-smarket"
+			"name":"°wallet",
+			"path": "dapps/o-wallet",
 		},
 		{
 			"name":"°circles-protocol",
