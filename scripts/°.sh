@@ -1,4 +1,4 @@
-if [ -z "$(ls -A os)" ]; then
+if [ -z "$(ls -A o-os)" ]; then
     git clone https://github.com/omoearth/o-os.git o-os
 else
    git fetch o-os

@@ -2,7 +2,8 @@
   "name": "omo",
   "version": "0.0.1",
   "scripts": {
-    "°": "./°.sh",
+    "°": "./scripts/°.sh",
+    "°npm": "./scripts/npm.sh",
     "build": "NODE_ENV=development webpack",
     "dev": "webpack-dev-server",
     "tsc": "npx tsc -w"
@@ -36,7 +37,6 @@
     "base-58": "0.0.1",
     "bs58": "^4.0.1",
     "cids": "^1.0.2",
-    "circles-protocol": "file:°circles-protocol",
     "crypto": "^1.0.1",
     "crypto-js": "^4.0.0",
     "ipfs": "^0.50.2",
