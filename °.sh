@@ -47,7 +47,7 @@ fi
 
 
 if [ -z "$(ls -A services/°ipfs)" ]; then
-    git clone https://github.com/omoearth/o-service-ipfs.git services/°ipfs  
+    git clone https://github.com/omoearth/o-service-ipfss services/°ipfs  
 else
     git fetch services/°ipfs
 fi
