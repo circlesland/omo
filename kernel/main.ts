@@ -6,6 +6,10 @@ import Process, { LoginProcess } from "./processes/process";
 import { Kernel, Registry } from "./registry";
 import page from "page";
 
+import { foo } from "circles-protocol";
+
+
+alert(foo);
 const appHashNameLookup = {
   "bafzbeidz3eazquyorhjdiosdgbc5j73yz5omnyqrasuz7pertimlmz7e5y": "odentity",
   "bafzbeicmtet2ytuo5jlg2jtuh4rbtfvntznwah5mt2kb4xj3zgxt2ol5ma": "wallet",
