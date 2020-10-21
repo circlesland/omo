@@ -2,42 +2,88 @@
   import OmoFavicon from "../views/atoms/OmoFavicon.svelte";
   import GridCompositor from "./gridCompositor/GridCompositor.svelte";
   import { loader } from "./_other/loader";
-  import {xfetch} from "./main";
+  import {xfetch, isLocal} from "./main";
   import * as qs from "./_other/query";
   import * as page from "page";
+import { BucketContinuationStorage } from "./command/bucketContinuation";
 
   let viewDocument;
 
-  function parse(ctx, next) {
-    ctx.query = qs.parse(location.search.slice(1));
-    next();
-  }
+  // function parse(ctx, next) {
+  //   ctx.query = qs.parse(location.search.slice(1));
+  //   next();
+  // }
 
+  // async function show(ctx) {
+  //   let page = ctx.query["page"];
+  //   if (!page) {
+  //     page = "index"
+  //   }
+  //   page += ".json";
+  //   viewDocument = await xfetch("bafzbeidz3eazquyorhjdiosdgbc5j73yz5omnyqrasuz7pertimlmz7e5y", page);
+  // }
+
+  // page.base('/');
+  
+  // page('*', parse)
+  // page('*', show)
+  // page.start({popstate:true});
+function getPageBase(){
+  return window.location.pathname.split('#!')[0];
+}
+
+function getIpnsHashFromUrl(){
+  return window.location.pathname.split('#!')[0].split("/ipns/")[1].replace(/\//g,"");
+}
   async function show(ctx) {
-    let page = ctx.query["page"];
-    if (!page) {
-      page = "index"
+        console.log("CONTEXT", ctx);
+        // // current = ViewRegistry.getByName(ctx.path.replace(/\//g, ""));
+        // let hash = "bafzbeidz3eazquyorhjdiosdgbc5j73yz5omnyqrasuz7pertimlmz7e5y"; // always odentity hack
+  page.base(getPageBase());
+        viewDocument = await xfetch(getIpnsHashFromUrl(), ctx.path);
+        // let base = window.location.pathname.split('/#!/')[0] + '/#!/';
+        // page.base(base);
     }
-    page += ".json";
-    viewDocument = await xfetch("bafzbeidz3eazquyorhjdiosdgbc5j73yz5omnyqrasuz7pertimlmz7e5y", page);
-  }
+    // async function navigate(ctx, hash:string) {
+    //   console.log(ctx);
+    //   console.log(hash);
+    // }
 
-  page.base('/');
-  page('*', parse)
-  page('*', show)
-  page.start({popstate:true});
+  //   if(isLocal) {
+  //     page("/ipns/bafzbeidz3eazquyorhjdiosdgbc5j73yz5omnyqrasuz7pertimlmz7e5y",navigate("bafzbeidz3eazquyorhjdiosdgbc5j73yz5omnyqrasuz7pertimlmz7e5y"))
+  // //     "bafzbeidz3eazquyorhjdiosdgbc5j73yz5omnyqrasuz7pertimlmz7e5y": "odentity",
+  // // "bafzbeicmtet2ytuo5jlg2jtuh4rbtfvntznwah5mt2kb4xj3zgxt2ol5ma": "wallet",
+  // // "bafzbeiafbjcuy4dxnily3nbt7nab6ebdwyti3z7jgdrblnm4ivqw7hubki": "textile",
+  // // "bafzbeiahddbruy5letgjx6tiijzaednwr3zngtk57u3yyrjcsba7sqjbdq": "marketplace"
+  //   }
+
+    // all before hashname belongs to url
+    let base = window.location.pathname.split('#!/')[0];
+    console.log("page base is",base);
+
+    page.base(base);
+    page("*", show);
+    page({ popstate: true, hashbang: true });
 
 
-  setTimeout(() => {
-    page.default.redirect("?page=blubb");
-    setTimeout(() => {
-      page.default.redirect("?page=index");
-    }, 5000);
-  }, 5000);
+
+  page.base(getPageBase());
+   xfetch(getIpnsHashFromUrl()).then(json => {viewDocument = json;});
+
+// page.redirect("/ipns/bafzbeidz3eazquyorhjdiosdgbc5j73yz5omnyqrasuz7pertimlmz7e5y")
+  // setTimeout(() => {
+  //   page.redirect("/blubb");
+  //   setTimeout(() => {
+  //     page.redirect("/");
+  //     setTimeout(() => {
+  //     page.redirect("/index");
+  //   }, 5000);
+  //   }, 5000);
+  // }, 5000);
 
   let local = window.location.hostname == "localhost" || window.location.hostname == "127.0.0.1";
   let development = window.location.hostname == "omo.local";
-  let css = (local || development) ? "bundle.css" : "https://hub.textile.io/ipns/bafzbeigrqxbkog345dvrbl7puqjw4aggbbqrgtkq6cx6hvtpy326oifycq/build/bundle.css";
+  let css = (local || development) ? "/bundle.css" : "https://hub.textile.io/ipns/bafzbeigrqxbkog345dvrbl7puqjw4aggbbqrgtkq6cx6hvtpy326oifycq/build/bundle.css";
 
 </script>
 
