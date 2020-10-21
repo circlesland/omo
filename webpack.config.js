@@ -1,6 +1,3 @@
-
-
-
 const webpack = require('webpack')
 
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
@@ -11,7 +8,7 @@ const prod = mode === 'production'
 
 module.exports = {
   entry: {
-    bundle: ['./kernel/main.ts'],
+    bundle: ['./°os/main.ts'],
   },
   resolve: {
     alias: {
@@ -68,10 +65,7 @@ module.exports = {
     disableHostCheck: true,
     contentBase: [path.join(__dirname, 'dist'), path.join(__dirname, 'dapps')],
     port: 5000,
-    allowedHosts: [
-      'localhost',
-      '127.0.0.1',
-      'omo.local'],
+  host:"omo.local",
     https: true,
     historyApiFallback: {
       index: 'index.html'
