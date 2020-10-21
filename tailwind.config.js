@@ -9,8 +9,8 @@ module.exports = {
   },
   theme: {
     fontFamily: {
-      'title': ['Aclonica', 'sans-serif'],
-      'subtitle': ['Exo 2', 'sans-serif'],
+      'title': ['Montserrat', 'sans-serif'],
+      // 'subtitle': ['Exo 2', 'sans-serif'],
       'sans': ['"Quicksand"', 'sans-serif']
     },
     extend: {

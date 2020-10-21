@@ -98,7 +98,7 @@ import { DagService } from "../../../kernel/services/dagService";
       </header>
       {#if loginProcess != LoginState.LoggedIn}
         <main>
-          <h1 class="text-center text-3xl font-title text-primary">
+          <h1 class="font-black text-center text-3xl font-title text-primary">
             Willkommen,
             <br />auf Omo Earth
           </h1>
@@ -121,7 +121,7 @@ import { DagService } from "../../../kernel/services/dagService";
       {/if}
       {#if loginProcess == LoginState.LoggedIn}
         <main>
-          <p class="text-2xl text-center font-title text-primary">
+          <p class=" text-2xl text-center font-title text-primary">
             Herzlich Willkommen,<br />{user.name}
           </p>{user.email}
         </main>
