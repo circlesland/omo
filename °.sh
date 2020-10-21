@@ -7,7 +7,7 @@ fi
 
 
 if [ -z "$(ls -A °circles-protocol)" ]; then
-    git clone https://github.com/omoearth/o-circles-protocols.git °circles-protocol
+    git clone https://github.com/omoearth/o-circles-protocol.git °circles-protocol
 else
    git fetch °circles-protocol
 fi
@@ -47,7 +47,7 @@ fi
 
 
 if [ -z "$(ls -A services/°ipfs)" ]; then
-    git clone https://github.com/omoearth/o-service-ipfss services/°ipfs  
+    git clone https://github.com/omoearth/o-service-ipfs.git services/°ipfs  
 else
     git fetch services/°ipfs
 fi
