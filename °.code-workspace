@@ -1,27 +1,35 @@
 {
 	"folders": [
 		{
-			"path": "°os"
+			"name": "°os",
+			"path": "o-os"
 		},
 		{
-			"path": "dapps/°dentity"
+			"name": "°dentity",
+			"path": "dapps/o-dentity"
 		},
 		{
-			"path": "dapps/°wallet"
+			"name":"°wallet",
+			"path": "dapps/o-wallet",
 		},
 		{
-			"path": "dapps/°market"
+			"name":"°market",
+			"path": "dapps/o-smarket"
 		},
 		{
-			"path": "°circles-protocol"
+			"name":"°circles-protocol",
+			"path": "o-circles-protocol"
 		},
 		{
-			"path": "services/°ipfs"
+			"name":"°ipfs",
+			"path": "services/o-ipfs"
 		},
 		{
-			"path": "°views"
+			"name": "°views",
+			"path": "o-views"
 		},
 		{
+			"name":"°earth",
 			"path": "."
 		},
 		
