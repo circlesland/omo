@@ -1,0 +1,28 @@
+{
+	"folders": [
+		{
+			"path": "dapps/°dentity"
+		},
+		{
+			"path": "dapps/°wallet"
+		},
+		{
+			"path": "°circles-protocol"
+		},
+		{
+			"path": "°os"
+		},
+		{
+			"path": "°views"
+		},
+		{
+			"path": "services/°ipfs"
+		},
+		{
+			"path": "dapps/°market"
+		},
+		{
+			"path": "."
+		}
+	]
+}
