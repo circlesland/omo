@@ -2,6 +2,7 @@
   "name": "omo",
   "version": "0.0.1",
   "scripts": {
+    "°": "./°.sh",
     "build": "NODE_ENV=development webpack",
     "dev": "webpack-dev-server",
     "tsc": "npx tsc -w"
