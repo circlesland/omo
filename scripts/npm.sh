@@ -1,4 +1,7 @@
-cd o-os
+cd o-types
+npm install
+
+cd ../o-os
 npm install
 
 cd ../dapps/o-dentity
@@ -19,10 +22,9 @@ npm install
 cd ../services/o-ipfs
 npm install
 
-cd ../../o-types
-npm install
 
-cd ../
+
+cd ../../
 npm install
 
 echo "° ready"
