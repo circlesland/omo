@@ -5,6 +5,10 @@
 			"path": "o-os"
 		},
 		{
+			"name": "°types",
+			"path": "o-types"
+		},
+		{
 			"name": "°dentity",
 			"path": "dapps/o-dentity"
 		},

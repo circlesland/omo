@@ -48,4 +48,11 @@ else
     git fetch services/o-ipfs
 fi
 
+
+if [ -z "$(ls -A o-types)" ]; then
+    git clone https://github.com/omoearth/o-types.git o-types  
+else
+    git fetch o-types
+fi
+
 echo "° ready"

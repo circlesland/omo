@@ -19,7 +19,10 @@ npm install
 cd ../services/o-ipfs
 npm install
 
-cd ../../
+cd ../../o-types
+npm install
+
+cd ../
 npm install
 
 echo "° ready"
