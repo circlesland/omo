@@ -13,31 +13,32 @@
 			"path": "dapps/o-dentity"
 		},
 		{
-			"name":"°market",
+			"name": "°market",
 			"path": "dapps/o-market"
 		},
 		{
-			"name":"°wallet",
-			"path": "dapps/o-wallet",
+			"name": "°wallet",
+			"path": "dapps/o-wallet"
 		},
 		{
-			"name":"°circles-protocol",
+			"name": "°circles-protocol",
 			"path": "o-circles-protocol"
 		},
 		{
-			"name":"°ipfs",
+			"name": "°ipfs",
 			"path": "services/o-ipfs"
-			
 		},
 		{
 			"name": "°views",
 			"path": "o-views"
 		},
 		{
-			"name":"°earth",
+			"name": "°earth",
 			"path": "."
 		},
-		
+		{
+			"path": "../circles-lite"
+		}
 	],
 	"settings": {
 	}
