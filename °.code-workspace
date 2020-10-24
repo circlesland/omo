@@ -35,9 +35,6 @@
 		{
 			"name": "°earth",
 			"path": "."
-		},
-		{
-			"path": "../circles-lite"
 		}
 	],
 	"settings": {
