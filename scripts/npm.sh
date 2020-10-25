@@ -18,12 +18,17 @@ rm package-lock.json
 rm -rf node_modules
 npm install
 
-cd ../../o-circles-protocol
+cd ../../libraries/o-circles-protocol
 rm package-lock.json
 rm -rf node_modules
 npm install
 
-cd ../o-design-system
+cd ../../services/o-ipfs
+rm package-lock.json
+rm -rf node_modules
+npm install
+
+cd ../../o-design-system
 rm package-lock.json
 rm -rf node_modules
 npm install

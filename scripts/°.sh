@@ -1,59 +1,61 @@
-if [ -z "$(ls -A o-os)" ]; then
-    git clone https://github.com/omoearth/o-os.git o-os
+if [ -z "$(ls -A src/o-os)" ]; then
+    git clone https://github.com/omoearth/o-os.git src/o-os
 else
-   git fetch o-os
+   git fetch src/o-os
 fi
 
 
-if [ -z "$(ls -A dapps/o-dentity)" ]; then
-    git clone https://github.com/omoearth/o-dapp-odentity.git dapps/o-dentity
+if [ -z "$(ls -A src/dapps/o-dentity)" ]; then
+    git clone https://github.com/omoearth/o-dapp-odentity.git src/dapps/o-dentity
 else
-    git fetch dapps/o-dentity
+    git fetch src/dapps/o-dentity
 fi
 
 
-if [ -z "$(ls -A o-circles-protocol)" ]; then
-    git clone https://github.com/omoearth/o-circles-protocol.git o-circles-protocol
+if [ -z "$(ls -A src/libraries/o-circles-protocol)" ]; then
+    git clone https://github.com/omoearth/o-circles-protocol.git src/libraries/o-circles-protocol
 else
-   git fetch o-circles-protocol
-fi
-
-
-
-if [ -z "$(ls -A dapps/o-market)" ]; then
-    git clone https://github.com/omoearth/o-dapp-market.git dapps/o-market
-else
-    git fetch dapps/o-market
+   git fetch src/libraries/o-circles-protocol
 fi
 
 
 
-if [ -z "$(ls -A dapps/o-wallet)" ]; then
-    git clone https://github.com/omoearth/o-dapp-wallet.git dapps/o-wallet
+if [ -z "$(ls -A src/dapps/o-market)" ]; then
+    git clone https://github.com/omoearth/o-dapp-market.git src/dapps/o-market
 else
-    git fetch dapps/o-wallet
+    git fetch src/dapps/o-market
 fi
 
 
 
-if [ -z "$(ls -A services/o-ipfs)" ]; then
-    git clone https://github.com/omoearth/o-service-ipfs.git services/o-ipfs  
+if [ -z "$(ls -A src/dapps/o-wallet)" ]; then
+    git clone https://github.com/omoearth/o-dapp-wallet.git src/dapps/o-wallet
 else
-    git fetch services/o-ipfs
+    git fetch src/dapps/o-wallet
 fi
 
 
-if [ -z "$(ls -A o-types)" ]; then
-    git clone https://github.com/omoearth/o-types.git o-types  
+
+if [ -z "$(ls -A src/services/o-ipfs)" ]; then
+    git clone https://github.com/omoearth/o-service-ipfs.git src/services/o-ipfs  
 else
-    git fetch o-types
+    git fetch src/services/o-ipfs
+fi
+
+
+if [ -z "$(ls -A src/o-types)" ]; then
+    git clone https://github.com/omoearth/o-types.git src/o-types  
+else
+    git fetch src/o-types
 fi
 
 
 if [ -z "$(ls -A -recycle)" ]; then
-    git clone https://github.com/omoearth/-recycle.git o-recycle  
+    git clone https://github.com/omoearth/-recycle.git -recycle  
 else
-    git fetch o-types
+    git fetch -recycle
 fi
+
+git fetch 
 
 echo "° ready"

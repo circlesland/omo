@@ -5,36 +5,37 @@
 			"path": "-recycle"
 		},
 		{
+			"name": "°designSystem",
+			"path": "src/o-design-system"
+		},
+		
+		{
 			"name": "°os",
-			"path": "o-os"
+			"path": "src/o-os"
 		},
 		{
 			"name": "°types",
-			"path": "o-types"
+			"path": "src/o-types"
 		},
 		{
 			"name": "°dentity",
-			"path": "dapps/o-dentity"
+			"path": "src/dapps/o-dentity"
 		},
 		{
 			"name": "°market",
-			"path": "dapps/o-market"
+			"path": "src/dapps/o-market"
 		},
 		{
 			"name": "°wallet",
-			"path": "dapps/o-wallet"
+			"path": "src/dapps/o-wallet"
 		},
 		{
 			"name": "°circles-protocol",
-			"path": "o-circles-protocol"
+			"path": "src/libraries/o-circles-protocol"
 		},
 		{
 			"name": "°ipfs",
-			"path": "services/o-ipfs"
-		},
-		{
-			"name": "°designSystem",
-			"path": "o-design-system"
+			"path": "src/services/o-ipfs"
 		},
 		{
 			"name": "°earth",
