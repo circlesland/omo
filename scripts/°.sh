@@ -50,12 +50,12 @@ else
 fi
 
 
-if [ -z "$(ls -A -recycle)" ]; then
-    git clone https://github.com/omoearth/-recycle.git -recycle  
+if [ -z "$(ls -A o-recycle)" ]; then
+    git clone https://github.com/omoearth/o-recycle.git o-recycle  
 else
-    git fetch -recycle
+    git fetch o-recycle
 fi
 
-git fetch 
+git fetch
 
 echo "° ready"
