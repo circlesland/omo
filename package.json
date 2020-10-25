@@ -26,7 +26,12 @@
   },
   "dependencies": {
     "@omoearth/o-design-system": "file:src/o-design-system",
-    "@omoearth/o-os": "file:src/o-os"
+    "@omoearth/o-os": "file:src/o-os",
+    "@omoearth/o-types": "file:src/o-types",
+    "@textile/context": "^0.8.0",
+    "@textile/grpc-transport": "0.0.6",
+    "@textile/hub": "^1.1.1",
+    "@textile/hub-grpc": "^2.1.3"
   },
   "description": "## Install",
   "main": "src/main.ts",
