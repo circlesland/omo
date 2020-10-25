@@ -5,6 +5,14 @@ else
 fi
 
 
+if [ -z "$(ls -A src/o-design-system)" ]; then
+    git clone https://github.com/omoearth/o-design-system.git src/o-design-system
+else
+   git fetch src/o-design-system
+fi
+
+
+
 if [ -z "$(ls -A src/dapps/o-dentity)" ]; then
     git clone https://github.com/omoearth/o-dapp-odentity.git src/dapps/o-dentity
 else
@@ -55,6 +63,8 @@ if [ -z "$(ls -A o-recycle)" ]; then
 else
     git fetch o-recycle
 fi
+
+
 
 git fetch
 
