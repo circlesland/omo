@@ -1,30 +1,44 @@
-cd o-types
-npm install
-
-cd ../o-os
+cd src/o-types
+rm package-lock.json
+rm -rf node_modules
 npm install
 
 cd ../dapps/o-dentity
-npm install
-
-cd ../o-wallet
+rm package-lock.json
+rm -rf node_modules
 npm install
 
 cd ../o-market
+rm package-lock.json
+rm -rf node_modules
+npm install
+
+cd ../o-wallet
+rm package-lock.json
+rm -rf node_modules
 npm install
 
 cd ../../o-circles-protocol
+rm package-lock.json
+rm -rf node_modules
 npm install
 
-cd ../o-views
+cd ../o-design-system
+rm package-lock.json
+rm -rf node_modules
 npm install
 
-cd ../services/o-ipfs
+cd ../o-os
+rm package-lock.json
+rm -rf node_modules
 npm install
 
-
-
-cd ../../
+cd ../..
+rm package-lock.json
+rm -rf node_modules
+npm install
+rm package-lock.json
+rm -rf node_modules
 npm install
 
 echo "° ready"

@@ -1,6 +1,10 @@
 {
 	"folders": [
 		{
+			"name": "°trash",
+			"path": "-recycle"
+		},
+		{
 			"name": "°os",
 			"path": "o-os"
 		},
@@ -29,8 +33,8 @@
 			"path": "services/o-ipfs"
 		},
 		{
-			"name": "°views",
-			"path": "o-views"
+			"name": "°designSystem",
+			"path": "o-design-system"
 		},
 		{
 			"name": "°earth",

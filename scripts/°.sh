@@ -19,12 +19,6 @@ else
 fi
 
 
-if [ -z "$(ls -A o-views)" ]; then
-    git clone https://github.com/omoearth/o-views.git o-views
-else
-   git fetch o-views
-fi
-
 
 if [ -z "$(ls -A dapps/o-market)" ]; then
     git clone https://github.com/omoearth/o-dapp-market.git dapps/o-market
@@ -51,6 +45,13 @@ fi
 
 if [ -z "$(ls -A o-types)" ]; then
     git clone https://github.com/omoearth/o-types.git o-types  
+else
+    git fetch o-types
+fi
+
+
+if [ -z "$(ls -A -recycle)" ]; then
+    git clone https://github.com/omoearth/-recycle.git o-recycle  
 else
     git fetch o-types
 fi

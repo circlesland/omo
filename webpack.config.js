@@ -8,7 +8,7 @@ const prod = mode === 'production'
 
 module.exports = {
   entry: {
-    bundle: ['./o-os/main.ts'],
+    bundle: ['./src/main.ts'],
   },
   resolve: {
     alias: {
@@ -18,7 +18,7 @@ module.exports = {
     mainFields: ['svelte', 'browser', 'module', 'main'],
   },
   output: {
-    path: __dirname + '/dist/build',
+    path: __dirname + '/dist',
     filename: '[name].js',
     chunkFilename: '[name].[id].js',
   },
@@ -26,7 +26,10 @@ module.exports = {
     rules: [
       {
         test: /.(svelte|html|svx)$/,
-        exclude: /node_modules/,
+        exclude: [
+          /node_modules/,
+          /recycle/
+        ],
         use: {
           loader: 'svelte-loader',
           options: {
@@ -42,14 +45,17 @@ module.exports = {
           fallback: 'style-loader',
           use: [
             { loader: 'css-loader', options: { importLoaders: 1 } },
-            'postcss-loader',
+            'postcss-loader'
           ],
         }),
       },
       {
         test: /\.tsx?$/,
         use: 'ts-loader',
-        exclude: /node_modules/,
+        exclude: [
+          /node_modules/,
+          /recycle/
+        ],
       },
     ],
   },
@@ -63,12 +69,17 @@ module.exports = {
   devServer: {
     compress: true,
     disableHostCheck: true,
-    contentBase: [path.join(__dirname, 'dist'), path.join(__dirname, 'dapps')],
+    contentBase: [path.join(__dirname, 'dist'), path.join(__dirname, 'src/dapps'), path.join(__dirname, 'static')],
     port: 5000,
-  host:"omo.local",
+    host: "omo.local",
     https: true,
     historyApiFallback: {
       index: 'index.html'
+    },
+    watchOptions: {
+      ignored: [
+        path.resolve(__dirname, '-recycle')
+      ]
     }
   }
 

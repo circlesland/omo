@@ -4,11 +4,8 @@
     "**/*"
   ],
   "exclude": [
-    "_other",
+    "-recycle/_other",
     "node_modules/*",
     "public/*"
-  ],
-  "compilerOptions": {
-    "experimentalDecorators": true
-  },
+  ]
 }
