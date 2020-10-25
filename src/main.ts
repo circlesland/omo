@@ -1,8 +1,5 @@
-// import { Boot } from "o-design-system/src";
-// import { Kernel } from "./o-os/src/Kernelrc/Kernel";
-
 import { Kernel } from "@omoearth/o-os";
-import { Boot } from "@omoearth/o-design-system";
+import { Boot, ViewComponents } from "@omoearth/o-design-system";
 
 
 declare global {
@@ -15,6 +12,8 @@ let UI;
 
 Kernel.boot().then(o => {
   window.o = o;
+  ViewComponents.forEach((v) => o.registry.registerClass(v));
+
   UI = new Boot({
     target: document.body,
     props: {
