@@ -43,6 +43,13 @@ else
 fi
 
 
+if [ -z "$(ls -A src/dapps/o-friends)" ]; then
+    git clone https://github.com/omoearth/o-dapp-friends.git src/dapps/o-friends
+else
+    git fetch src/dapps/o-friends
+fi
+
+
 
 if [ -z "$(ls -A src/services/o-ipfs)" ]; then
     git clone https://github.com/omoearth/o-service-ipfs.git src/services/o-ipfs  
@@ -63,6 +70,7 @@ if [ -z "$(ls -A o-recycle)" ]; then
 else
     git fetch o-recycle
 fi
+
 
 
 

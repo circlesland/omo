@@ -22,6 +22,10 @@
 			"path": "src/dapps/o-dentity"
 		},
 		{
+			"name": "°friends",
+			"path": "src/dapps/o-friends"
+		},
+		{
 			"name": "°market",
 			"path": "src/dapps/o-market"
 		},
