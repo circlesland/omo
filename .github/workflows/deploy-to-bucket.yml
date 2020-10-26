@@ -6,6 +6,7 @@ on:
   pull_request:
     branches:
       - main
+jobs:
   kernel-deploy:
     runs-on: ubuntu-latest
     strategy:
