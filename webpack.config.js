@@ -12,6 +12,12 @@ module.exports = {
   },
   resolve: {
     alias: {
+      'filepond-plugin-image-preview': path.resolve('node_modules', 'filepond-plugin-image-preview'),
+      'filepond': path.resolve('node_modules', 'filepond'),
+      'filepond-plugin-image-edit': path.resolve('node_modules', 'filepond-plugin-image-edit'),
+      
+    },
+    alias: {
       svelte: path.resolve('node_modules', 'svelte'),
     },
     extensions: ['.mjs', '.tsx', '.ts', '.js', '.svelte', '.svx'],
@@ -46,7 +52,7 @@ module.exports = {
           use: [
             {
               loader: 'css-loader', options: {
-                importLoaders: 1              },
+                importLoaders: 2},
             },
             'postcss-loader'
           ],
@@ -61,6 +67,9 @@ module.exports = {
         ],
       },
     ],
+  },
+  externals: {
+    // "svelte-filepond": 'svelte-filepond'
   },
   mode: process.env.NODE_ENV,
   plugins: [
