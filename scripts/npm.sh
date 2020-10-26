@@ -18,6 +18,16 @@ rm package-lock.json
 rm -rf node_modules
 npm install
 
+cd ../o-friends
+rm package-lock.json
+rm -rf node_modules
+npm install
+
+cd ../o-textile-hub
+rm package-lock.json
+rm -rf node_modules
+npm install
+
 cd ../../libraries/o-circles-protocol
 rm package-lock.json
 rm -rf node_modules

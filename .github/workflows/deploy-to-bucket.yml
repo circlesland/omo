@@ -1,4 +1,4 @@
-name: "dev.omo.earth"
+name: "o-kernel"
 on:
   push:
     branches:
@@ -6,99 +6,6 @@ on:
   pull_request:
     branches:
       - main
-
-jobs:
-  odentity-deploy:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - run: ls -la
-      - name: push odentity
-        id: odentity
-        uses: textileio/github-action-buckets@v20
-        with:
-          key: ${{ secrets.TEXTILE_ACCOUNT_KEY }}
-          secret: ${{ secrets.TEXTILE_ACCOUNT_SECRET }}
-          bucket: 'odentity'
-          thread: 'bafk3hjqnsapk7bbedswqq5pfhi3jue3kq7h6wnhgd5o7eedlrkroeva'
-          path: 'dapps/omo/odentity/'
-      - run: echo "bucket - ${{ steps.odentity.outputs.key }}"
-      - run: echo "ipfs - ${{ steps.odentity.outputs.ipfs }}"
-      - run: echo "ipfs link - ${{ steps.odentity.outputs.ipfsUrl }}"
-      - run: echo "ipns - ${{ steps.odentity.outputs.ipns }}"
-      - run: echo "ipns link - ${{ steps.odentity.outputs.ipnsUrl }}"
-      - run: echo "hub - ${{ steps.odentity.outputs.hub }}"
-      - run: echo "www - ${{ steps.odentity.outputs.www }}"
-
-  wallet-deploy:
-    runs-on: ubuntu-latest
-    needs: odentity-deploy
-    steps:
-      - uses: actions/checkout@v2
-      - run: ls -la
-      - name: push wallet
-        id: wallet
-        uses: textileio/github-action-buckets@v20
-        with:
-          key: ${{ secrets.TEXTILE_ACCOUNT_KEY }}
-          secret: ${{ secrets.TEXTILE_ACCOUNT_SECRET }}
-          bucket: 'wallet'
-          thread: 'bafk3hjqnsapk7bbedswqq5pfhi3jue3kq7h6wnhgd5o7eedlrkroeva'
-          path: 'dapps/omo/wallet/'
-      - run: echo "bucket - ${{ steps.wallet.outputs.key }}"
-      - run: echo "ipfs - ${{ steps.wallet.outputs.ipfs }}"
-      - run: echo "ipfs link - ${{ steps.wallet.outputs.ipfsUrl }}"
-      - run: echo "ipns - ${{ steps.wallet.outputs.ipns }}"
-      - run: echo "ipns link - ${{ steps.wallet.outputs.ipnsUrl }}"
-      - run: echo "hub - ${{ steps.wallet.outputs.hub }}"
-      - run: echo "www - ${{ steps.wallet.outputs.www }}"
-
-  textile-deploy:
-    runs-on: ubuntu-latest
-    needs: wallet-deploy
-    steps:
-      - uses: actions/checkout@v2
-      - run: ls -la
-      - name: push textile
-        id: textile
-        uses: textileio/github-action-buckets@v20
-        with:
-          key: ${{ secrets.TEXTILE_ACCOUNT_KEY }}
-          secret: ${{ secrets.TEXTILE_ACCOUNT_SECRET }}
-          bucket: 'textile'
-          thread: 'bafk3hjqnsapk7bbedswqq5pfhi3jue3kq7h6wnhgd5o7eedlrkroeva'
-          path: 'dapps/omo/textile/'
-      - run: echo "bucket - ${{ steps.textile.outputs.key }}"
-      - run: echo "ipfs - ${{ steps.textile.outputs.ipfs }}"
-      - run: echo "ipfs link - ${{ steps.textile.outputs.ipfsUrl }}"
-      - run: echo "ipns - ${{ steps.textile.outputs.ipns }}"
-      - run: echo "ipns link - ${{ steps.textile.outputs.ipnsUrl }}"
-      - run: echo "hub - ${{ steps.textile.outputs.hub }}"
-      - run: echo "www - ${{ steps.textile.outputs.www }}"
-
-  marketplace-deploy:
-    runs-on: ubuntu-latest
-    needs: textile-deploy
-    steps:
-      - uses: actions/checkout@v2
-      - run: ls -la
-      - name: push marketplace
-        id: marketplace
-        uses: textileio/github-action-buckets@v20
-        with:
-          key: ${{ secrets.TEXTILE_ACCOUNT_KEY }}
-          secret: ${{ secrets.TEXTILE_ACCOUNT_SECRET }}
-          bucket: 'marketplace'
-          thread: 'bafk3hjqnsapk7bbedswqq5pfhi3jue3kq7h6wnhgd5o7eedlrkroeva'
-          path: 'dapps/omo/marketplace/'
-      - run: echo "bucket - ${{ steps.marketplace.outputs.key }}"
-      - run: echo "ipfs - ${{ steps.marketplace.outputs.ipfs }}"
-      - run: echo "ipfs link - ${{ steps.marketplace.outputs.ipfsUrl }}"
-      - run: echo "ipns - ${{ steps.marketplace.outputs.ipns }}"
-      - run: echo "ipns link - ${{ steps.marketplace.outputs.ipnsUrl }}"
-      - run: echo "hub - ${{ steps.marketplace.outputs.hub }}"
-      - run: echo "www - ${{ steps.marketplace.outputs.www }}"
-
   kernel-deploy:
     runs-on: ubuntu-latest
     strategy:
@@ -111,14 +18,16 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - run: npm install
-    - run: npm run build --if-present
+    - run: npm run °
+    - run: npm run °npm
+    - run: npm run build
       env:
         Environment: production
     - name: remove old index.html
       run: |
-        rm dist/index.html
-        mv dist/devomoearth.html dist/index.html
+        rm static/index.html
+        mv static/devomoearth.html static/index.html
+        mv static/* dist/
     - name: push action
       id: bucket
       uses: textileio/github-action-buckets@v20
@@ -128,7 +37,6 @@ jobs:
         bucket: 'omo-marketplace-dev'
         thread: 'bafk3hjqnsapk7bbedswqq5pfhi3jue3kq7h6wnhgd5o7eedlrkroeva'
         path: 'dist'
-      #  remove: true
     - run: echo "bucket - ${{ steps.bucket.outputs.key }}"
     - run: echo "ipfs - ${{ steps.bucket.outputs.ipfs }}"
     - run: echo "ipfs link - ${{ steps.bucket.outputs.ipfsUrl }}"
