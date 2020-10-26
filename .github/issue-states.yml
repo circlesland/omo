@@ -5,11 +5,15 @@ openIssueColumns:
   - OPEN
   - TODAY
   - THIS WEEK
+  - THIS MONTH
+  - THIS QUARTER
+  - THIS YEAR
+  - THIS DECADE
 
 # Close issues that are moved to these project columns. Set to `[]` to disable
 closedIssueColumns:
-  - Closed
-  - Done
+  - DONE
+  - CLOSED
 
 # Repository to extend settings from
 # _extends: repo
