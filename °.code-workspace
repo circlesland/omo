@@ -8,7 +8,6 @@
 			"name": "°designSystem",
 			"path": "src/o-design-system"
 		},
-		
 		{
 			"name": "°os",
 			"path": "src/o-os"
@@ -24,6 +23,10 @@
 		{
 			"name": "°friends",
 			"path": "src/dapps/o-friends"
+		},
+		{
+			"name": "°textile-hub",
+			"path": "src/dapps/o-textile-hub"
 		},
 		{
 			"name": "°market",

@@ -49,6 +49,12 @@ else
     git fetch src/dapps/o-friends
 fi
 
+if [ -z "$(ls -A src/dapps/o-textile-hub)" ]; then
+    git clone https://github.com/omoearth/o-dapp-textile-hub.git src/dapps/o-textile-hub
+else
+    git fetch src/dapps/o-textile-hub
+fi
+
 
 
 if [ -z "$(ls -A src/services/o-ipfs)" ]; then
