@@ -20,11 +20,19 @@ Fetch all git repositories
 Install all repositories
 `npm run °npm`
 
+Open your etc/hosts with 
+`sudo nano /etc/hosts`
+
+... and add the following line to the end of the file 
+`127.0.0.1 omo.local`
+
 Start
 `npm run dev`
 
+Go to your browser and open https://omo.local
 
-## Create new DAPP
+
+## How to create a new DAPP
 
 1. Go to github and create a new repository
 
@@ -37,7 +45,7 @@ else
     git fetch src/dapps/o-website
 fi`
 
-3. Update the npm.sh script in the /scripts folder  and add the new dapp to the script 
+3. Update the npm.sh script in the /scripts folder and add the new dapp to the script 
 
 e.g.
 `cd ../o-website
@@ -72,8 +80,7 @@ hub buck init --org omo-marketplace-dev
 
 10. Add the IPNS Hash to the Router.ts file in the appHashNameLookup variable:
 
-` 
-static appHashNameLookup = {
+`static appHashNameLookup = {
     "bafzbeidz3eazquyorhjdiosdgbc5j73yz5omnyqrasuz7pertimlmz7e5y": "o-dentity",
     "bafzbeicmtet2ytuo5jlg2jtuh4rbtfvntznwah5mt2kb4xj3zgxt2ol5ma": "o-wallet",
     "bafzbeiafbjcuy4dxnily3nbt7nab6ebdwyti3z7jgdrblnm4ivqw7hubki": "o-textile-hub",
