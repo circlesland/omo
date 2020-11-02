@@ -29,6 +29,10 @@
 			"path": "src/dapps/o-textile-hub"
 		},
 		{
+			"name": "°website",
+			"path": "src/dapps/o-website"
+		},
+		{
 			"name": "°market",
 			"path": "src/dapps/o-market"
 		},

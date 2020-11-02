@@ -11,7 +11,7 @@ declare global {
 let UI;
 
 if (window.location.pathname == "/") {
-  location.replace(window.location.origin + "/ipns/bafzbeidz3eazquyorhjdiosdgbc5j73yz5omnyqrasuz7pertimlmz7e5y");
+  location.replace(window.location.origin + "/ipns/bafzbeihcehyawlhvltossqfhblyqeuer34yak24ctesgwnnf7aeyk33lce");
 }
 
 Kernel.boot().then(o => {
