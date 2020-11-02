@@ -1,19 +1,21 @@
 {
-    "name": "",
-    "short_name": "",
+    "short_name": "Omo Earth",
+    "name": "Omo Earth",
+    "description": "",
     "icons": [
         {
-            "src": "https://ipfs.io/ipfs/QmWMcv6z4DZ8zQTrzvtt6AoKJvxjTRAeKkCQy7TUttnyzc",
+            "src": "https://hub.textile.io/ipfs/bafkreia5zx3vgjf5733jvowi6ndmoswwypk6wtnaqytgf5bbx2ev3ktxve",
             "sizes": "192x192",
             "type": "image/png"
         },
         {
-            "src": "https://ipfs.io/ipfs/QmSrkYdQAbT4aGBZ8ZvMsjM1XmEAvSn8bFfy5YLnw5o73i",
+            "src": "https://hub.textile.io/ipfs/bafkreiei6jdchqd6kvsbwd5g5maathcgso2la4pxdzx4v74teu3hnva5x4",
             "sizes": "384x384",
             "type": "image/png"
         }
     ],
     "theme_color": "#ffffff",
     "background_color": "#ffffff",
-    "display": "standalone"
+    "display": "fullscreen",
+    "orientation": "portrait-primary"
 }

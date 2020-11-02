@@ -10,6 +10,10 @@ declare global {
 
 let UI;
 
+if (window.location.pathname == "/") {
+  location.replace(window.location.origin + "/ipns/bafzbeidz3eazquyorhjdiosdgbc5j73yz5omnyqrasuz7pertimlmz7e5y");
+}
+
 Kernel.boot().then(o => {
   window.o = o;
   ViewComponents.forEach((v) => o.registry.registerClass(v));

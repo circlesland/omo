@@ -83,7 +83,7 @@ module.exports = {
     disableHostCheck: true,
     contentBase: [path.join(__dirname, 'dist'), path.join(__dirname, 'src/dapps'), path.join(__dirname, 'static')],
     port: 5000,
-    host: "omo.local",
+    host: "0.0.0.0",
     https: true,
     historyApiFallback: {
       index: 'index.html'
