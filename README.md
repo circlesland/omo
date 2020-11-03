@@ -11,8 +11,11 @@
 
 ## Install
 
-Clone Repo
+Clone Repo 
 `git clone https://github.com/omoearth/omo.git`
+
+Enter directory 
+`cd omo`
 
 Fetch all git repositories
 `npm run °`
